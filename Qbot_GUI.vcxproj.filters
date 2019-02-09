@@ -153,4 +153,7 @@
       <Filter>Ressourcendateien</Filter>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Debug\Qbot_GUI.exe" />
+  </ItemGroup>
 </Project>
