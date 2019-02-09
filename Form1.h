@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include "../Qbot_GUI/SolverBackend/CubeSimulation.h"
-#include "../Qbot_GUI/Qbot_Serial/Qbot_Serial.h"
+#include "../Qbot_SW/SolverBackend/CubeSimulation.h"
+#include "../Qbot_SW/Serial/Qbot_Serial.h"
 #include <msclr\marshal_cppstd.h>
 
 namespace CppCLR_WinformsProjekt {

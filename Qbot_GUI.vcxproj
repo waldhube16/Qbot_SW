@@ -151,6 +151,8 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Serial\Qbot_Serial.h" />
+    <ClInclude Include="Serial\SerialClass.h" />
     <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\color.h" />
     <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\coordcube.h" />
     <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\corner.h" />
@@ -175,6 +177,8 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="CppCLR_WinformsProjekt.cpp" />
     <ClCompile Include="Form1.cpp" />
+    <ClCompile Include="Serial\Qbot_Serial.cpp" />
+    <ClCompile Include="Serial\SerialClass.cpp" />
     <ClCompile Include="SolverBackend\AlgorithmEmbeddedC\coordcube.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>

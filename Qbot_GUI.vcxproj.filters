@@ -16,6 +16,9 @@
     <Filter Include="SolverBackend">
       <UniqueIdentifier>{b3bb8c34-4c5b-4c1f-8598-e3008d0a0445}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Serial">
+      <UniqueIdentifier>{05d6e96a-dcd5-47fa-a4f8-aaafd39c5b66}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -75,6 +78,12 @@
     <ClInclude Include="SolverBackend\CubeSimulation.h">
       <Filter>SolverBackend</Filter>
     </ClInclude>
+    <ClInclude Include="Serial\SerialClass.h">
+      <Filter>Serial</Filter>
+    </ClInclude>
+    <ClInclude Include="Serial\Qbot_Serial.h">
+      <Filter>Serial</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">
@@ -126,6 +135,12 @@
     </ClCompile>
     <ClCompile Include="SolverBackend\AlgorithmEmbeddedC\coordcube.c">
       <Filter>SolverBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="Serial\Qbot_Serial.cpp">
+      <Filter>Serial</Filter>
+    </ClCompile>
+    <ClCompile Include="Serial\SerialClass.cpp">
+      <Filter>Serial</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
