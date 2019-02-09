@@ -324,9 +324,37 @@ private: System::Windows::Forms::Button^  btn_EndRecolor;
 private: System::Windows::Forms::Button^  btn_scrambleCubeString;
 
 private: System::Windows::Forms::Button^  btn_CmdToArduino;
-private: System::Windows::Forms::ComboBox^  box_CmdForArduino;
+
+
 private: System::Windows::Forms::Label^  lbl_ComPort;
 private: System::Windows::Forms::NumericUpDown^  numdd_ComPort;
+private: System::Windows::Forms::Label^  label1;
+private: System::Windows::Forms::Label^  label2;
+private: System::Windows::Forms::Button^  btn_enableSteppers;
+private: System::Windows::Forms::Button^  btn_disableSteppers;
+private: System::Windows::Forms::Button^  btn_lcw;
+private: System::Windows::Forms::Button^  btn_lccw;
+private: System::Windows::Forms::Button^  btn_bccw;
+private: System::Windows::Forms::Button^  btn_bcw;
+private: System::Windows::Forms::Button^  btn_fcw;
+private: System::Windows::Forms::Button^  btn_fccw;
+private: System::Windows::Forms::Button^  btn_rccw;
+private: System::Windows::Forms::Button^  btn_rcw;
+private: System::Windows::Forms::Label^  label3;
+private: System::Windows::Forms::Label^  label4;
+private: System::Windows::Forms::Label^  label5;
+private: System::Windows::Forms::Label^  label6;
+private: System::Windows::Forms::Label^  label7;
+private: System::Windows::Forms::Label^  label8;
+private: System::Windows::Forms::Button^  btn_openY;
+private: System::Windows::Forms::Button^  btn_closeY;
+private: System::Windows::Forms::Button^  btn_openX;
+private: System::Windows::Forms::Button^  btn_closeX;
+private: System::Windows::Forms::Label^  label9;
+private: System::Windows::Forms::Panel^  panel1;
+private: System::Windows::Forms::TextBox^  box_CmdForArduino;
+
+
 
 
 
@@ -422,10 +450,35 @@ private: System::Windows::Forms::NumericUpDown^  numdd_ComPort;
 			this->btn_EndRecolor = (gcnew System::Windows::Forms::Button());
 			this->btn_scrambleCubeString = (gcnew System::Windows::Forms::Button());
 			this->btn_CmdToArduino = (gcnew System::Windows::Forms::Button());
-			this->box_CmdForArduino = (gcnew System::Windows::Forms::ComboBox());
 			this->lbl_ComPort = (gcnew System::Windows::Forms::Label());
 			this->numdd_ComPort = (gcnew System::Windows::Forms::NumericUpDown());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->btn_enableSteppers = (gcnew System::Windows::Forms::Button());
+			this->btn_disableSteppers = (gcnew System::Windows::Forms::Button());
+			this->btn_lcw = (gcnew System::Windows::Forms::Button());
+			this->btn_lccw = (gcnew System::Windows::Forms::Button());
+			this->btn_bccw = (gcnew System::Windows::Forms::Button());
+			this->btn_bcw = (gcnew System::Windows::Forms::Button());
+			this->btn_fcw = (gcnew System::Windows::Forms::Button());
+			this->btn_fccw = (gcnew System::Windows::Forms::Button());
+			this->btn_rccw = (gcnew System::Windows::Forms::Button());
+			this->btn_rcw = (gcnew System::Windows::Forms::Button());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->btn_openY = (gcnew System::Windows::Forms::Button());
+			this->btn_closeY = (gcnew System::Windows::Forms::Button());
+			this->btn_openX = (gcnew System::Windows::Forms::Button());
+			this->btn_closeX = (gcnew System::Windows::Forms::Button());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->box_CmdForArduino = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numdd_ComPort))->BeginInit();
+			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// U1
@@ -1176,19 +1229,6 @@ private: System::Windows::Forms::NumericUpDown^  numdd_ComPort;
 			this->btn_CmdToArduino->UseVisualStyleBackColor = true;
 			this->btn_CmdToArduino->Click += gcnew System::EventHandler(this, &Form1::btn_CmdToArduino_Click);
 			// 
-			// box_CmdForArduino
-			// 
-			this->box_CmdForArduino->FormattingEnabled = true;
-			this->box_CmdForArduino->Items->AddRange(gcnew cli::array< System::Object^  >(18) {
-				L"Y0", L"y0", L"X0", L"x0", L"A1", L"a1",
-					L"A2", L"a2", L"A3", L"a3", L"A4", L"a4", L"A5", L"a5", L"A6", L"a6", L"E1", L"E2"
-			});
-			this->box_CmdForArduino->Location = System::Drawing::Point(714, 46);
-			this->box_CmdForArduino->Name = L"box_CmdForArduino";
-			this->box_CmdForArduino->Size = System::Drawing::Size(121, 21);
-			this->box_CmdForArduino->TabIndex = 19;
-			this->box_CmdForArduino->Text = L"Y0";
-			// 
 			// lbl_ComPort
 			// 
 			this->lbl_ComPort->AutoSize = true;
@@ -1206,14 +1246,274 @@ private: System::Windows::Forms::NumericUpDown^  numdd_ComPort;
 			this->numdd_ComPort->Size = System::Drawing::Size(58, 20);
 			this->numdd_ComPort->TabIndex = 21;
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(49, 14);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(147, 13);
+			this->label1->TabIndex = 22;
+			this->label1->Text = L"Manual Stepper Configuration";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(52, 87);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(90, 13);
+			this->label2->TabIndex = 22;
+			this->label2->Text = L"Open/Close Axes";
+			// 
+			// btn_enableSteppers
+			// 
+			this->btn_enableSteppers->Location = System::Drawing::Point(66, 61);
+			this->btn_enableSteppers->Name = L"btn_enableSteppers";
+			this->btn_enableSteppers->Size = System::Drawing::Size(46, 23);
+			this->btn_enableSteppers->TabIndex = 23;
+			this->btn_enableSteppers->Text = L"E1";
+			this->btn_enableSteppers->UseVisualStyleBackColor = true;
+			this->btn_enableSteppers->Click += gcnew System::EventHandler(this, &Form1::SingleCmdButton_Click);
+			// 
+			// btn_disableSteppers
+			// 
+			this->btn_disableSteppers->Location = System::Drawing::Point(119, 61);
+			this->btn_disableSteppers->Name = L"btn_disableSteppers";
+			this->btn_disableSteppers->Size = System::Drawing::Size(41, 23);
+			this->btn_disableSteppers->TabIndex = 24;
+			this->btn_disableSteppers->Text = L"E2";
+			this->btn_disableSteppers->UseVisualStyleBackColor = true;
+			this->btn_disableSteppers->Click += gcnew System::EventHandler(this, &Form1::SingleCmdButton_Click);
+			// 
+			// btn_lcw
+			// 
+			this->btn_lcw->Location = System::Drawing::Point(53, 244);
+			this->btn_lcw->Name = L"btn_lcw";
+			this->btn_lcw->Size = System::Drawing::Size(30, 23);
+			this->btn_lcw->TabIndex = 25;
+			this->btn_lcw->Text = L"A3";
+			this->btn_lcw->UseVisualStyleBackColor = true;
+			this->btn_lcw->Click += gcnew System::EventHandler(this, &Form1::SingleCmdButton_Click);
+			// 
+			// btn_lccw
+			// 
+			this->btn_lccw->Location = System::Drawing::Point(53, 274);
+			this->btn_lccw->Name = L"btn_lccw";
+			this->btn_lccw->Size = System::Drawing::Size(30, 23);
+			this->btn_lccw->TabIndex = 26;
+			this->btn_lccw->Text = L"a3";
+			this->btn_lccw->UseVisualStyleBackColor = true;
+			this->btn_lccw->Click += gcnew System::EventHandler(this, &Form1::SingleCmdButton_Click);
+			// 
+			// btn_bccw
+			// 
+			this->btn_bccw->Location = System::Drawing::Point(82, 220);
+			this->btn_bccw->Name = L"btn_bccw";
+			this->btn_bccw->Size = System::Drawing::Size(30, 23);
+			this->btn_bccw->TabIndex = 27;
+			this->btn_bccw->Text = L"a6";
+			this->btn_bccw->UseVisualStyleBackColor = true;
+			this->btn_bccw->Click += gcnew System::EventHandler(this, &Form1::SingleCmdButton_Click);
+			// 
+			// btn_bcw
+			// 
+			this->btn_bcw->Location = System::Drawing::Point(117, 220);
+			this->btn_bcw->Name = L"btn_bcw";
+			this->btn_bcw->Size = System::Drawing::Size(30, 23);
+			this->btn_bcw->TabIndex = 28;
+			this->btn_bcw->Text = L"A6";
+			this->btn_bcw->UseVisualStyleBackColor = true;
+			this->btn_bcw->Click += gcnew System::EventHandler(this, &Form1::SingleCmdButton_Click);
+			// 
+			// btn_fcw
+			// 
+			this->btn_fcw->Location = System::Drawing::Point(82, 297);
+			this->btn_fcw->Name = L"btn_fcw";
+			this->btn_fcw->Size = System::Drawing::Size(30, 23);
+			this->btn_fcw->TabIndex = 29;
+			this->btn_fcw->Text = L"A5";
+			this->btn_fcw->UseVisualStyleBackColor = true;
+			this->btn_fcw->Click += gcnew System::EventHandler(this, &Form1::SingleCmdButton_Click);
+			// 
+			// btn_fccw
+			// 
+			this->btn_fccw->Location = System::Drawing::Point(117, 297);
+			this->btn_fccw->Name = L"btn_fccw";
+			this->btn_fccw->Size = System::Drawing::Size(30, 23);
+			this->btn_fccw->TabIndex = 30;
+			this->btn_fccw->Text = L"a5";
+			this->btn_fccw->UseVisualStyleBackColor = true;
+			this->btn_fccw->Click += gcnew System::EventHandler(this, &Form1::SingleCmdButton_Click);
+			// 
+			// btn_rccw
+			// 
+			this->btn_rccw->Location = System::Drawing::Point(146, 244);
+			this->btn_rccw->Name = L"btn_rccw";
+			this->btn_rccw->Size = System::Drawing::Size(30, 23);
+			this->btn_rccw->TabIndex = 31;
+			this->btn_rccw->Text = L"a4";
+			this->btn_rccw->UseVisualStyleBackColor = true;
+			this->btn_rccw->Click += gcnew System::EventHandler(this, &Form1::SingleCmdButton_Click);
+			// 
+			// btn_rcw
+			// 
+			this->btn_rcw->Location = System::Drawing::Point(146, 273);
+			this->btn_rcw->Name = L"btn_rcw";
+			this->btn_rcw->Size = System::Drawing::Size(30, 23);
+			this->btn_rcw->TabIndex = 32;
+			this->btn_rcw->Text = L"A4";
+			this->btn_rcw->UseVisualStyleBackColor = true;
+			this->btn_rcw->Click += gcnew System::EventHandler(this, &Form1::SingleCmdButton_Click);
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(181, 220);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(98, 13);
+			this->label3->TabIndex = 22;
+			this->label3->Text = L"a# = ccw; A# = cw";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(102, 204);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(32, 13);
+			this->label4->TabIndex = 22;
+			this->label4->Text = L"Back";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(15, 263);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(25, 13);
+			this->label5->TabIndex = 22;
+			this->label5->Text = L"Left";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(181, 264);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(32, 13);
+			this->label6->TabIndex = 22;
+			this->label6->Text = L"Right";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(102, 327);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(31, 13);
+			this->label7->TabIndex = 22;
+			this->label7->Text = L"Front";
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Location = System::Drawing::Point(49, 41);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(80, 13);
+			this->label8->TabIndex = 22;
+			this->label8->Text = L"Enable/Disable";
+			// 
+			// btn_openY
+			// 
+			this->btn_openY->Location = System::Drawing::Point(99, 109);
+			this->btn_openY->Name = L"btn_openY";
+			this->btn_openY->Size = System::Drawing::Size(30, 23);
+			this->btn_openY->TabIndex = 23;
+			this->btn_openY->Text = L"y0";
+			this->btn_openY->UseVisualStyleBackColor = true;
+			this->btn_openY->Click += gcnew System::EventHandler(this, &Form1::SingleCmdButton_Click);
+			// 
+			// btn_closeY
+			// 
+			this->btn_closeY->Location = System::Drawing::Point(99, 162);
+			this->btn_closeY->Name = L"btn_closeY";
+			this->btn_closeY->Size = System::Drawing::Size(30, 23);
+			this->btn_closeY->TabIndex = 24;
+			this->btn_closeY->Text = L"Y0";
+			this->btn_closeY->UseVisualStyleBackColor = true;
+			this->btn_closeY->Click += gcnew System::EventHandler(this, &Form1::SingleCmdButton_Click);
+			// 
+			// btn_openX
+			// 
+			this->btn_openX->Location = System::Drawing::Point(68, 135);
+			this->btn_openX->Name = L"btn_openX";
+			this->btn_openX->Size = System::Drawing::Size(30, 23);
+			this->btn_openX->TabIndex = 23;
+			this->btn_openX->Text = L"x0";
+			this->btn_openX->UseVisualStyleBackColor = true;
+			this->btn_openX->Click += gcnew System::EventHandler(this, &Form1::SingleCmdButton_Click);
+			// 
+			// btn_closeX
+			// 
+			this->btn_closeX->Location = System::Drawing::Point(128, 135);
+			this->btn_closeX->Name = L"btn_closeX";
+			this->btn_closeX->Size = System::Drawing::Size(30, 23);
+			this->btn_closeX->TabIndex = 24;
+			this->btn_closeX->Text = L"X0";
+			this->btn_closeX->UseVisualStyleBackColor = true;
+			this->btn_closeX->Click += gcnew System::EventHandler(this, &Form1::SingleCmdButton_Click);
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Location = System::Drawing::Point(181, 116);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(148, 13);
+			this->label9->TabIndex = 22;
+			this->label9->Text = L"x#/y# = open; X#/Y# = close";
+			// 
+			// panel1
+			// 
+			this->panel1->BackColor = System::Drawing::SystemColors::ControlDark;
+			this->panel1->Controls->Add(this->btn_rcw);
+			this->panel1->Controls->Add(this->btn_rccw);
+			this->panel1->Controls->Add(this->btn_fccw);
+			this->panel1->Controls->Add(this->btn_fcw);
+			this->panel1->Controls->Add(this->btn_bcw);
+			this->panel1->Controls->Add(this->btn_bccw);
+			this->panel1->Controls->Add(this->btn_lccw);
+			this->panel1->Controls->Add(this->btn_lcw);
+			this->panel1->Controls->Add(this->btn_closeY);
+			this->panel1->Controls->Add(this->btn_closeX);
+			this->panel1->Controls->Add(this->btn_disableSteppers);
+			this->panel1->Controls->Add(this->btn_openX);
+			this->panel1->Controls->Add(this->btn_openY);
+			this->panel1->Controls->Add(this->btn_enableSteppers);
+			this->panel1->Controls->Add(this->label8);
+			this->panel1->Controls->Add(this->label2);
+			this->panel1->Controls->Add(this->label7);
+			this->panel1->Controls->Add(this->label6);
+			this->panel1->Controls->Add(this->label5);
+			this->panel1->Controls->Add(this->label4);
+			this->panel1->Controls->Add(this->label9);
+			this->panel1->Controls->Add(this->label3);
+			this->panel1->Controls->Add(this->label1);
+			this->panel1->Location = System::Drawing::Point(873, 46);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(333, 354);
+			this->panel1->TabIndex = 33;
+			// 
+			// box_CmdForArduino
+			// 
+			this->box_CmdForArduino->Location = System::Drawing::Point(714, 48);
+			this->box_CmdForArduino->Name = L"box_CmdForArduino";
+			this->box_CmdForArduino->Size = System::Drawing::Size(120, 20);
+			this->box_CmdForArduino->TabIndex = 34;
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(882, 491);
+			this->ClientSize = System::Drawing::Size(1308, 505);
+			this->Controls->Add(this->box_CmdForArduino);
+			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->numdd_ComPort);
 			this->Controls->Add(this->lbl_ComPort);
-			this->Controls->Add(this->box_CmdForArduino);
 			this->Controls->Add(this->btn_CmdToArduino);
 			this->Controls->Add(this->btn_scrambleCubeString);
 			this->Controls->Add(this->btn_EndRecolor);
@@ -1289,10 +1589,11 @@ private: System::Windows::Forms::NumericUpDown^  numdd_ComPort;
 			this->Controls->Add(this->L1);
 			this->Controls->Add(this->U2);
 			this->Controls->Add(this->U1);
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
 			this->Name = L"Form1";
 			this->Text = L"Qbot";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numdd_ComPort))->EndInit();
+			this->panel1->ResumeLayout(false);
+			this->panel1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -1450,7 +1751,7 @@ private: System::Void btn_SendToArduino_Click(System::Object^  sender, System::E
 
 	if (flag == 0)
 	{
-		MessageBox::Show("Transmission successful!");
+		//MessageBox::Show("Transmission successful!");
 	}
 	else if (flag == -1)
 	{
@@ -1465,11 +1766,6 @@ private: System::Void btn_SendToArduino_Click(System::Object^  sender, System::E
 		MessageBox::Show("Connection error");
 	}
 }
-
-private: System::Void U1_Click(System::Object^  sender, System::EventArgs^  e) {
-	MessageBox::Show("Click Event");
-}
-
 
 private: System::Void btn_Recolor_Click(System::Object^  sender, System::EventArgs^  e) {
 	removePanelColors();
@@ -1582,7 +1878,7 @@ private: System::Void btn_CmdToArduino_Click(System::Object^  sender, System::Ev
 
 	if (flag == 0)
 	{
-		MessageBox::Show("Transmission successful!");
+		//MessageBox::Show("Transmission successful!");
 	}
 	else if (flag == -1)
 	{
@@ -1597,6 +1893,41 @@ private: System::Void btn_CmdToArduino_Click(System::Object^  sender, System::Ev
 		MessageBox::Show("Connection error");
 	}
 }
+
+private: System::Void SingleCmdButton_Click(System::Object^  sender, System::EventArgs^  e) {
+	System::Windows::Forms::Button^ button_sender = safe_cast<System::Windows::Forms::Button^>(sender);
+	System::String^ btn_text;
+	msclr::interop::marshal_context context;
+
+	btn_text = button_sender->Text;
+	std::string tx_cmd = context.marshal_as<std::string>(btn_text);
+
+	btn_text = numdd_ComPort->Text;
+	std::string tx_com_port = context.marshal_as<std::string>(btn_text);
+
+	int flag = sendStringToArduino(tx_cmd, 2, tx_com_port);
+
+	if (flag == 0)
+	{
+		//MessageBox::Show("Transmission successful!");
+	}
+	else if (flag == -1)
+	{
+		MessageBox::Show("Transmission error");
+	}
+	else if (flag == -2)
+	{
+		MessageBox::Show("Acknowledge error");
+	}
+	else if (flag == -3)
+	{
+		MessageBox::Show("Connection error");
+	}
+
+}
+
+
+
 
 
 };
