@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="SolverBackend">
+      <UniqueIdentifier>{b3bb8c34-4c5b-4c1f-8598-e3008d0a0445}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Qbot_Serial">
+      <UniqueIdentifier>{f2169439-9ec8-49ef-bf1b-e4090f7df0b5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Form1.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\color.h">
+      <Filter>SolverBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\coordcube.h">
+      <Filter>SolverBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\corner.h">
+      <Filter>SolverBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverBackend\Cube.h">
+      <Filter>SolverBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverBackend\CubeFace.h">
+      <Filter>SolverBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverBackend\CubeSlice.h">
+      <Filter>SolverBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverBackend\CubeTriplet.h">
+      <Filter>SolverBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\cubiecube.h">
+      <Filter>SolverBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\edge.h">
+      <Filter>SolverBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\facecube.h">
+      <Filter>SolverBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\facelet.h">
+      <Filter>SolverBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\search.h">
+      <Filter>SolverBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\solve.h">
+      <Filter>SolverBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\prunetable_helpers.h">
+      <Filter>SolverBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="SolverBackend\CubeSimulation.h">
+      <Filter>SolverBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="Qbot_Serial\Qbot_Serial.h">
+      <Filter>Qbot_Serial</Filter>
+    </ClInclude>
+    <ClInclude Include="Qbot_Serial\SerialClass.h">
+      <Filter>Qbot_Serial</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>Ressourcendateien</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CppCLR_WinformsProjekt.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="AssemblyInfo.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Form1.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="SolverBackend\AlgorithmEmbeddedC\solve.c">
+      <Filter>SolverBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="SolverBackend\AlgorithmEmbeddedC\search.c">
+      <Filter>SolverBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="SolverBackend\AlgorithmEmbeddedC\prunetable_helpers.c">
+      <Filter>SolverBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="SolverBackend\AlgorithmEmbeddedC\facecube.c">
+      <Filter>SolverBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="SolverBackend\AlgorithmEmbeddedC\cubiecube.c">
+      <Filter>SolverBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="SolverBackend\CubeTriplet.cpp">
+      <Filter>SolverBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="SolverBackend\CubeSlice.cpp">
+      <Filter>SolverBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="SolverBackend\CubeSimulation.cpp">
+      <Filter>SolverBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="SolverBackend\CubeFace.cpp">
+      <Filter>SolverBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="SolverBackend\Cube.cpp">
+      <Filter>SolverBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="SolverBackend\AlgorithmEmbeddedC\coordcube.c">
+      <Filter>SolverBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="Qbot_Serial\Qbot_Serial.cpp">
+      <Filter>Qbot_Serial</Filter>
+    </ClCompile>
+    <ClCompile Include="Qbot_Serial\SerialClass.cpp">
+      <Filter>Qbot_Serial</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <Filter>Ressourcendateien</Filter>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
