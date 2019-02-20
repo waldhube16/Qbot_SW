@@ -1,6 +1,12 @@
+/*
+* Author: Simon Waldhuber
+* Available: https://github.com/waldhube16/Qbot_SW/blob/master/SolverBackend/Cube.h
+*/
+
+
 #pragma once
 #include "CubeFace.h"
-#include "CubeSlice.h"
+
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -59,6 +65,6 @@ public:
 	
 
 	std::string face_Map_[9][12];
-	std::string temp_arr_[12];
+	
 };
 

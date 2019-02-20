@@ -1,3 +1,13 @@
+/*
+* Based on:
+* URL: https://github.com/muodov/kociemba/blob/master/kociemba/ckociemba/prunetable_helpers.c
+* Author: Maxim Tsoy
+* LICENSE: GPL-2.0
+* Used by: Simon Waldhuber
+* Available:https://github.com/waldhube16/Qbot_SW/blob/master/SolverBackend/AlgorithmEmbeddedC/prunetable_helpers.c
+*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>

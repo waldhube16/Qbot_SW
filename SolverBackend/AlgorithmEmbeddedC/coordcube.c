@@ -1,3 +1,13 @@
+/*
+* Based on:
+* URL: https://github.com/muodov/kociemba/blob/master/kociemba/ckociemba/coordcube.c
+* Author: Maxim Tsoy
+* LICENSE: GPL-2.0
+* Used by: Simon Waldhuber
+* Available:https://github.com/waldhube16/Qbot_SW/blob/master/SolverBackend/AlgorithmEmbeddedC/coordcube.c
+*/
+
+
 #include <sys/types.h>
 #include <stdio.h>
 #include "prunetable_helpers.h"

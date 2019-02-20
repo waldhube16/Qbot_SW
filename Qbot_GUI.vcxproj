@@ -144,9 +144,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -162,13 +159,8 @@
     <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\facelet.h" />
     <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\prunetable_helpers.h" />
     <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\search.h" />
-    <ClInclude Include="SolverBackend\AlgorithmEmbeddedC\solve.h" />
     <ClInclude Include="SolverBackend\Cube.h" />
     <ClInclude Include="SolverBackend\CubeFace.h" />
-    <ClInclude Include="SolverBackend\CubeSimulation.h" />
-    <ClInclude Include="SolverBackend\CubeSlice.h" />
-    <ClInclude Include="SolverBackend\CubeTriplet.h" />
-    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
@@ -198,21 +190,8 @@
     <ClCompile Include="SolverBackend\AlgorithmEmbeddedC\search.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
     </ClCompile>
-    <ClCompile Include="SolverBackend\AlgorithmEmbeddedC\solve.c">
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
-      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
-    </ClCompile>
     <ClCompile Include="SolverBackend\Cube.cpp" />
     <ClCompile Include="SolverBackend\CubeFace.cpp" />
-    <ClCompile Include="SolverBackend\CubeSimulation.cpp" />
-    <ClCompile Include="SolverBackend\CubeSlice.cpp" />
-    <ClCompile Include="SolverBackend\CubeTriplet.cpp" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico" />
@@ -223,7 +202,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Debug\Qbot_GUI.exe" />
+    <None Include="Debug\Qbot_SW.exe" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

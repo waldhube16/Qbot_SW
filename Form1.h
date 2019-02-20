@@ -1,3 +1,9 @@
+/*
+* Author: Simon Waldhuber
+* Available:https://github.com/waldhube16/Qbot_SW/blob/master/Form1.h
+*/
+
+
 #pragma once
 #include <string>
 #include "../Qbot_SW/SolverBackend/CubeSimulation.h"
@@ -356,6 +362,15 @@ private: System::Windows::Forms::TextBox^  box_CmdForArduino;
 
 
 
+private: System::Windows::Forms::Label^  label10;
+private: System::Windows::Forms::Label^  label11;
+private: System::Windows::Forms::NumericUpDown^  num_Timeout;
+private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
+
+
+
+
+
 
 
 
@@ -477,8 +492,14 @@ private: System::Windows::Forms::TextBox^  box_CmdForArduino;
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->box_CmdForArduino = (gcnew System::Windows::Forms::TextBox());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->num_Timeout = (gcnew System::Windows::Forms::NumericUpDown());
+			this->num_MaxMoves = (gcnew System::Windows::Forms::NumericUpDown());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numdd_ComPort))->BeginInit();
 			this->panel1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->num_Timeout))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->num_MaxMoves))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// U1
@@ -1153,9 +1174,9 @@ private: System::Windows::Forms::TextBox^  box_CmdForArduino;
 			// 
 			// btn_GenSolution
 			// 
-			this->btn_GenSolution->Location = System::Drawing::Point(26, 45);
+			this->btn_GenSolution->Location = System::Drawing::Point(439, 380);
 			this->btn_GenSolution->Name = L"btn_GenSolution";
-			this->btn_GenSolution->Size = System::Drawing::Size(120, 23);
+			this->btn_GenSolution->Size = System::Drawing::Size(120, 20);
 			this->btn_GenSolution->TabIndex = 9;
 			this->btn_GenSolution->Text = L"Generate Solution";
 			this->btn_GenSolution->UseVisualStyleBackColor = true;
@@ -1505,11 +1526,47 @@ private: System::Windows::Forms::TextBox^  box_CmdForArduino;
 			this->box_CmdForArduino->Size = System::Drawing::Size(120, 20);
 			this->box_CmdForArduino->TabIndex = 34;
 			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Location = System::Drawing::Point(652, 367);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(45, 13);
+			this->label10->TabIndex = 22;
+			this->label10->Text = L"Timeout";
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Location = System::Drawing::Point(652, 391);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(65, 13);
+			this->label11->TabIndex = 22;
+			this->label11->Text = L"Max. Moves";
+			// 
+			// num_Timeout
+			// 
+			this->num_Timeout->Location = System::Drawing::Point(577, 364);
+			this->num_Timeout->Name = L"num_Timeout";
+			this->num_Timeout->Size = System::Drawing::Size(54, 20);
+			this->num_Timeout->TabIndex = 36;
+			this->num_Timeout->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 3, 0, 0, 0 });
+			// 
+			// num_MaxMoves
+			// 
+			this->num_MaxMoves->Location = System::Drawing::Point(577, 391);
+			this->num_MaxMoves->Name = L"num_MaxMoves";
+			this->num_MaxMoves->Size = System::Drawing::Size(54, 20);
+			this->num_MaxMoves->TabIndex = 36;
+			this->num_MaxMoves->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 20, 0, 0, 0 });
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1308, 505);
+			this->Controls->Add(this->num_MaxMoves);
+			this->Controls->Add(this->num_Timeout);
 			this->Controls->Add(this->box_CmdForArduino);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->numdd_ComPort);
@@ -1523,6 +1580,8 @@ private: System::Windows::Forms::TextBox^  box_CmdForArduino;
 			this->Controls->Add(this->txt_SolutionString);
 			this->Controls->Add(this->btn_GenSolution);
 			this->Controls->Add(this->btn_Reset);
+			this->Controls->Add(this->label11);
+			this->Controls->Add(this->label10);
 			this->Controls->Add(this->btn_Bi);
 			this->Controls->Add(this->btn_B);
 			this->Controls->Add(this->btn_Li);
@@ -1594,6 +1653,8 @@ private: System::Windows::Forms::TextBox^  box_CmdForArduino;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numdd_ComPort))->EndInit();
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->num_Timeout))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->num_MaxMoves))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -1703,9 +1764,11 @@ private: System::Void btn_GenSolution_Click(System::Object^  sender, System::Eve
 	//convert from string to char*
 	const char* const_cubestring = cubestring.c_str();
 
-	int max_moves = 20;
-	long timeout = 3;
-	bool final_solve = 0, first_solve = 1; 
+	System::Decimal MaxMoves = num_MaxMoves->Value;
+	System::Decimal TimeOut = num_Timeout->Value;
+	int max_moves = System::Decimal::ToInt32(MaxMoves); 
+	long timeout = System::Decimal::ToInt32(TimeOut);
+	
 	std::string solution;
 	if (::solution(const_cubestring, max_moves, timeout, 0, "cache") == NULL)
 	{
@@ -1843,8 +1906,8 @@ private: System::Void btn_scrambleCubeString_Click(System::Object^  sender, Syst
 	System::String^ text_input = txt_SolutionString->Text;
 	msclr::interop::marshal_context context;
 	std::string textbox_scramble = context.marshal_as<std::string>(text_input);
-	
-	if(textbox_scramble.length() == 54)
+	auto str_len = textbox_scramble.length(); 
+	if(str_len == 54)
 	{
 		colorPanelsFromString(textbox_scramble);
 		if(Erno.scramble_from_cubestring(textbox_scramble, Erno.ptr_UP_, Erno.ptr_LEFT_, Erno.ptr_FRONT_, Erno.ptr_RIGHT_, Erno.ptr_BACK_, Erno.ptr_DOWN_) == 1)
@@ -1925,6 +1988,7 @@ private: System::Void SingleCmdButton_Click(System::Object^  sender, System::Eve
 	}
 
 }
+
 
 
 

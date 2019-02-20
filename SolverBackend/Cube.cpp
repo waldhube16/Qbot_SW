@@ -1,39 +1,14 @@
+/*
+* Author: Simon Waldhuber
+* Available: https://github.com/waldhube16/Qbot_SW/blob/master/SolverBackend/Cube.cpp
+*/
+
 #include "Cube.h"
 
 
-/*
-
-Cube::Cube(CubeFace &UP, CubeFace &FRONT, CubeFace &LEFT, CubeFace &BACK, CubeFace &RIGHT, CubeFace &DOWN)
-{
-
-	for (int i = 0; i < 9; i++)
-	{
-		for (int j = 0; j < 12; j++)
-		{
-			face_Map_[i][j] = 0x20; 
-			temp_arr_[i] = 0x20;
-		}
-	}
-
-	import_all_faces(UP, LEFT, FRONT, RIGHT, BACK, DOWN);
-
-
-}
-*/
 Cube::Cube(std::string UP, std::string FRONT, std::string LEFT, std::string BACK, std::string RIGHT, std::string DOWN)
 {
-	/*
-	North_ = CubeSlice(UP, FRONT, RIGHT, BACK, LEFT);
-	Ordinate_ = CubeSlice(-1, FRONT, RIGHT, BACK, LEFT);
-	South_ = CubeSlice(DOWN, FRONT, RIGHT, BACK, LEFT);
-	West_ = CubeSlice(LEFT, FRONT, DOWN, BACK, UP);
-	Abscissa_ = CubeSlice(-1, FRONT, DOWN, BACK, UP);
-	East_ = CubeSlice(RIGHT, FRONT, DOWN, BACK, UP);
-	Near_ = CubeSlice(FRONT, DOWN, RIGHT, UP, LEFT);
-	Applicate_ = CubeSlice(-1, DOWN, RIGHT, UP, LEFT);
-	Far_ = CubeSlice(BACK, DOWN, RIGHT, UP, LEFT);
-	*/
-
+	//initialize the faces of the cube 
 	WHITE_ = CubeFace::CubeFace(UP);
 	GREEN_ = CubeFace::CubeFace(FRONT);
 	RED_ = CubeFace::CubeFace(RIGHT);
@@ -41,6 +16,7 @@ Cube::Cube(std::string UP, std::string FRONT, std::string LEFT, std::string BACK
 	ORANGE_ = CubeFace::CubeFace(LEFT);
 	YELLOW_ = CubeFace::CubeFace(DOWN);
 
+	//create pointers to the faces
 	ptr_UP_ = &WHITE_;
 	ptr_FRONT_ = &GREEN_;
 	ptr_RIGHT_ = &RED_;
@@ -48,12 +24,13 @@ Cube::Cube(std::string UP, std::string FRONT, std::string LEFT, std::string BACK
 	ptr_LEFT_ = &ORANGE_;
 	ptr_DOWN_ = &YELLOW_;
 
+	//import all faces to the main 2D-Array
 	import_all_faces_to_facemap(ptr_UP_, ptr_LEFT_, ptr_FRONT_, ptr_RIGHT_, ptr_BACK_, ptr_DOWN_);
 
-	
 }
 void Cube::reset_cube(std::string UP, std::string FRONT, std::string LEFT, std::string BACK, std::string RIGHT, std::string DOWN)
 {
+	//same functionality as constructor, but no new Cube object is created
 	WHITE_ = CubeFace::CubeFace(UP);
 	GREEN_ = CubeFace::CubeFace(FRONT);
 	RED_ = CubeFace::CubeFace(RIGHT);
@@ -77,12 +54,11 @@ void Cube::import_all_faces_to_facemap(CubeFace * ptr_UP_, CubeFace * ptr_LEFT_,
 	{
 		for (int j = 0; j < 12; j++)
 		{
-			face_Map_[i][j] = 0x20;
-			temp_arr_[i] = 0x20;
+			face_Map_[i][j] = 0x20; //Space in ASCII
 		}
 	}
 
-	for (int i = 0; i < 3; i++) //initialize up face
+	for (int i = 0; i < 3; i++) //import up face
 	{
 		for (int j = 3; j < 6; j++)
 		{
@@ -90,7 +66,7 @@ void Cube::import_all_faces_to_facemap(CubeFace * ptr_UP_, CubeFace * ptr_LEFT_,
 		}
 	}
 
-	for (int i = 3; i < 6; i++) //initialize left face
+	for (int i = 3; i < 6; i++) //import left face
 	{
 		for (int j = 0; j < 3; j++)
 		{
@@ -98,7 +74,7 @@ void Cube::import_all_faces_to_facemap(CubeFace * ptr_UP_, CubeFace * ptr_LEFT_,
 		}
 	}
 
-	for (int i = 3; i < 6; i++)  //initialize front face
+	for (int i = 3; i < 6; i++)  //import front face
 	{
 		for (int j = 3; j < 6; j++)
 		{
@@ -106,7 +82,7 @@ void Cube::import_all_faces_to_facemap(CubeFace * ptr_UP_, CubeFace * ptr_LEFT_,
 		}
 	}
 
-	for (int i = 3; i < 6; i++)  //initialize right face
+	for (int i = 3; i < 6; i++)  //import right face
 	{
 		for (int j = 6; j < 9; j++)
 		{
@@ -114,7 +90,7 @@ void Cube::import_all_faces_to_facemap(CubeFace * ptr_UP_, CubeFace * ptr_LEFT_,
 		}
 	}
 
-	for (int i = 3; i < 6; i++)  //initialize back face
+	for (int i = 3; i < 6; i++)  //import back face
 	{
 		for (int j = 9; j < 12; j++)
 		{
@@ -122,7 +98,7 @@ void Cube::import_all_faces_to_facemap(CubeFace * ptr_UP_, CubeFace * ptr_LEFT_,
 		}
 	}
 
-	for (int i = 6; i < 9; i++)  //initialize down face
+	for (int i = 6; i < 9; i++)  //import down face
 	{
 		for (int j = 3; j < 6; j++)
 		{
@@ -202,12 +178,13 @@ std::string Cube::generate_cubestring()
 	std::string Cube_string = Up_string + Right_string + Front_string + Down_string + Left_string + Back_string;
 	return Cube_string; 
 }
+
 bool Cube::scramble_from_cubestring(std::string cube_string, CubeFace * ptr_UP_, CubeFace * ptr_LEFT_, CubeFace * ptr_FRONT_, CubeFace * ptr_RIGHT_, CubeFace * ptr_BACK_, CubeFace * ptr_DOWN_)
 {
 	//cube_string = "DUUBULDBFRBFRRULLLBRDFFFBLURDBFDFDRFRULBLUFDURRBLBDUDL"; 
 	auto i = 0;
 	auto sub_i = 0; 
-	//order important
+	//order is important
 	CubeFace* Faces[] = { ptr_UP_, ptr_RIGHT_, ptr_FRONT_, ptr_DOWN_, ptr_LEFT_, ptr_BACK_ };
 
 	for (i = 0; i < 54; i = i+9)
@@ -331,7 +308,6 @@ bool Cube::scramble_from_string(std::string scramble_string)
 		
 	}
 	return 1; //success
-
 }
 
 void Cube::R()

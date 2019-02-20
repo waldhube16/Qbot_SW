@@ -1,5 +1,7 @@
-// Qbot_Serial.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+/*
+* Author: Simon Waldhuber
+* Available: https://github.com/waldhube16/Qbot_SW/blob/master/Serial/Qbot_Serial.cpp
+*/
 
 #include "Qbot_Serial.h"
 
@@ -9,8 +11,7 @@ int sendStringToArduino(std::string tx_string, char mode, std::string port)
 {
 	// mode = 1 ... send move string
 	// mode = 2 ... send stepper command
-
-
+	
 	std::ofstream logfile;
 	logfile.open("ArduinoTransmissionLog.txt");
 	//logfile << "Writing this to a file.\n";
@@ -176,12 +177,11 @@ int sendStringToArduino(std::string tx_string, char mode, std::string port)
 			}
 
 			SP->WriteData(send_char, 2);
-			//while (SP->ReadData(incomingData, dataLength) == -1);
 
 			while (SP->CheckAvailable() == 0)
-			{
-			}
-			//Sleep(1000);  //Fraglich wie das timing passt. 
+			{}
+			
+
 
 			readResult = SP->ReadData(incomingData, dataLength);
 			// printf("Bytes read: (0 means no data available) %i\n",readResult);
@@ -209,11 +209,11 @@ int sendStringToArduino(std::string tx_string, char mode, std::string port)
 		send_char[1] = tx_string[1];
 
 		SP->WriteData(send_char, 2);
-		//while (SP->ReadData(incomingData, dataLength) == -1);
+
 
 		while(SP->CheckAvailable() == 0)
-		{ }
-		//Sleep(3000);  //Fraglich wie das timing passt. 
+		{}
+
 
 		readResult = SP->ReadData(incomingData, dataLength);
 		// printf("Bytes read: (0 means no data available) %i\n",readResult);

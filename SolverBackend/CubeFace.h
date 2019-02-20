@@ -1,5 +1,9 @@
+/*
+* Author: Simon Waldhuber
+* Available: https://github.com/waldhube16/Qbot_SW/blob/master/SolverBackend/CubeFace.h
+*/
+
 #pragma once
-#include "CubeTriplet.h"
 #include <string>
 
 class CubeFace

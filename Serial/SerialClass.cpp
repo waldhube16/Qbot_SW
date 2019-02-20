@@ -1,11 +1,22 @@
-﻿#include "SerialClass.h"
+﻿/*
+* Based on:
+* URL: https://github.com/manashmndl/SerialPort/blob/master/src/SerialPort.cpp
+* Author: Manash Kumar Mandal
+* LICENSE: MIT
+* Modified by: Simon Waldhuber
+* Available: https://github.com/waldhube16/Qbot_SW/blob/master/Serial/SerialClass.cpp
+*/
+
+
+#include "SerialClass.h"
 
 Serial::Serial(const char* portName)
 {
 	//We're not yet connected
 	this->connected = false;
-	
-	//convert const char* to LPCWSTR
+
+
+	//convert const char* to LPCWSTR 
 	wchar_t* portNameString = new wchar_t[128];
 	MultiByteToWideChar(CP_ACP, 0, portName, -1, portNameString, 128);
 
@@ -86,12 +97,12 @@ Serial::~Serial()
 	}
 }
 
-int Serial::ReadData(char *buffer, unsigned int nbChar)
+int Serial::ReadData(char *buffer, unsigned int buffer_size)
 {
 	//Number of bytes we'll have read
 	DWORD bytesRead;
 	//Number of bytes we'll really ask to read
-	unsigned int toRead;
+	unsigned int toRead = 0;
 
 	//Use the ClearCommError function to get status info on the Serial port
 	ClearCommError(this->hSerial, &this->errors, &this->status);
@@ -102,9 +113,9 @@ int Serial::ReadData(char *buffer, unsigned int nbChar)
 		//If there is we check if there is enough data to read the required number
 		//of characters, if not we'll read only the available characters to prevent
 		//locking of the application.
-		if (this->status.cbInQue > nbChar)
-		{
-			toRead = nbChar;
+		if (this->status.cbInQue > buffer_size)
+		{	
+			toRead = buffer_size;
 		}
 		else
 		{
@@ -131,21 +142,18 @@ bool Serial::CheckAvailable()
 
 	//Check if there is something to read
 	if (this->status.cbInQue > 0)
-	{
 		return 1;
-	}
 
 	//If nothing has been read, or that an error was detected return 0
 	return 0;
-
 }
 
-bool Serial::WriteData(const char *buffer, unsigned int nbChar)
+bool Serial::WriteData(const char *buffer, unsigned int buffer_size)
 {
 	DWORD bytesSend;
 
 	//Try to write the buffer on the Serial port
-	if (!WriteFile(this->hSerial, (void *)buffer, nbChar, &bytesSend, 0))
+	if (!WriteFile(this->hSerial, (void *)buffer, buffer_size, &bytesSend, 0))
 	{
 		//In case it don't work get comm error and return false
 		ClearCommError(this->hSerial, &this->errors, &this->status);
@@ -153,11 +161,17 @@ bool Serial::WriteData(const char *buffer, unsigned int nbChar)
 		return false;
 	}
 	else
+	{
 		return true;
+	}		
 }
 
 bool Serial::IsConnected()
 {
-	//Simply return the connection status
+	//Use the ClearCommError function to get status info on the Serial port
+	if (!ClearCommError(this->hSerial, &this->errors, &this->status))
+		this->connected = false;
+	
+	//return the connection status
 	return this->connected;
 }

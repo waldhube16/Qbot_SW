@@ -1,3 +1,10 @@
+/*
+* Author: Simon Waldhuber
+* Available: https://github.com/waldhube16/Qbot_SW/blob/master/SolverBackend/CubeFace.cpp
+*/
+
+
+
 #include <iostream>
 #include "CubeFace.h"
 
@@ -12,19 +19,6 @@ CubeFace::CubeFace(std::string COLOR)
 			faceCache_[j][i] = -1;
 		}
 	}
-
-	//test sequence
-	/*
-	face_[0][0] = 0x30;
-	face_[0][1] = 0x31;
-	face_[0][2] = 0x32;
-	face_[1][0] = 0x33;
-	face_[1][1] = 0x34;
-	face_[1][2] = 0x35;
-	face_[2][0] = 0x36;
-	face_[2][1] = 0x37;
-	face_[2][2] = 0x38;
-	*/
 
 }
 
@@ -50,7 +44,6 @@ void CubeFace::rotate_Face()
 	}
 
 	//rotate corners
-
 	face_[0][0] = faceCache_[2][0];
 	face_[2][0] = faceCache_[2][2];
 	face_[2][2] = faceCache_[0][2];
