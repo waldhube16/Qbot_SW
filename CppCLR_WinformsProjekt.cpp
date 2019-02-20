@@ -5,7 +5,6 @@
 
 // CppCLR_WinformsProjekt.cpp: Hauptprojektdatei.
 
-#include "stdafx.h"
 #include "Form1.h"
 
 using namespace System;
