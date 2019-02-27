@@ -4,32 +4,33 @@
 */
 
 #include "Qbot_Serial.h"
-
+#include <chrono>
 
 // application reads from the specified serial port and reports the collected data
-int sendStringToArduino(std::string tx_string, char mode, std::string port)
+int sendStringToArduino(std::string tx_string, char mode, std::string port, Serial* SP)
 {
+	auto start = std::chrono::steady_clock::now();
 	// mode = 1 ... send move string
 	// mode = 2 ... send stepper command
 	
-	std::ofstream logfile;
-	logfile.open("ArduinoTransmissionLog.txt");
+	//std::ofstream logfile;
+	//logfile.open("ArduinoTransmissionLog.txt");
 	//logfile << "Writing this to a file.\n";
 	
-	logfile << "Transmission begin!\n\n";
+	//logfile << "Transmission begin!\n\n";
 
-	std::string port_string = "\\\\.\\COM";
+	//std::string port_string = "\\\\.\\COM";
 
-	port_string = port_string + port;
-	const char* port_string_in_char = port_string.c_str();
+	//port_string = port_string + port;
+	//const char* port_string_in_char = port_string.c_str();
 
-	Serial* SP = new Serial(port_string_in_char);    
+	//Serial* SP = new Serial(port_string_in_char);    
 
-	if (SP->IsConnected())
-		logfile << ("Connection established\n");
+	if (SP->IsConnected()) {}
+		//logfile << ("Connection established\n");
 	else
 	{
-		logfile << ("Could not connect!\n");
+		//logfile << ("Could not connect!\n");
 		return -3; 
 	}
 		
@@ -189,7 +190,7 @@ int sendStringToArduino(std::string tx_string, char mode, std::string port)
 
 			if (incomingData[0] == 75)
 			{
-				logfile << ("%s", incomingData);
+				//logfile << ("%s", incomingData);
 			}
 			else
 			{
@@ -198,7 +199,7 @@ int sendStringToArduino(std::string tx_string, char mode, std::string port)
 				return -2;
 			}
 
-			logfile << ("%s", incomingData);
+			//logfile << ("%s", incomingData);
 		}
 		
 
@@ -221,18 +222,20 @@ int sendStringToArduino(std::string tx_string, char mode, std::string port)
 
 		if (incomingData[0] == 75)
 		{
-			logfile << ("%s", incomingData);
+			//logfile << ("%s", incomingData);
 		}
 		else
 		{
-			SP->~Serial();
+			//SP->~Serial();
 			return -2;
 		}
 
-		logfile << ("%s", incomingData);
+		//logfile << ("%s", incomingData);
 	}
 	//return 1; //success
-	logfile.close();
-	SP->~Serial();
+	//logfile.close();
+
+	auto duration = std::chrono::steady_clock::now() - start;
+	auto dur = duration.count();
 	return 0;
 }

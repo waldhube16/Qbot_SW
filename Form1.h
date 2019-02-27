@@ -6,9 +6,11 @@
 
 #pragma once
 #include <string>
-#include "../Qbot_SW/SolverBackend/CubeSimulation.h"
-#include "../Qbot_SW/Serial/Qbot_Serial.h"
+#include "../Qbot_Neu/SolverBackend/CubeSimulation.h"
+#include "../Qbot_Neu/Serial/Qbot_Serial.h"
+#include "../Qbot_Neu/Serial/SerialClass.h"
 #include <msclr\marshal_cppstd.h>
+#include <chrono>
 
 namespace CppCLR_WinformsProjekt {
 
@@ -25,8 +27,9 @@ namespace CppCLR_WinformsProjekt {
 	public ref class Form1 : public System::Windows::Forms::Form
 	{
 	public:
-		
+		Serial* SP;
 		char colorIndex = 'X';
+
 		//'X' ... recoloring not enabled
 		//'O' ... recoloring enabled
 		//'U' ... Color of Up-side
@@ -36,7 +39,8 @@ namespace CppCLR_WinformsProjekt {
 		//'L' ... Color of Left-side
 		//'B' ... Color of Back-side
 
-		
+		 
+
 
 		Form1(void)
 		{
@@ -330,6 +334,8 @@ private: System::Windows::Forms::Button^  btn_EndRecolor;
 private: System::Windows::Forms::Button^  btn_scrambleCubeString;
 
 private: System::Windows::Forms::Button^  btn_CmdToArduino;
+private: System::Windows::Forms::Button^  btn_Open;
+private: System::Windows::Forms::Button^  btn_Close;
 
 
 private: System::Windows::Forms::Label^  lbl_ComPort;
@@ -359,13 +365,14 @@ private: System::Windows::Forms::Button^  btn_closeX;
 private: System::Windows::Forms::Label^  label9;
 private: System::Windows::Forms::Panel^  panel1;
 private: System::Windows::Forms::TextBox^  box_CmdForArduino;
-
-
+private: System::Windows::Forms::Button^  btn_Clean;
 
 private: System::Windows::Forms::Label^  label10;
 private: System::Windows::Forms::Label^  label11;
 private: System::Windows::Forms::NumericUpDown^  num_Timeout;
 private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
+
+
 
 
 
@@ -496,6 +503,9 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->num_Timeout = (gcnew System::Windows::Forms::NumericUpDown());
 			this->num_MaxMoves = (gcnew System::Windows::Forms::NumericUpDown());
+			this->btn_Open = (gcnew System::Windows::Forms::Button());
+			this->btn_Close = (gcnew System::Windows::Forms::Button());
+			this->btn_Clean = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numdd_ComPort))->BeginInit();
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->num_Timeout))->BeginInit();
@@ -1212,9 +1222,9 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_Recolor
 			// 
-			this->btn_Recolor->Location = System::Drawing::Point(209, 13);
+			this->btn_Recolor->Location = System::Drawing::Point(149, 12);
 			this->btn_Recolor->Name = L"btn_Recolor";
-			this->btn_Recolor->Size = System::Drawing::Size(132, 23);
+			this->btn_Recolor->Size = System::Drawing::Size(100, 23);
 			this->btn_Recolor->TabIndex = 13;
 			this->btn_Recolor->Text = L"Start Recolor";
 			this->btn_Recolor->UseVisualStyleBackColor = true;
@@ -1222,9 +1232,9 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_EndRecolor
 			// 
-			this->btn_EndRecolor->Location = System::Drawing::Point(348, 13);
+			this->btn_EndRecolor->Location = System::Drawing::Point(336, 12);
 			this->btn_EndRecolor->Name = L"btn_EndRecolor";
-			this->btn_EndRecolor->Size = System::Drawing::Size(131, 23);
+			this->btn_EndRecolor->Size = System::Drawing::Size(110, 23);
 			this->btn_EndRecolor->TabIndex = 14;
 			this->btn_EndRecolor->Text = L"End Recolor";
 			this->btn_EndRecolor->UseVisualStyleBackColor = true;
@@ -1560,11 +1570,44 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			this->num_MaxMoves->TabIndex = 36;
 			this->num_MaxMoves->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 20, 0, 0, 0 });
 			// 
+			// btn_Open
+			// 
+			this->btn_Open->Location = System::Drawing::Point(733, 134);
+			this->btn_Open->Name = L"btn_Open";
+			this->btn_Open->Size = System::Drawing::Size(75, 23);
+			this->btn_Open->TabIndex = 39;
+			this->btn_Open->Text = L"Open Serial ";
+			this->btn_Open->UseVisualStyleBackColor = true;
+			this->btn_Open->Click += gcnew System::EventHandler(this, &Form1::btn_Open_Click);
+			// 
+			// btn_Close
+			// 
+			this->btn_Close->Location = System::Drawing::Point(733, 163);
+			this->btn_Close->Name = L"btn_Close";
+			this->btn_Close->Size = System::Drawing::Size(75, 23);
+			this->btn_Close->TabIndex = 39;
+			this->btn_Close->Text = L"Close Serial ";
+			this->btn_Close->UseVisualStyleBackColor = true;
+			this->btn_Close->Click += gcnew System::EventHandler(this, &Form1::btn_Close_Click);
+			// 
+			// btn_Clean
+			// 
+			this->btn_Clean->Location = System::Drawing::Point(255, 12);
+			this->btn_Clean->Name = L"btn_Clean";
+			this->btn_Clean->Size = System::Drawing::Size(75, 23);
+			this->btn_Clean->TabIndex = 40;
+			this->btn_Clean->Text = L"Clean";
+			this->btn_Clean->UseVisualStyleBackColor = true;
+			this->btn_Clean->Click += gcnew System::EventHandler(this, &Form1::btn_Clean_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1308, 505);
+			this->Controls->Add(this->btn_Clean);
+			this->Controls->Add(this->btn_Close);
+			this->Controls->Add(this->btn_Open);
 			this->Controls->Add(this->num_MaxMoves);
 			this->Controls->Add(this->num_Timeout);
 			this->Controls->Add(this->box_CmdForArduino);
@@ -1756,6 +1799,7 @@ private: System::Void btn_Reset_Click(System::Object^  sender, System::EventArgs
 	std::string cubestring = Erno.generate_cubestring();
 	colorPanelsFromString(cubestring);
 	txt_SolutionString->Clear();
+	colorIndex = 'X';
 	
 }
 
@@ -1810,7 +1854,7 @@ private: System::Void btn_SendToArduino_Click(System::Object^  sender, System::E
 	text_input = numdd_ComPort->Text;
 	std::string tx_com_port = context.marshal_as<std::string>(text_input);
 
-	int flag = sendStringToArduino(textbox_scramble, 1, tx_com_port);
+	int flag = sendStringToArduino(textbox_scramble, 1, tx_com_port, SP);
 
 	if (flag == 0)
 	{
@@ -1831,7 +1875,7 @@ private: System::Void btn_SendToArduino_Click(System::Object^  sender, System::E
 }
 
 private: System::Void btn_Recolor_Click(System::Object^  sender, System::EventArgs^  e) {
-	removePanelColors();
+	//removePanelColors();
 	colorIndex = 'O'; 
 }
 
@@ -1880,7 +1924,12 @@ private: System::Void B5_Click(System::Object^  sender, System::EventArgs^  e) {
 
 private: System::Void ColorablePanel_Click(System::Object^  sender, System::EventArgs^  e) {
 	System::Windows::Forms::Panel^ panel_sender = safe_cast<System::Windows::Forms::Panel^>(sender);
-	changeSpecificPanelColor(panel_sender); 
+	if (colorIndex != 'X')
+	{
+		
+		changeSpecificPanelColor(panel_sender);
+	}
+
 }
 
 private: System::Void btn_EndRecolor_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -1937,7 +1986,7 @@ private: System::Void btn_CmdToArduino_Click(System::Object^  sender, System::Ev
 	text_input = numdd_ComPort->Text;
 	std::string tx_com_port = context.marshal_as<std::string>(text_input);
 
-	int flag = sendStringToArduino(tx_cmd, 2, tx_com_port);
+	int flag = sendStringToArduino(tx_cmd, 2, tx_com_port, SP);
 
 	if (flag == 0)
 	{
@@ -1958,6 +2007,7 @@ private: System::Void btn_CmdToArduino_Click(System::Object^  sender, System::Ev
 }
 
 private: System::Void SingleCmdButton_Click(System::Object^  sender, System::EventArgs^  e) {
+	auto start = std::chrono::steady_clock::now();
 	System::Windows::Forms::Button^ button_sender = safe_cast<System::Windows::Forms::Button^>(sender);
 	System::String^ btn_text;
 	msclr::interop::marshal_context context;
@@ -1968,8 +2018,10 @@ private: System::Void SingleCmdButton_Click(System::Object^  sender, System::Eve
 	btn_text = numdd_ComPort->Text;
 	std::string tx_com_port = context.marshal_as<std::string>(btn_text);
 
-	int flag = sendStringToArduino(tx_cmd, 2, tx_com_port);
+	int flag = sendStringToArduino(tx_cmd, 2, tx_com_port, SP);
 
+	auto duration = std::chrono::steady_clock::now() - start;
+	auto dur = duration.count();
 	if (flag == 0)
 	{
 		//MessageBox::Show("Transmission successful!");
@@ -1990,10 +2042,31 @@ private: System::Void SingleCmdButton_Click(System::Object^  sender, System::Eve
 }
 
 
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+	//int flag = sendStringToArduino("E1", 2, "12");
+}
+private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+	//int flag = sendStringToArduino("E2", 2, "12");
+}
+private: System::Void btn_Open_Click(System::Object^  sender, System::EventArgs^  e) {
+	System::String^ btn_text;
+	msclr::interop::marshal_context context;
+	btn_text = numdd_ComPort->Text;
+	std::string tx_com_port = context.marshal_as<std::string>(btn_text);
+	
+	std::string port_string = "\\\\.\\COM";
 
+	port_string = port_string + tx_com_port;
+	const char* port_string_in_char = port_string.c_str();
 
-
-
+	SP = new Serial(port_string_in_char);
+}
+private: System::Void btn_Close_Click(System::Object^  sender, System::EventArgs^  e) {
+	SP->~Serial();
+}
+private: System::Void btn_Clean_Click(System::Object^  sender, System::EventArgs^  e) {
+	removePanelColors();
+}
 };
 
 	

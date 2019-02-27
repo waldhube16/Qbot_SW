@@ -13,4 +13,4 @@
 #include <fstream>
 #include "SerialClass.h"
 
-int sendStringToArduino(std::string, char, std::string);
+int sendStringToArduino(std::string, char, std::string, Serial*);
