@@ -25,6 +25,7 @@
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>Qbot_GUI</RootNamespace>
     <ProjectName>Qbot_SW</ProjectName>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -75,15 +76,27 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>$(OPENCV_DIR)\lib;$(OPENCV_DIR)\bin;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(OPENCV_DIR)\..\..\..\sources\modules\calib3d\src;$(OPENCV_DIR)\..\..\..\sources\modules\contrib\src;$(OPENCV_DIR)\..\..\..\sources\modules\core\src;$(OPENCV_DIR)\..\..\..\sources\modules\features2d\src;$(OPENCV_DIR)\..\..\..\sources\modules\flann\src;$(OPENCV_DIR)\..\..\..\sources\modules\gpu\src;$(OPENCV_DIR)\..\..\..\sources\modules\highgui\src;$(OPENCV_DIR)\..\..\..\sources\modules\imgproc\src;$(OPENCV_DIR)\..\..\..\sources\modules\legacy\src;$(OPENCV_DIR)\..\..\..\sources\modules\ml\src;$(OPENCV_DIR)\..\..\..\sources\modules\objdetect\src;$(OPENCV_DIR)\..\..\..\sources\modules\video\src;$(SourcePath)</SourcePath>
+    <IncludePath>X:\VisualStudio\OpenCV\opencv\build\include\opencv2;$(OPENCV_DIR)\..\..\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>X:\VisualStudio\OpenCV\opencv\build\include\opencv2;$(OPENCV_DIR)\..\..\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(OPENCV_DIR)\lib;$(OPENCV_DIR)\bin;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(OPENCV_DIR)\..\..\..\sources\modules\calib3d\src;$(OPENCV_DIR)\..\..\..\sources\modules\contrib\src;$(OPENCV_DIR)\..\..\..\sources\modules\core\src;$(OPENCV_DIR)\..\..\..\sources\modules\features2d\src;$(OPENCV_DIR)\..\..\..\sources\modules\flann\src;$(OPENCV_DIR)\..\..\..\sources\modules\gpu\src;$(OPENCV_DIR)\..\..\..\sources\modules\highgui\src;$(OPENCV_DIR)\..\..\..\sources\modules\imgproc\src;$(OPENCV_DIR)\..\..\..\sources\modules\legacy\src;$(OPENCV_DIR)\..\..\..\sources\modules\ml\src;$(OPENCV_DIR)\..\..\..\sources\modules\objdetect\src;$(OPENCV_DIR)\..\..\..\sources\modules\video\src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>$(OPENCV_DIR)\lib;$(OPENCV_DIR)\bin;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(OPENCV_DIR)\..\..\..\sources\modules\calib3d\src;$(OPENCV_DIR)\..\..\..\sources\modules\contrib\src;$(OPENCV_DIR)\..\..\..\sources\modules\core\src;$(OPENCV_DIR)\..\..\..\sources\modules\features2d\src;$(OPENCV_DIR)\..\..\..\sources\modules\flann\src;$(OPENCV_DIR)\..\..\..\sources\modules\gpu\src;$(OPENCV_DIR)\..\..\..\sources\modules\highgui\src;$(OPENCV_DIR)\..\..\..\sources\modules\imgproc\src;$(OPENCV_DIR)\..\..\..\sources\modules\legacy\src;$(OPENCV_DIR)\..\..\..\sources\modules\ml\src;$(OPENCV_DIR)\..\..\..\sources\modules\objdetect\src;$(OPENCV_DIR)\..\..\..\sources\modules\video\src;$(SourcePath)</SourcePath>
+    <IncludePath>X:\VisualStudio\OpenCV\opencv\build\include\opencv2;$(OPENCV_DIR)\..\..\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>X:\VisualStudio\OpenCV\opencv\build\include\opencv2;$(OPENCV_DIR)\..\..\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(OPENCV_DIR)\lib;$(OPENCV_DIR)\bin;$(LibraryPath)</LibraryPath>
+    <SourcePath>$(OPENCV_DIR)\..\..\..\sources\modules\calib3d\src;$(OPENCV_DIR)\..\..\..\sources\modules\contrib\src;$(OPENCV_DIR)\..\..\..\sources\modules\core\src;$(OPENCV_DIR)\..\..\..\sources\modules\features2d\src;$(OPENCV_DIR)\..\..\..\sources\modules\flann\src;$(OPENCV_DIR)\..\..\..\sources\modules\gpu\src;$(OPENCV_DIR)\..\..\..\sources\modules\highgui\src;$(OPENCV_DIR)\..\..\..\sources\modules\imgproc\src;$(OPENCV_DIR)\..\..\..\sources\modules\legacy\src;$(OPENCV_DIR)\..\..\..\sources\modules\ml\src;$(OPENCV_DIR)\..\..\..\sources\modules\objdetect\src;$(OPENCV_DIR)\..\..\..\sources\modules\video\src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -92,12 +105,17 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAs>Default</CompileAs>
+      <AdditionalIncludeDirectories>$(OPENCV_DIR)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies />
+      <AdditionalDependencies>opencv_calib3d2413d.lib;opencv_contrib2413d.lib;opencv_core2413d.lib;opencv_features2d2413d.lib;opencv_flann2413d.lib;opencv_gpu2413d.lib;opencv_highgui2413d.lib;opencv_imgproc2413d.lib;opencv_legacy2413d.lib;opencv_ml2413d.lib;opencv_nonfree2413d.lib;opencv_objdetect2413d.lib;opencv_ocl2413d.lib;opencv_photo2413d.lib;opencv_stitching2413d.lib;opencv_superres2413d.lib;opencv_ts2413d.lib;opencv_video2413d.lib;opencv_videostab2413d.lib</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
+      <AdditionalLibraryDirectories>$(OPENCV_DIR)\bin;$(OPENCV_DIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -105,36 +123,51 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>$(OPENCV_DIR)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies />
+      <AdditionalDependencies>opencv_calib3d2413d.lib;opencv_contrib2413d.lib;opencv_core2413d.lib;opencv_features2d2413d.lib;opencv_flann2413d.lib;opencv_gpu2413d.lib;opencv_highgui2413d.lib;opencv_imgproc2413d.lib;opencv_legacy2413d.lib;opencv_ml2413d.lib;opencv_nonfree2413d.lib;opencv_objdetect2413d.lib;opencv_ocl2413d.lib;opencv_photo2413d.lib;opencv_stitching2413d.lib;opencv_superres2413d.lib;opencv_ts2413d.lib;opencv_video2413d.lib;opencv_videostab2413d.lib</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
+      <AdditionalLibraryDirectories>$(OPENCV_DIR)\bin;$(OPENCV_DIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>$(OPENCV_DIR)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies />
+      <AdditionalDependencies>opencv_calib3d2413d.lib;opencv_contrib2413d.lib;opencv_core2413d.lib;opencv_features2d2413d.lib;opencv_flann2413d.lib;opencv_gpu2413d.lib;opencv_highgui2413d.lib;opencv_imgproc2413d.lib;opencv_legacy2413d.lib;opencv_ml2413d.lib;opencv_nonfree2413d.lib;opencv_objdetect2413d.lib;opencv_ocl2413d.lib;opencv_photo2413d.lib;opencv_stitching2413d.lib;opencv_superres2413d.lib;opencv_ts2413d.lib;opencv_video2413d.lib;opencv_videostab2413d.lib</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
+      <AdditionalLibraryDirectories>$(OPENCV_DIR)\bin;$(OPENCV_DIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>$(OPENCV_DIR)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies />
+      <AdditionalDependencies>opencv_calib3d2413d.lib;opencv_contrib2413d.lib;opencv_core2413d.lib;opencv_features2d2413d.lib;opencv_flann2413d.lib;opencv_gpu2413d.lib;opencv_highgui2413d.lib;opencv_imgproc2413d.lib;opencv_legacy2413d.lib;opencv_ml2413d.lib;opencv_nonfree2413d.lib;opencv_objdetect2413d.lib;opencv_ocl2413d.lib;opencv_photo2413d.lib;opencv_stitching2413d.lib;opencv_superres2413d.lib;opencv_ts2413d.lib;opencv_video2413d.lib;opencv_videostab2413d.lib</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
+      <AdditionalLibraryDirectories>$(OPENCV_DIR)\bin;$(OPENCV_DIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
     <Reference Include="System" />

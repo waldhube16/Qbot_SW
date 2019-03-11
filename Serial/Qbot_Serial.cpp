@@ -6,6 +6,9 @@
 #include "Qbot_Serial.h"
 #include <chrono>
 
+
+using namespace cv;
+
 // application reads from the specified serial port and reports the collected data
 int sendStringToArduino(std::string tx_string, char mode, std::string port, Serial* SP)
 {
@@ -239,3 +242,66 @@ int sendStringToArduino(std::string tx_string, char mode, std::string port, Seri
 	auto dur = duration.count();
 	return 0;
 }
+
+
+int scanCube(std::string port, Serial* SP)
+{
+	Mat U,R,F,D,L,B, frame; 
+	VideoCapture cap(0); // open the default camera
+	if (!cap.isOpened())  // check if we succeeded
+		return -1;
+
+	int flag;
+	flag = sendStringToArduino("X0", 2, port, SP);
+	flag += sendStringToArduino("Y1", 2, port, SP);
+
+	L = snap(cap);
+	imwrite("../../images/Left.jpeg", L);
+
+	flag += sendStringToArduino("Y2", 2, port, SP);
+
+	R = snap(cap);
+	imwrite("../../images/Right.jpeg", R);
+
+	flag += sendStringToArduino("x0", 2, port, SP);
+	flag += sendStringToArduino("Y0", 2, port, SP);
+	flag += sendStringToArduino("Y1", 2, port, SP);
+	flag += sendStringToArduino("y0", 2, port, SP);
+	flag += sendStringToArduino("X0", 2, port, SP);
+	flag += sendStringToArduino("y1", 2, port, SP);
+
+	D = snap(cap);
+	imwrite("../../images/Down.jpeg", D);
+
+	flag += sendStringToArduino("Y2", 2, port, SP);
+
+	U = snap(cap);
+	imwrite("../../images/Up.jpeg", U);
+
+	flag += sendStringToArduino("x0", 2, port, SP);
+	flag += sendStringToArduino("Y0", 2, port, SP);
+	flag += sendStringToArduino("Y1", 2, port, SP);
+	flag += sendStringToArduino("X1", 2, port, SP);
+
+	F = snap(cap);
+	imwrite("../../images/Front.jpeg", F);
+
+	flag += sendStringToArduino("x2", 2, port, SP);
+
+	B = snap(cap);
+	imwrite("../../images/Back.jpeg", B);
+
+	flag += sendStringToArduino("X1", 2, port, SP);
+	flag += sendStringToArduino("y0", 2, port, SP);
+	// the camera will be deinitialized automatically in VideoCapture destructor
+	return flag; 
+}
+
+Mat snap(VideoCapture cap)
+{
+		Mat frame;
+		cap >> frame; // get a new frame from camera
+		return frame; 
+}
+	
+
