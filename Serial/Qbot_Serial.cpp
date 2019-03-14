@@ -246,22 +246,40 @@ int sendStringToArduino(std::string tx_string, char mode, std::string port, Seri
 
 int scanCube(std::string port, Serial* SP)
 {
-	Mat U,R,F,D,L,B, frame; 
+	Mat U;
+	Mat	R;
+	Mat	F;
+	Mat	D;
+	Mat	L;
+	Mat	B;
+	Mat test;
+
 	VideoCapture cap(0); // open the default camera
 	if (!cap.isOpened())  // check if we succeeded
 		return -1;
 
 	int flag;
+	int i; 
 	flag = sendStringToArduino("X0", 2, port, SP);
 	flag += sendStringToArduino("Y1", 2, port, SP);
 
-	L = snap(cap);
-	imwrite("../../images/Left.jpeg", L);
+	//test = snap(cap);
+	Sleep(1000);
+	for (i = 0; i < 4; i++)
+	{
+		cap >> L;
+	}
+	cap >> L;// = snap(cap);
+	imwrite("Left.jpeg", L);
 
 	flag += sendStringToArduino("Y2", 2, port, SP);
 
-	R = snap(cap);
-	imwrite("../../images/Right.jpeg", R);
+	Sleep(1000);
+	for (i = 0; i < 4; i++)
+	{
+		cap >> R;
+	}
+	imwrite("Right.jpeg", R);
 
 	flag += sendStringToArduino("x0", 2, port, SP);
 	flag += sendStringToArduino("Y0", 2, port, SP);
@@ -270,26 +288,42 @@ int scanCube(std::string port, Serial* SP)
 	flag += sendStringToArduino("X0", 2, port, SP);
 	flag += sendStringToArduino("y1", 2, port, SP);
 
-	D = snap(cap);
-	imwrite("../../images/Down.jpeg", D);
+	Sleep(1000);
+	for (i = 0; i < 4; i++)
+	{
+		cap >> D;
+	}
+	imwrite("Down.jpeg", D);
 
 	flag += sendStringToArduino("Y2", 2, port, SP);
 
-	U = snap(cap);
-	imwrite("../../images/Up.jpeg", U);
+	Sleep(1000);
+	for (i = 0; i < 4; i++)
+	{
+		cap >> U;
+	}
+	imwrite("Up.jpeg", U);
 
 	flag += sendStringToArduino("x0", 2, port, SP);
 	flag += sendStringToArduino("Y0", 2, port, SP);
 	flag += sendStringToArduino("Y1", 2, port, SP);
 	flag += sendStringToArduino("X1", 2, port, SP);
 
-	F = snap(cap);
-	imwrite("../../images/Front.jpeg", F);
+	Sleep(1000);
+	for (i = 0; i < 4; i++)
+	{
+		cap >> F;
+	}
+	imwrite("Front.jpeg", F);
 
 	flag += sendStringToArduino("x2", 2, port, SP);
 
-	B = snap(cap);
-	imwrite("../../images/Back.jpeg", B);
+	Sleep(1000);
+	for (i = 0; i < 4; i++)
+	{
+		cap >> B;
+	}
+	imwrite("Back.jpeg", B);
 
 	flag += sendStringToArduino("X1", 2, port, SP);
 	flag += sendStringToArduino("y0", 2, port, SP);

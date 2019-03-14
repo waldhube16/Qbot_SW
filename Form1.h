@@ -6,9 +6,9 @@
 
 #pragma once
 #include <string>
-#include "../Qbot_SW/SolverBackend/CubeSimulation.h"
-#include "../Qbot_SW/Serial/Qbot_Serial.h"
-#include "../Qbot_SW/Serial/SerialClass.h"
+#include "../Qbot_Neu/SolverBackend/CubeSimulation.h"
+#include "../Qbot_Neu/Serial/Qbot_Serial.h"
+#include "../Qbot_Neu/Serial/SerialClass.h"
 #include <msclr\marshal_cppstd.h>
 #include <chrono>
 
@@ -28,6 +28,8 @@ namespace CppCLR_WinformsProjekt {
 	{
 	public:
 		Serial* SP;
+
+	public:
 		char colorIndex = 'X';
 
 		//'X' ... recoloring not enabled
@@ -507,6 +509,7 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			this->btn_Close = (gcnew System::Windows::Forms::Button());
 			this->btn_Clean = (gcnew System::Windows::Forms::Button());
 			this->btn_ScanCube = (gcnew System::Windows::Forms::Button());
+
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numdd_ComPort))->BeginInit();
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->num_Timeout))->BeginInit();
@@ -1616,6 +1619,7 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1308, 505);
+
 			this->Controls->Add(this->btn_ScanCube);
 			this->Controls->Add(this->btn_Clean);
 			this->Controls->Add(this->btn_Close);
@@ -2088,6 +2092,7 @@ private: System::Void btn_ScanCube_Click(System::Object^  sender, System::EventA
 	
 	int flag = scanCube(tx_com_port, SP); 
 }
+
 };
 
 	
