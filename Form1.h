@@ -6,9 +6,9 @@
 
 #pragma once
 #include <string>
-#include "../Qbot_Neu/SolverBackend/CubeSimulation.h"
-#include "../Qbot_Neu/Serial/Qbot_Serial.h"
-#include "../Qbot_Neu/Serial/SerialClass.h"
+#include "SolverBackend/CubeSimulation.h"
+#include "Serial/Qbot_Serial.h"
+#include "Serial/SerialClass.h"
 #include <msclr\marshal_cppstd.h>
 #include <chrono>
 
