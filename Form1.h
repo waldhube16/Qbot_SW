@@ -2204,10 +2204,8 @@ private: System::Void btn_ScanCube_Click(System::Object^  sender, System::EventA
 	int flag = scanCube(tx_com_port, SP); 
 
 
-	//system("Bildverarbeitung.exe Up.jpeg Right.jpeg Front.jpeg Down.jpeg Left.jpeg Back.jpeg");
-	WinExec("Bildverarbeitung.exe Up.jpeg Right.jpeg Front.jpeg Down.jpeg Left.jpeg Back.jpeg", SW_HIDE);
+	system("Bildverarbeitung.exe Up.jpeg Right.jpeg Front.jpeg Down.jpeg Left.jpeg Back.jpeg");
 
-	Sleep(5000);
 
 	std::string cubestring;
 
