@@ -6,6 +6,7 @@
 
 #pragma once
 #include <string>
+#include <fstream>
 #include "SolverBackend/CubeSimulation.h"
 #include "Serial/Qbot_Serial.h"
 #include "Serial/SerialClass.h"
@@ -509,7 +510,6 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			this->btn_Close = (gcnew System::Windows::Forms::Button());
 			this->btn_Clean = (gcnew System::Windows::Forms::Button());
 			this->btn_ScanCube = (gcnew System::Windows::Forms::Button());
-
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numdd_ComPort))->BeginInit();
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->num_Timeout))->BeginInit();
@@ -520,9 +520,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->U1->BackColor = System::Drawing::Color::White;
 			this->U1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->U1->Location = System::Drawing::Point(209, 42);
+			this->U1->Location = System::Drawing::Point(314, 65);
+			this->U1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->U1->Name = L"U1";
-			this->U1->Size = System::Drawing::Size(40, 40);
+			this->U1->Size = System::Drawing::Size(58, 59);
 			this->U1->TabIndex = 0;
 			this->U1->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -530,9 +531,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->U2->BackColor = System::Drawing::Color::White;
 			this->U2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->U2->Location = System::Drawing::Point(255, 42);
+			this->U2->Location = System::Drawing::Point(382, 65);
+			this->U2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->U2->Name = L"U2";
-			this->U2->Size = System::Drawing::Size(40, 40);
+			this->U2->Size = System::Drawing::Size(58, 59);
 			this->U2->TabIndex = 0;
 			this->U2->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -540,9 +542,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->U3->BackColor = System::Drawing::Color::White;
 			this->U3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->U3->Location = System::Drawing::Point(301, 42);
+			this->U3->Location = System::Drawing::Point(452, 65);
+			this->U3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->U3->Name = L"U3";
-			this->U3->Size = System::Drawing::Size(40, 40);
+			this->U3->Size = System::Drawing::Size(58, 59);
 			this->U3->TabIndex = 0;
 			this->U3->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -550,9 +553,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->U4->BackColor = System::Drawing::Color::White;
 			this->U4->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->U4->Location = System::Drawing::Point(209, 88);
+			this->U4->Location = System::Drawing::Point(314, 135);
+			this->U4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->U4->Name = L"U4";
-			this->U4->Size = System::Drawing::Size(40, 40);
+			this->U4->Size = System::Drawing::Size(58, 59);
 			this->U4->TabIndex = 0;
 			this->U4->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -560,9 +564,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->U5->BackColor = System::Drawing::Color::White;
 			this->U5->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->U5->Location = System::Drawing::Point(255, 88);
+			this->U5->Location = System::Drawing::Point(382, 135);
+			this->U5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->U5->Name = L"U5";
-			this->U5->Size = System::Drawing::Size(40, 40);
+			this->U5->Size = System::Drawing::Size(58, 59);
 			this->U5->TabIndex = 0;
 			this->U5->Click += gcnew System::EventHandler(this, &Form1::U5_Click);
 			// 
@@ -570,9 +575,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->U6->BackColor = System::Drawing::Color::White;
 			this->U6->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->U6->Location = System::Drawing::Point(301, 88);
+			this->U6->Location = System::Drawing::Point(452, 135);
+			this->U6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->U6->Name = L"U6";
-			this->U6->Size = System::Drawing::Size(40, 40);
+			this->U6->Size = System::Drawing::Size(58, 59);
 			this->U6->TabIndex = 0;
 			this->U6->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -580,9 +586,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->U7->BackColor = System::Drawing::Color::White;
 			this->U7->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->U7->Location = System::Drawing::Point(209, 134);
+			this->U7->Location = System::Drawing::Point(314, 206);
+			this->U7->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->U7->Name = L"U7";
-			this->U7->Size = System::Drawing::Size(40, 40);
+			this->U7->Size = System::Drawing::Size(58, 59);
 			this->U7->TabIndex = 0;
 			this->U7->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -590,9 +597,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->U8->BackColor = System::Drawing::Color::White;
 			this->U8->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->U8->Location = System::Drawing::Point(255, 134);
+			this->U8->Location = System::Drawing::Point(382, 206);
+			this->U8->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->U8->Name = L"U8";
-			this->U8->Size = System::Drawing::Size(40, 40);
+			this->U8->Size = System::Drawing::Size(58, 59);
 			this->U8->TabIndex = 0;
 			this->U8->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -600,9 +608,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->U9->BackColor = System::Drawing::Color::White;
 			this->U9->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->U9->Location = System::Drawing::Point(301, 134);
+			this->U9->Location = System::Drawing::Point(452, 206);
+			this->U9->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->U9->Name = L"U9";
-			this->U9->Size = System::Drawing::Size(40, 40);
+			this->U9->Size = System::Drawing::Size(58, 59);
 			this->U9->TabIndex = 0;
 			this->U9->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -610,9 +619,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->F1->BackColor = System::Drawing::Color::Lime;
 			this->F1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->F1->Location = System::Drawing::Point(209, 180);
+			this->F1->Location = System::Drawing::Point(314, 277);
+			this->F1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->F1->Name = L"F1";
-			this->F1->Size = System::Drawing::Size(40, 40);
+			this->F1->Size = System::Drawing::Size(58, 59);
 			this->F1->TabIndex = 0;
 			this->F1->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -620,9 +630,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->F2->BackColor = System::Drawing::Color::Lime;
 			this->F2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->F2->Location = System::Drawing::Point(255, 180);
+			this->F2->Location = System::Drawing::Point(382, 277);
+			this->F2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->F2->Name = L"F2";
-			this->F2->Size = System::Drawing::Size(40, 40);
+			this->F2->Size = System::Drawing::Size(58, 59);
 			this->F2->TabIndex = 0;
 			this->F2->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -630,9 +641,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->F3->BackColor = System::Drawing::Color::Lime;
 			this->F3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->F3->Location = System::Drawing::Point(301, 180);
+			this->F3->Location = System::Drawing::Point(452, 277);
+			this->F3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->F3->Name = L"F3";
-			this->F3->Size = System::Drawing::Size(40, 40);
+			this->F3->Size = System::Drawing::Size(58, 59);
 			this->F3->TabIndex = 0;
 			this->F3->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -640,9 +652,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->F4->BackColor = System::Drawing::Color::Lime;
 			this->F4->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->F4->Location = System::Drawing::Point(209, 226);
+			this->F4->Location = System::Drawing::Point(314, 348);
+			this->F4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->F4->Name = L"F4";
-			this->F4->Size = System::Drawing::Size(40, 40);
+			this->F4->Size = System::Drawing::Size(58, 59);
 			this->F4->TabIndex = 0;
 			this->F4->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -650,9 +663,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->F5->BackColor = System::Drawing::Color::Lime;
 			this->F5->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->F5->Location = System::Drawing::Point(255, 226);
+			this->F5->Location = System::Drawing::Point(382, 348);
+			this->F5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->F5->Name = L"F5";
-			this->F5->Size = System::Drawing::Size(40, 40);
+			this->F5->Size = System::Drawing::Size(58, 59);
 			this->F5->TabIndex = 0;
 			this->F5->Click += gcnew System::EventHandler(this, &Form1::F5_Click);
 			// 
@@ -660,9 +674,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->F6->BackColor = System::Drawing::Color::Lime;
 			this->F6->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->F6->Location = System::Drawing::Point(301, 226);
+			this->F6->Location = System::Drawing::Point(452, 348);
+			this->F6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->F6->Name = L"F6";
-			this->F6->Size = System::Drawing::Size(40, 40);
+			this->F6->Size = System::Drawing::Size(58, 59);
 			this->F6->TabIndex = 0;
 			this->F6->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -670,9 +685,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->F7->BackColor = System::Drawing::Color::Lime;
 			this->F7->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->F7->Location = System::Drawing::Point(209, 272);
+			this->F7->Location = System::Drawing::Point(314, 418);
+			this->F7->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->F7->Name = L"F7";
-			this->F7->Size = System::Drawing::Size(40, 40);
+			this->F7->Size = System::Drawing::Size(58, 59);
 			this->F7->TabIndex = 0;
 			this->F7->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -680,9 +696,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->F8->BackColor = System::Drawing::Color::Lime;
 			this->F8->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->F8->Location = System::Drawing::Point(255, 272);
+			this->F8->Location = System::Drawing::Point(382, 418);
+			this->F8->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->F8->Name = L"F8";
-			this->F8->Size = System::Drawing::Size(40, 40);
+			this->F8->Size = System::Drawing::Size(58, 59);
 			this->F8->TabIndex = 0;
 			this->F8->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -690,9 +707,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->F9->BackColor = System::Drawing::Color::Lime;
 			this->F9->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->F9->Location = System::Drawing::Point(301, 272);
+			this->F9->Location = System::Drawing::Point(452, 418);
+			this->F9->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->F9->Name = L"F9";
-			this->F9->Size = System::Drawing::Size(40, 40);
+			this->F9->Size = System::Drawing::Size(58, 59);
 			this->F9->TabIndex = 0;
 			this->F9->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -700,9 +718,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->R1->BackColor = System::Drawing::Color::Red;
 			this->R1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->R1->Location = System::Drawing::Point(347, 180);
+			this->R1->Location = System::Drawing::Point(520, 277);
+			this->R1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->R1->Name = L"R1";
-			this->R1->Size = System::Drawing::Size(40, 40);
+			this->R1->Size = System::Drawing::Size(58, 59);
 			this->R1->TabIndex = 0;
 			this->R1->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -710,9 +729,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->R2->BackColor = System::Drawing::Color::Red;
 			this->R2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->R2->Location = System::Drawing::Point(393, 180);
+			this->R2->Location = System::Drawing::Point(590, 277);
+			this->R2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->R2->Name = L"R2";
-			this->R2->Size = System::Drawing::Size(40, 40);
+			this->R2->Size = System::Drawing::Size(58, 59);
 			this->R2->TabIndex = 0;
 			this->R2->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -720,9 +740,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->R3->BackColor = System::Drawing::Color::Red;
 			this->R3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->R3->Location = System::Drawing::Point(439, 180);
+			this->R3->Location = System::Drawing::Point(658, 277);
+			this->R3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->R3->Name = L"R3";
-			this->R3->Size = System::Drawing::Size(40, 40);
+			this->R3->Size = System::Drawing::Size(58, 59);
 			this->R3->TabIndex = 0;
 			this->R3->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -730,9 +751,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->R4->BackColor = System::Drawing::Color::Red;
 			this->R4->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->R4->Location = System::Drawing::Point(347, 226);
+			this->R4->Location = System::Drawing::Point(520, 348);
+			this->R4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->R4->Name = L"R4";
-			this->R4->Size = System::Drawing::Size(40, 40);
+			this->R4->Size = System::Drawing::Size(58, 59);
 			this->R4->TabIndex = 0;
 			this->R4->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -740,9 +762,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->R5->BackColor = System::Drawing::Color::Red;
 			this->R5->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->R5->Location = System::Drawing::Point(393, 226);
+			this->R5->Location = System::Drawing::Point(590, 348);
+			this->R5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->R5->Name = L"R5";
-			this->R5->Size = System::Drawing::Size(40, 40);
+			this->R5->Size = System::Drawing::Size(58, 59);
 			this->R5->TabIndex = 0;
 			this->R5->Click += gcnew System::EventHandler(this, &Form1::R5_Click);
 			// 
@@ -750,9 +773,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->R6->BackColor = System::Drawing::Color::Red;
 			this->R6->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->R6->Location = System::Drawing::Point(439, 226);
+			this->R6->Location = System::Drawing::Point(658, 348);
+			this->R6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->R6->Name = L"R6";
-			this->R6->Size = System::Drawing::Size(40, 40);
+			this->R6->Size = System::Drawing::Size(58, 59);
 			this->R6->TabIndex = 0;
 			this->R6->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -760,9 +784,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->R7->BackColor = System::Drawing::Color::Red;
 			this->R7->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->R7->Location = System::Drawing::Point(347, 272);
+			this->R7->Location = System::Drawing::Point(520, 418);
+			this->R7->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->R7->Name = L"R7";
-			this->R7->Size = System::Drawing::Size(40, 40);
+			this->R7->Size = System::Drawing::Size(58, 59);
 			this->R7->TabIndex = 0;
 			this->R7->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -770,9 +795,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->R8->BackColor = System::Drawing::Color::Red;
 			this->R8->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->R8->Location = System::Drawing::Point(393, 272);
+			this->R8->Location = System::Drawing::Point(590, 418);
+			this->R8->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->R8->Name = L"R8";
-			this->R8->Size = System::Drawing::Size(40, 40);
+			this->R8->Size = System::Drawing::Size(58, 59);
 			this->R8->TabIndex = 0;
 			this->R8->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -780,9 +806,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->R9->BackColor = System::Drawing::Color::Red;
 			this->R9->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->R9->Location = System::Drawing::Point(439, 272);
+			this->R9->Location = System::Drawing::Point(658, 418);
+			this->R9->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->R9->Name = L"R9";
-			this->R9->Size = System::Drawing::Size(40, 40);
+			this->R9->Size = System::Drawing::Size(58, 59);
 			this->R9->TabIndex = 0;
 			this->R9->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -790,9 +817,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->B1->BackColor = System::Drawing::Color::Blue;
 			this->B1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->B1->Location = System::Drawing::Point(485, 180);
+			this->B1->Location = System::Drawing::Point(728, 277);
+			this->B1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->B1->Name = L"B1";
-			this->B1->Size = System::Drawing::Size(40, 40);
+			this->B1->Size = System::Drawing::Size(58, 59);
 			this->B1->TabIndex = 0;
 			this->B1->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -800,9 +828,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->B2->BackColor = System::Drawing::Color::Blue;
 			this->B2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->B2->Location = System::Drawing::Point(531, 180);
+			this->B2->Location = System::Drawing::Point(796, 277);
+			this->B2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->B2->Name = L"B2";
-			this->B2->Size = System::Drawing::Size(40, 40);
+			this->B2->Size = System::Drawing::Size(58, 59);
 			this->B2->TabIndex = 0;
 			this->B2->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -810,9 +839,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->B3->BackColor = System::Drawing::Color::Blue;
 			this->B3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->B3->Location = System::Drawing::Point(577, 180);
+			this->B3->Location = System::Drawing::Point(866, 277);
+			this->B3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->B3->Name = L"B3";
-			this->B3->Size = System::Drawing::Size(40, 40);
+			this->B3->Size = System::Drawing::Size(58, 59);
 			this->B3->TabIndex = 0;
 			this->B3->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -820,9 +850,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->B4->BackColor = System::Drawing::Color::Blue;
 			this->B4->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->B4->Location = System::Drawing::Point(485, 226);
+			this->B4->Location = System::Drawing::Point(728, 348);
+			this->B4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->B4->Name = L"B4";
-			this->B4->Size = System::Drawing::Size(40, 40);
+			this->B4->Size = System::Drawing::Size(58, 59);
 			this->B4->TabIndex = 0;
 			this->B4->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -830,9 +861,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->B5->BackColor = System::Drawing::Color::Blue;
 			this->B5->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->B5->Location = System::Drawing::Point(531, 226);
+			this->B5->Location = System::Drawing::Point(796, 348);
+			this->B5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->B5->Name = L"B5";
-			this->B5->Size = System::Drawing::Size(40, 40);
+			this->B5->Size = System::Drawing::Size(58, 59);
 			this->B5->TabIndex = 0;
 			this->B5->Click += gcnew System::EventHandler(this, &Form1::B5_Click);
 			// 
@@ -840,9 +872,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->B6->BackColor = System::Drawing::Color::Blue;
 			this->B6->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->B6->Location = System::Drawing::Point(577, 226);
+			this->B6->Location = System::Drawing::Point(866, 348);
+			this->B6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->B6->Name = L"B6";
-			this->B6->Size = System::Drawing::Size(40, 40);
+			this->B6->Size = System::Drawing::Size(58, 59);
 			this->B6->TabIndex = 0;
 			this->B6->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -850,9 +883,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->B7->BackColor = System::Drawing::Color::Blue;
 			this->B7->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->B7->Location = System::Drawing::Point(485, 272);
+			this->B7->Location = System::Drawing::Point(728, 418);
+			this->B7->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->B7->Name = L"B7";
-			this->B7->Size = System::Drawing::Size(40, 40);
+			this->B7->Size = System::Drawing::Size(58, 59);
 			this->B7->TabIndex = 0;
 			this->B7->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -860,9 +894,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->B8->BackColor = System::Drawing::Color::Blue;
 			this->B8->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->B8->Location = System::Drawing::Point(531, 272);
+			this->B8->Location = System::Drawing::Point(796, 418);
+			this->B8->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->B8->Name = L"B8";
-			this->B8->Size = System::Drawing::Size(40, 40);
+			this->B8->Size = System::Drawing::Size(58, 59);
 			this->B8->TabIndex = 0;
 			this->B8->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -870,9 +905,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->B9->BackColor = System::Drawing::Color::Blue;
 			this->B9->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->B9->Location = System::Drawing::Point(577, 272);
+			this->B9->Location = System::Drawing::Point(866, 418);
+			this->B9->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->B9->Name = L"B9";
-			this->B9->Size = System::Drawing::Size(40, 40);
+			this->B9->Size = System::Drawing::Size(58, 59);
 			this->B9->TabIndex = 0;
 			this->B9->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -880,9 +916,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->D1->BackColor = System::Drawing::Color::Yellow;
 			this->D1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->D1->Location = System::Drawing::Point(209, 318);
+			this->D1->Location = System::Drawing::Point(314, 489);
+			this->D1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->D1->Name = L"D1";
-			this->D1->Size = System::Drawing::Size(40, 40);
+			this->D1->Size = System::Drawing::Size(58, 59);
 			this->D1->TabIndex = 0;
 			this->D1->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -890,9 +927,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->D2->BackColor = System::Drawing::Color::Yellow;
 			this->D2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->D2->Location = System::Drawing::Point(255, 318);
+			this->D2->Location = System::Drawing::Point(382, 489);
+			this->D2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->D2->Name = L"D2";
-			this->D2->Size = System::Drawing::Size(40, 40);
+			this->D2->Size = System::Drawing::Size(58, 59);
 			this->D2->TabIndex = 0;
 			this->D2->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -900,9 +938,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->D3->BackColor = System::Drawing::Color::Yellow;
 			this->D3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->D3->Location = System::Drawing::Point(301, 318);
+			this->D3->Location = System::Drawing::Point(452, 489);
+			this->D3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->D3->Name = L"D3";
-			this->D3->Size = System::Drawing::Size(40, 40);
+			this->D3->Size = System::Drawing::Size(58, 59);
 			this->D3->TabIndex = 0;
 			this->D3->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -910,9 +949,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->D4->BackColor = System::Drawing::Color::Yellow;
 			this->D4->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->D4->Location = System::Drawing::Point(209, 364);
+			this->D4->Location = System::Drawing::Point(314, 560);
+			this->D4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->D4->Name = L"D4";
-			this->D4->Size = System::Drawing::Size(40, 40);
+			this->D4->Size = System::Drawing::Size(58, 59);
 			this->D4->TabIndex = 0;
 			this->D4->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -920,9 +960,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->D5->BackColor = System::Drawing::Color::Yellow;
 			this->D5->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->D5->Location = System::Drawing::Point(255, 364);
+			this->D5->Location = System::Drawing::Point(382, 560);
+			this->D5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->D5->Name = L"D5";
-			this->D5->Size = System::Drawing::Size(40, 40);
+			this->D5->Size = System::Drawing::Size(58, 59);
 			this->D5->TabIndex = 0;
 			this->D5->Click += gcnew System::EventHandler(this, &Form1::D5_Click);
 			// 
@@ -930,9 +971,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->D6->BackColor = System::Drawing::Color::Yellow;
 			this->D6->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->D6->Location = System::Drawing::Point(301, 364);
+			this->D6->Location = System::Drawing::Point(452, 560);
+			this->D6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->D6->Name = L"D6";
-			this->D6->Size = System::Drawing::Size(40, 40);
+			this->D6->Size = System::Drawing::Size(58, 59);
 			this->D6->TabIndex = 0;
 			this->D6->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -940,9 +982,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->D7->BackColor = System::Drawing::Color::Yellow;
 			this->D7->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->D7->Location = System::Drawing::Point(209, 410);
+			this->D7->Location = System::Drawing::Point(314, 631);
+			this->D7->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->D7->Name = L"D7";
-			this->D7->Size = System::Drawing::Size(40, 40);
+			this->D7->Size = System::Drawing::Size(58, 59);
 			this->D7->TabIndex = 0;
 			this->D7->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -950,9 +993,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->D8->BackColor = System::Drawing::Color::Yellow;
 			this->D8->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->D8->Location = System::Drawing::Point(255, 410);
+			this->D8->Location = System::Drawing::Point(382, 631);
+			this->D8->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->D8->Name = L"D8";
-			this->D8->Size = System::Drawing::Size(40, 40);
+			this->D8->Size = System::Drawing::Size(58, 59);
 			this->D8->TabIndex = 0;
 			this->D8->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -960,9 +1004,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->D9->BackColor = System::Drawing::Color::Yellow;
 			this->D9->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->D9->Location = System::Drawing::Point(301, 410);
+			this->D9->Location = System::Drawing::Point(452, 631);
+			this->D9->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->D9->Name = L"D9";
-			this->D9->Size = System::Drawing::Size(40, 40);
+			this->D9->Size = System::Drawing::Size(58, 59);
 			this->D9->TabIndex = 0;
 			this->D9->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -970,9 +1015,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->L1->BackColor = System::Drawing::Color::Orange;
 			this->L1->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->L1->Location = System::Drawing::Point(71, 180);
+			this->L1->Location = System::Drawing::Point(106, 277);
+			this->L1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->L1->Name = L"L1";
-			this->L1->Size = System::Drawing::Size(40, 40);
+			this->L1->Size = System::Drawing::Size(58, 59);
 			this->L1->TabIndex = 0;
 			this->L1->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -980,9 +1026,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->L2->BackColor = System::Drawing::Color::Orange;
 			this->L2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->L2->Location = System::Drawing::Point(117, 180);
+			this->L2->Location = System::Drawing::Point(176, 277);
+			this->L2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->L2->Name = L"L2";
-			this->L2->Size = System::Drawing::Size(40, 40);
+			this->L2->Size = System::Drawing::Size(58, 59);
 			this->L2->TabIndex = 0;
 			this->L2->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -990,9 +1037,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->L3->BackColor = System::Drawing::Color::Orange;
 			this->L3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->L3->Location = System::Drawing::Point(163, 180);
+			this->L3->Location = System::Drawing::Point(244, 277);
+			this->L3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->L3->Name = L"L3";
-			this->L3->Size = System::Drawing::Size(40, 40);
+			this->L3->Size = System::Drawing::Size(58, 59);
 			this->L3->TabIndex = 0;
 			this->L3->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -1000,9 +1048,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->L4->BackColor = System::Drawing::Color::Orange;
 			this->L4->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->L4->Location = System::Drawing::Point(71, 226);
+			this->L4->Location = System::Drawing::Point(106, 348);
+			this->L4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->L4->Name = L"L4";
-			this->L4->Size = System::Drawing::Size(40, 40);
+			this->L4->Size = System::Drawing::Size(58, 59);
 			this->L4->TabIndex = 0;
 			this->L4->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -1010,9 +1059,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->L5->BackColor = System::Drawing::Color::Orange;
 			this->L5->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->L5->Location = System::Drawing::Point(117, 226);
+			this->L5->Location = System::Drawing::Point(176, 348);
+			this->L5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->L5->Name = L"L5";
-			this->L5->Size = System::Drawing::Size(40, 40);
+			this->L5->Size = System::Drawing::Size(58, 59);
 			this->L5->TabIndex = 0;
 			this->L5->Click += gcnew System::EventHandler(this, &Form1::L5_Click);
 			// 
@@ -1020,9 +1070,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->L6->BackColor = System::Drawing::Color::Orange;
 			this->L6->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->L6->Location = System::Drawing::Point(163, 226);
+			this->L6->Location = System::Drawing::Point(244, 348);
+			this->L6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->L6->Name = L"L6";
-			this->L6->Size = System::Drawing::Size(40, 40);
+			this->L6->Size = System::Drawing::Size(58, 59);
 			this->L6->TabIndex = 0;
 			this->L6->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -1030,9 +1081,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->L7->BackColor = System::Drawing::Color::Orange;
 			this->L7->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->L7->Location = System::Drawing::Point(71, 272);
+			this->L7->Location = System::Drawing::Point(106, 418);
+			this->L7->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->L7->Name = L"L7";
-			this->L7->Size = System::Drawing::Size(40, 40);
+			this->L7->Size = System::Drawing::Size(58, 59);
 			this->L7->TabIndex = 0;
 			this->L7->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -1040,9 +1092,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->L8->BackColor = System::Drawing::Color::Orange;
 			this->L8->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->L8->Location = System::Drawing::Point(117, 272);
+			this->L8->Location = System::Drawing::Point(176, 418);
+			this->L8->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->L8->Name = L"L8";
-			this->L8->Size = System::Drawing::Size(40, 40);
+			this->L8->Size = System::Drawing::Size(58, 59);
 			this->L8->TabIndex = 0;
 			this->L8->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
@@ -1050,17 +1103,19 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			this->L9->BackColor = System::Drawing::Color::Orange;
 			this->L9->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->L9->Location = System::Drawing::Point(163, 272);
+			this->L9->Location = System::Drawing::Point(244, 418);
+			this->L9->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->L9->Name = L"L9";
-			this->L9->Size = System::Drawing::Size(40, 40);
+			this->L9->Size = System::Drawing::Size(58, 59);
 			this->L9->TabIndex = 0;
 			this->L9->Click += gcnew System::EventHandler(this, &Form1::ColorablePanel_Click);
 			// 
 			// btn_R
 			// 
-			this->btn_R->Location = System::Drawing::Point(399, 42);
+			this->btn_R->Location = System::Drawing::Point(598, 65);
+			this->btn_R->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_R->Name = L"btn_R";
-			this->btn_R->Size = System::Drawing::Size(40, 25);
+			this->btn_R->Size = System::Drawing::Size(60, 38);
 			this->btn_R->TabIndex = 2;
 			this->btn_R->Text = L"R";
 			this->btn_R->UseVisualStyleBackColor = true;
@@ -1068,9 +1123,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_U
 			// 
-			this->btn_U->Location = System::Drawing::Point(353, 42);
+			this->btn_U->Location = System::Drawing::Point(530, 65);
+			this->btn_U->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_U->Name = L"btn_U";
-			this->btn_U->Size = System::Drawing::Size(40, 25);
+			this->btn_U->Size = System::Drawing::Size(60, 38);
 			this->btn_U->TabIndex = 3;
 			this->btn_U->Text = L"U";
 			this->btn_U->UseVisualStyleBackColor = true;
@@ -1078,9 +1134,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_F
 			// 
-			this->btn_F->Location = System::Drawing::Point(445, 42);
+			this->btn_F->Location = System::Drawing::Point(668, 65);
+			this->btn_F->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_F->Name = L"btn_F";
-			this->btn_F->Size = System::Drawing::Size(40, 25);
+			this->btn_F->Size = System::Drawing::Size(60, 38);
 			this->btn_F->TabIndex = 4;
 			this->btn_F->Text = L"F";
 			this->btn_F->UseVisualStyleBackColor = true;
@@ -1088,9 +1145,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_D
 			// 
-			this->btn_D->Location = System::Drawing::Point(491, 42);
+			this->btn_D->Location = System::Drawing::Point(736, 65);
+			this->btn_D->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_D->Name = L"btn_D";
-			this->btn_D->Size = System::Drawing::Size(40, 25);
+			this->btn_D->Size = System::Drawing::Size(60, 38);
 			this->btn_D->TabIndex = 5;
 			this->btn_D->Text = L"D";
 			this->btn_D->UseVisualStyleBackColor = true;
@@ -1098,9 +1156,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_L
 			// 
-			this->btn_L->Location = System::Drawing::Point(537, 42);
+			this->btn_L->Location = System::Drawing::Point(806, 65);
+			this->btn_L->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_L->Name = L"btn_L";
-			this->btn_L->Size = System::Drawing::Size(40, 25);
+			this->btn_L->Size = System::Drawing::Size(60, 38);
 			this->btn_L->TabIndex = 6;
 			this->btn_L->Text = L"L";
 			this->btn_L->UseVisualStyleBackColor = true;
@@ -1108,9 +1167,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_B
 			// 
-			this->btn_B->Location = System::Drawing::Point(583, 42);
+			this->btn_B->Location = System::Drawing::Point(874, 65);
+			this->btn_B->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_B->Name = L"btn_B";
-			this->btn_B->Size = System::Drawing::Size(40, 25);
+			this->btn_B->Size = System::Drawing::Size(60, 38);
 			this->btn_B->TabIndex = 7;
 			this->btn_B->Text = L"B";
 			this->btn_B->UseVisualStyleBackColor = true;
@@ -1118,9 +1178,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_Ri
 			// 
-			this->btn_Ri->Location = System::Drawing::Point(399, 73);
+			this->btn_Ri->Location = System::Drawing::Point(598, 112);
+			this->btn_Ri->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_Ri->Name = L"btn_Ri";
-			this->btn_Ri->Size = System::Drawing::Size(40, 25);
+			this->btn_Ri->Size = System::Drawing::Size(60, 38);
 			this->btn_Ri->TabIndex = 2;
 			this->btn_Ri->Text = L"R\'";
 			this->btn_Ri->UseVisualStyleBackColor = true;
@@ -1128,9 +1189,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_Ui
 			// 
-			this->btn_Ui->Location = System::Drawing::Point(353, 73);
+			this->btn_Ui->Location = System::Drawing::Point(530, 112);
+			this->btn_Ui->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_Ui->Name = L"btn_Ui";
-			this->btn_Ui->Size = System::Drawing::Size(40, 25);
+			this->btn_Ui->Size = System::Drawing::Size(60, 38);
 			this->btn_Ui->TabIndex = 3;
 			this->btn_Ui->Text = L"U\'";
 			this->btn_Ui->UseVisualStyleBackColor = true;
@@ -1138,9 +1200,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_Fi
 			// 
-			this->btn_Fi->Location = System::Drawing::Point(445, 73);
+			this->btn_Fi->Location = System::Drawing::Point(668, 112);
+			this->btn_Fi->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_Fi->Name = L"btn_Fi";
-			this->btn_Fi->Size = System::Drawing::Size(40, 25);
+			this->btn_Fi->Size = System::Drawing::Size(60, 38);
 			this->btn_Fi->TabIndex = 4;
 			this->btn_Fi->Text = L"F\'";
 			this->btn_Fi->UseVisualStyleBackColor = true;
@@ -1148,9 +1211,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_Di
 			// 
-			this->btn_Di->Location = System::Drawing::Point(491, 73);
+			this->btn_Di->Location = System::Drawing::Point(736, 112);
+			this->btn_Di->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_Di->Name = L"btn_Di";
-			this->btn_Di->Size = System::Drawing::Size(40, 25);
+			this->btn_Di->Size = System::Drawing::Size(60, 38);
 			this->btn_Di->TabIndex = 5;
 			this->btn_Di->Text = L"D\'";
 			this->btn_Di->UseVisualStyleBackColor = true;
@@ -1158,9 +1222,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_Li
 			// 
-			this->btn_Li->Location = System::Drawing::Point(537, 73);
+			this->btn_Li->Location = System::Drawing::Point(806, 112);
+			this->btn_Li->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_Li->Name = L"btn_Li";
-			this->btn_Li->Size = System::Drawing::Size(40, 25);
+			this->btn_Li->Size = System::Drawing::Size(60, 38);
 			this->btn_Li->TabIndex = 6;
 			this->btn_Li->Text = L"L\'";
 			this->btn_Li->UseVisualStyleBackColor = true;
@@ -1168,9 +1233,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_Bi
 			// 
-			this->btn_Bi->Location = System::Drawing::Point(583, 73);
+			this->btn_Bi->Location = System::Drawing::Point(874, 112);
+			this->btn_Bi->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_Bi->Name = L"btn_Bi";
-			this->btn_Bi->Size = System::Drawing::Size(40, 25);
+			this->btn_Bi->Size = System::Drawing::Size(60, 38);
 			this->btn_Bi->TabIndex = 7;
 			this->btn_Bi->Text = L"B\'";
 			this->btn_Bi->UseVisualStyleBackColor = true;
@@ -1178,9 +1244,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_Reset
 			// 
-			this->btn_Reset->Location = System::Drawing::Point(26, 13);
+			this->btn_Reset->Location = System::Drawing::Point(39, 20);
+			this->btn_Reset->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_Reset->Name = L"btn_Reset";
-			this->btn_Reset->Size = System::Drawing::Size(99, 25);
+			this->btn_Reset->Size = System::Drawing::Size(148, 38);
 			this->btn_Reset->TabIndex = 8;
 			this->btn_Reset->Text = L"Reset Cube";
 			this->btn_Reset->UseVisualStyleBackColor = true;
@@ -1188,9 +1255,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_GenSolution
 			// 
-			this->btn_GenSolution->Location = System::Drawing::Point(439, 380);
+			this->btn_GenSolution->Location = System::Drawing::Point(658, 585);
+			this->btn_GenSolution->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_GenSolution->Name = L"btn_GenSolution";
-			this->btn_GenSolution->Size = System::Drawing::Size(120, 20);
+			this->btn_GenSolution->Size = System::Drawing::Size(180, 31);
 			this->btn_GenSolution->TabIndex = 9;
 			this->btn_GenSolution->Text = L"Generate Solution";
 			this->btn_GenSolution->UseVisualStyleBackColor = true;
@@ -1198,17 +1266,19 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// txt_SolutionString
 			// 
-			this->txt_SolutionString->Location = System::Drawing::Point(10, 463);
+			this->txt_SolutionString->Location = System::Drawing::Point(15, 712);
+			this->txt_SolutionString->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->txt_SolutionString->Name = L"txt_SolutionString";
-			this->txt_SolutionString->Size = System::Drawing::Size(646, 20);
+			this->txt_SolutionString->Size = System::Drawing::Size(967, 26);
 			this->txt_SolutionString->TabIndex = 10;
 			this->txt_SolutionString->Text = L"Solution goes here";
 			// 
 			// btn_scrambleString
 			// 
-			this->btn_scrambleString->Location = System::Drawing::Point(26, 74);
+			this->btn_scrambleString->Location = System::Drawing::Point(39, 114);
+			this->btn_scrambleString->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_scrambleString->Name = L"btn_scrambleString";
-			this->btn_scrambleString->Size = System::Drawing::Size(153, 23);
+			this->btn_scrambleString->Size = System::Drawing::Size(230, 35);
 			this->btn_scrambleString->TabIndex = 11;
 			this->btn_scrambleString->Text = L"Scramble from Moveset";
 			this->btn_scrambleString->UseVisualStyleBackColor = true;
@@ -1216,9 +1286,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_SendToArduino
 			// 
-			this->btn_SendToArduino->Location = System::Drawing::Point(704, 463);
+			this->btn_SendToArduino->Location = System::Drawing::Point(1056, 712);
+			this->btn_SendToArduino->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_SendToArduino->Name = L"btn_SendToArduino";
-			this->btn_SendToArduino->Size = System::Drawing::Size(131, 23);
+			this->btn_SendToArduino->Size = System::Drawing::Size(196, 35);
 			this->btn_SendToArduino->TabIndex = 12;
 			this->btn_SendToArduino->Text = L"Send To Arduino";
 			this->btn_SendToArduino->UseVisualStyleBackColor = true;
@@ -1226,9 +1297,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_Recolor
 			// 
-			this->btn_Recolor->Location = System::Drawing::Point(149, 12);
+			this->btn_Recolor->Location = System::Drawing::Point(224, 18);
+			this->btn_Recolor->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_Recolor->Name = L"btn_Recolor";
-			this->btn_Recolor->Size = System::Drawing::Size(100, 23);
+			this->btn_Recolor->Size = System::Drawing::Size(150, 35);
 			this->btn_Recolor->TabIndex = 13;
 			this->btn_Recolor->Text = L"Start Recolor";
 			this->btn_Recolor->UseVisualStyleBackColor = true;
@@ -1236,9 +1308,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_EndRecolor
 			// 
-			this->btn_EndRecolor->Location = System::Drawing::Point(336, 12);
+			this->btn_EndRecolor->Location = System::Drawing::Point(504, 18);
+			this->btn_EndRecolor->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_EndRecolor->Name = L"btn_EndRecolor";
-			this->btn_EndRecolor->Size = System::Drawing::Size(110, 23);
+			this->btn_EndRecolor->Size = System::Drawing::Size(165, 35);
 			this->btn_EndRecolor->TabIndex = 14;
 			this->btn_EndRecolor->Text = L"End Recolor";
 			this->btn_EndRecolor->UseVisualStyleBackColor = true;
@@ -1246,9 +1319,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_scrambleCubeString
 			// 
-			this->btn_scrambleCubeString->Location = System::Drawing::Point(26, 104);
+			this->btn_scrambleCubeString->Location = System::Drawing::Point(39, 160);
+			this->btn_scrambleCubeString->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_scrambleCubeString->Name = L"btn_scrambleCubeString";
-			this->btn_scrambleCubeString->Size = System::Drawing::Size(153, 23);
+			this->btn_scrambleCubeString->Size = System::Drawing::Size(230, 35);
 			this->btn_scrambleCubeString->TabIndex = 16;
 			this->btn_scrambleCubeString->Text = L"Scramble from Cubestring";
 			this->btn_scrambleCubeString->UseVisualStyleBackColor = true;
@@ -1256,9 +1330,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_CmdToArduino
 			// 
-			this->btn_CmdToArduino->Location = System::Drawing::Point(714, 73);
+			this->btn_CmdToArduino->Location = System::Drawing::Point(1071, 112);
+			this->btn_CmdToArduino->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_CmdToArduino->Name = L"btn_CmdToArduino";
-			this->btn_CmdToArduino->Size = System::Drawing::Size(121, 23);
+			this->btn_CmdToArduino->Size = System::Drawing::Size(182, 35);
 			this->btn_CmdToArduino->TabIndex = 18;
 			this->btn_CmdToArduino->Text = L"Send Command";
 			this->btn_CmdToArduino->UseVisualStyleBackColor = true;
@@ -1267,43 +1342,49 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// lbl_ComPort
 			// 
 			this->lbl_ComPort->AutoSize = true;
-			this->lbl_ComPort->Location = System::Drawing::Point(714, 104);
+			this->lbl_ComPort->Location = System::Drawing::Point(1071, 160);
+			this->lbl_ComPort->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lbl_ComPort->Name = L"lbl_ComPort";
-			this->lbl_ComPort->Size = System::Drawing::Size(56, 13);
+			this->lbl_ComPort->Size = System::Drawing::Size(83, 20);
 			this->lbl_ComPort->TabIndex = 20;
 			this->lbl_ComPort->Text = L"COM-Port:";
 			// 
 			// numdd_ComPort
 			// 
-			this->numdd_ComPort->Location = System::Drawing::Point(776, 102);
+			this->numdd_ComPort->Location = System::Drawing::Point(1164, 157);
+			this->numdd_ComPort->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->numdd_ComPort->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 255, 0, 0, 0 });
 			this->numdd_ComPort->Name = L"numdd_ComPort";
-			this->numdd_ComPort->Size = System::Drawing::Size(58, 20);
+			this->numdd_ComPort->Size = System::Drawing::Size(87, 26);
 			this->numdd_ComPort->TabIndex = 21;
+			this->numdd_ComPort->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 30, 0, 0, 0 });
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(49, 14);
+			this->label1->Location = System::Drawing::Point(74, 22);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(147, 13);
+			this->label1->Size = System::Drawing::Size(221, 20);
 			this->label1->TabIndex = 22;
 			this->label1->Text = L"Manual Stepper Configuration";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(52, 87);
+			this->label2->Location = System::Drawing::Point(78, 134);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(90, 13);
+			this->label2->Size = System::Drawing::Size(131, 20);
 			this->label2->TabIndex = 22;
 			this->label2->Text = L"Open/Close Axes";
 			// 
 			// btn_enableSteppers
 			// 
-			this->btn_enableSteppers->Location = System::Drawing::Point(66, 61);
+			this->btn_enableSteppers->Location = System::Drawing::Point(99, 94);
+			this->btn_enableSteppers->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_enableSteppers->Name = L"btn_enableSteppers";
-			this->btn_enableSteppers->Size = System::Drawing::Size(46, 23);
+			this->btn_enableSteppers->Size = System::Drawing::Size(69, 35);
 			this->btn_enableSteppers->TabIndex = 23;
 			this->btn_enableSteppers->Text = L"E1";
 			this->btn_enableSteppers->UseVisualStyleBackColor = true;
@@ -1311,9 +1392,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_disableSteppers
 			// 
-			this->btn_disableSteppers->Location = System::Drawing::Point(119, 61);
+			this->btn_disableSteppers->Location = System::Drawing::Point(178, 94);
+			this->btn_disableSteppers->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_disableSteppers->Name = L"btn_disableSteppers";
-			this->btn_disableSteppers->Size = System::Drawing::Size(41, 23);
+			this->btn_disableSteppers->Size = System::Drawing::Size(62, 35);
 			this->btn_disableSteppers->TabIndex = 24;
 			this->btn_disableSteppers->Text = L"E2";
 			this->btn_disableSteppers->UseVisualStyleBackColor = true;
@@ -1321,9 +1403,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_lcw
 			// 
-			this->btn_lcw->Location = System::Drawing::Point(53, 244);
+			this->btn_lcw->Location = System::Drawing::Point(80, 375);
+			this->btn_lcw->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_lcw->Name = L"btn_lcw";
-			this->btn_lcw->Size = System::Drawing::Size(30, 23);
+			this->btn_lcw->Size = System::Drawing::Size(45, 35);
 			this->btn_lcw->TabIndex = 25;
 			this->btn_lcw->Text = L"A3";
 			this->btn_lcw->UseVisualStyleBackColor = true;
@@ -1331,9 +1414,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_lccw
 			// 
-			this->btn_lccw->Location = System::Drawing::Point(53, 274);
+			this->btn_lccw->Location = System::Drawing::Point(80, 422);
+			this->btn_lccw->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_lccw->Name = L"btn_lccw";
-			this->btn_lccw->Size = System::Drawing::Size(30, 23);
+			this->btn_lccw->Size = System::Drawing::Size(45, 35);
 			this->btn_lccw->TabIndex = 26;
 			this->btn_lccw->Text = L"a3";
 			this->btn_lccw->UseVisualStyleBackColor = true;
@@ -1341,9 +1425,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_bccw
 			// 
-			this->btn_bccw->Location = System::Drawing::Point(82, 220);
+			this->btn_bccw->Location = System::Drawing::Point(123, 338);
+			this->btn_bccw->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_bccw->Name = L"btn_bccw";
-			this->btn_bccw->Size = System::Drawing::Size(30, 23);
+			this->btn_bccw->Size = System::Drawing::Size(45, 35);
 			this->btn_bccw->TabIndex = 27;
 			this->btn_bccw->Text = L"a6";
 			this->btn_bccw->UseVisualStyleBackColor = true;
@@ -1351,9 +1436,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_bcw
 			// 
-			this->btn_bcw->Location = System::Drawing::Point(117, 220);
+			this->btn_bcw->Location = System::Drawing::Point(176, 338);
+			this->btn_bcw->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_bcw->Name = L"btn_bcw";
-			this->btn_bcw->Size = System::Drawing::Size(30, 23);
+			this->btn_bcw->Size = System::Drawing::Size(45, 35);
 			this->btn_bcw->TabIndex = 28;
 			this->btn_bcw->Text = L"A6";
 			this->btn_bcw->UseVisualStyleBackColor = true;
@@ -1361,9 +1447,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_fcw
 			// 
-			this->btn_fcw->Location = System::Drawing::Point(82, 297);
+			this->btn_fcw->Location = System::Drawing::Point(123, 457);
+			this->btn_fcw->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_fcw->Name = L"btn_fcw";
-			this->btn_fcw->Size = System::Drawing::Size(30, 23);
+			this->btn_fcw->Size = System::Drawing::Size(45, 35);
 			this->btn_fcw->TabIndex = 29;
 			this->btn_fcw->Text = L"A5";
 			this->btn_fcw->UseVisualStyleBackColor = true;
@@ -1371,9 +1458,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_fccw
 			// 
-			this->btn_fccw->Location = System::Drawing::Point(117, 297);
+			this->btn_fccw->Location = System::Drawing::Point(176, 457);
+			this->btn_fccw->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_fccw->Name = L"btn_fccw";
-			this->btn_fccw->Size = System::Drawing::Size(30, 23);
+			this->btn_fccw->Size = System::Drawing::Size(45, 35);
 			this->btn_fccw->TabIndex = 30;
 			this->btn_fccw->Text = L"a5";
 			this->btn_fccw->UseVisualStyleBackColor = true;
@@ -1381,9 +1469,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_rccw
 			// 
-			this->btn_rccw->Location = System::Drawing::Point(146, 244);
+			this->btn_rccw->Location = System::Drawing::Point(219, 375);
+			this->btn_rccw->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_rccw->Name = L"btn_rccw";
-			this->btn_rccw->Size = System::Drawing::Size(30, 23);
+			this->btn_rccw->Size = System::Drawing::Size(45, 35);
 			this->btn_rccw->TabIndex = 31;
 			this->btn_rccw->Text = L"a4";
 			this->btn_rccw->UseVisualStyleBackColor = true;
@@ -1391,9 +1480,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_rcw
 			// 
-			this->btn_rcw->Location = System::Drawing::Point(146, 273);
+			this->btn_rcw->Location = System::Drawing::Point(219, 420);
+			this->btn_rcw->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_rcw->Name = L"btn_rcw";
-			this->btn_rcw->Size = System::Drawing::Size(30, 23);
+			this->btn_rcw->Size = System::Drawing::Size(45, 35);
 			this->btn_rcw->TabIndex = 32;
 			this->btn_rcw->Text = L"A4";
 			this->btn_rcw->UseVisualStyleBackColor = true;
@@ -1402,62 +1492,69 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(181, 220);
+			this->label3->Location = System::Drawing::Point(272, 338);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(98, 13);
+			this->label3->Size = System::Drawing::Size(135, 20);
 			this->label3->TabIndex = 22;
 			this->label3->Text = L"a# = ccw; A# = cw";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(102, 204);
+			this->label4->Location = System::Drawing::Point(153, 314);
+			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(32, 13);
+			this->label4->Size = System::Drawing::Size(45, 20);
 			this->label4->TabIndex = 22;
 			this->label4->Text = L"Back";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(15, 263);
+			this->label5->Location = System::Drawing::Point(22, 405);
+			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(25, 13);
+			this->label5->Size = System::Drawing::Size(37, 20);
 			this->label5->TabIndex = 22;
 			this->label5->Text = L"Left";
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(181, 264);
+			this->label6->Location = System::Drawing::Point(272, 406);
+			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(32, 13);
+			this->label6->Size = System::Drawing::Size(47, 20);
 			this->label6->TabIndex = 22;
 			this->label6->Text = L"Right";
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(102, 327);
+			this->label7->Location = System::Drawing::Point(153, 503);
+			this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(31, 13);
+			this->label7->Size = System::Drawing::Size(47, 20);
 			this->label7->TabIndex = 22;
 			this->label7->Text = L"Front";
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(49, 41);
+			this->label8->Location = System::Drawing::Point(74, 63);
+			this->label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(80, 13);
+			this->label8->Size = System::Drawing::Size(116, 20);
 			this->label8->TabIndex = 22;
 			this->label8->Text = L"Enable/Disable";
 			// 
 			// btn_openY
 			// 
-			this->btn_openY->Location = System::Drawing::Point(99, 109);
+			this->btn_openY->Location = System::Drawing::Point(148, 168);
+			this->btn_openY->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_openY->Name = L"btn_openY";
-			this->btn_openY->Size = System::Drawing::Size(30, 23);
+			this->btn_openY->Size = System::Drawing::Size(45, 35);
 			this->btn_openY->TabIndex = 23;
 			this->btn_openY->Text = L"y0";
 			this->btn_openY->UseVisualStyleBackColor = true;
@@ -1465,9 +1562,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_closeY
 			// 
-			this->btn_closeY->Location = System::Drawing::Point(99, 162);
+			this->btn_closeY->Location = System::Drawing::Point(148, 249);
+			this->btn_closeY->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_closeY->Name = L"btn_closeY";
-			this->btn_closeY->Size = System::Drawing::Size(30, 23);
+			this->btn_closeY->Size = System::Drawing::Size(45, 35);
 			this->btn_closeY->TabIndex = 24;
 			this->btn_closeY->Text = L"Y0";
 			this->btn_closeY->UseVisualStyleBackColor = true;
@@ -1475,9 +1573,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_openX
 			// 
-			this->btn_openX->Location = System::Drawing::Point(68, 135);
+			this->btn_openX->Location = System::Drawing::Point(102, 208);
+			this->btn_openX->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_openX->Name = L"btn_openX";
-			this->btn_openX->Size = System::Drawing::Size(30, 23);
+			this->btn_openX->Size = System::Drawing::Size(45, 35);
 			this->btn_openX->TabIndex = 23;
 			this->btn_openX->Text = L"x0";
 			this->btn_openX->UseVisualStyleBackColor = true;
@@ -1485,9 +1584,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_closeX
 			// 
-			this->btn_closeX->Location = System::Drawing::Point(128, 135);
+			this->btn_closeX->Location = System::Drawing::Point(192, 208);
+			this->btn_closeX->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_closeX->Name = L"btn_closeX";
-			this->btn_closeX->Size = System::Drawing::Size(30, 23);
+			this->btn_closeX->Size = System::Drawing::Size(45, 35);
 			this->btn_closeX->TabIndex = 24;
 			this->btn_closeX->Text = L"X0";
 			this->btn_closeX->UseVisualStyleBackColor = true;
@@ -1496,9 +1596,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(181, 116);
+			this->label9->Location = System::Drawing::Point(272, 178);
+			this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(148, 13);
+			this->label9->Size = System::Drawing::Size(204, 20);
 			this->label9->TabIndex = 22;
 			this->label9->Text = L"x#/y# = open; X#/Y# = close";
 			// 
@@ -1528,57 +1629,64 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			this->panel1->Controls->Add(this->label9);
 			this->panel1->Controls->Add(this->label3);
 			this->panel1->Controls->Add(this->label1);
-			this->panel1->Location = System::Drawing::Point(873, 46);
+			this->panel1->Location = System::Drawing::Point(1310, 71);
+			this->panel1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(333, 354);
+			this->panel1->Size = System::Drawing::Size(500, 545);
 			this->panel1->TabIndex = 33;
 			// 
 			// box_CmdForArduino
 			// 
-			this->box_CmdForArduino->Location = System::Drawing::Point(714, 48);
+			this->box_CmdForArduino->Location = System::Drawing::Point(1071, 74);
+			this->box_CmdForArduino->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->box_CmdForArduino->Name = L"box_CmdForArduino";
-			this->box_CmdForArduino->Size = System::Drawing::Size(120, 20);
+			this->box_CmdForArduino->Size = System::Drawing::Size(178, 26);
 			this->box_CmdForArduino->TabIndex = 34;
 			// 
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Location = System::Drawing::Point(652, 367);
+			this->label10->Location = System::Drawing::Point(978, 565);
+			this->label10->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(45, 13);
+			this->label10->Size = System::Drawing::Size(66, 20);
 			this->label10->TabIndex = 22;
 			this->label10->Text = L"Timeout";
 			// 
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Location = System::Drawing::Point(652, 391);
+			this->label11->Location = System::Drawing::Point(978, 602);
+			this->label11->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(65, 13);
+			this->label11->Size = System::Drawing::Size(92, 20);
 			this->label11->TabIndex = 22;
 			this->label11->Text = L"Max. Moves";
 			// 
 			// num_Timeout
 			// 
-			this->num_Timeout->Location = System::Drawing::Point(577, 364);
+			this->num_Timeout->Location = System::Drawing::Point(866, 560);
+			this->num_Timeout->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->num_Timeout->Name = L"num_Timeout";
-			this->num_Timeout->Size = System::Drawing::Size(54, 20);
+			this->num_Timeout->Size = System::Drawing::Size(81, 26);
 			this->num_Timeout->TabIndex = 36;
 			this->num_Timeout->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 3, 0, 0, 0 });
 			// 
 			// num_MaxMoves
 			// 
-			this->num_MaxMoves->Location = System::Drawing::Point(577, 391);
+			this->num_MaxMoves->Location = System::Drawing::Point(866, 602);
+			this->num_MaxMoves->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->num_MaxMoves->Name = L"num_MaxMoves";
-			this->num_MaxMoves->Size = System::Drawing::Size(54, 20);
+			this->num_MaxMoves->Size = System::Drawing::Size(81, 26);
 			this->num_MaxMoves->TabIndex = 36;
 			this->num_MaxMoves->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 20, 0, 0, 0 });
 			// 
 			// btn_Open
 			// 
-			this->btn_Open->Location = System::Drawing::Point(733, 134);
+			this->btn_Open->Location = System::Drawing::Point(1100, 206);
+			this->btn_Open->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_Open->Name = L"btn_Open";
-			this->btn_Open->Size = System::Drawing::Size(75, 23);
+			this->btn_Open->Size = System::Drawing::Size(112, 35);
 			this->btn_Open->TabIndex = 39;
 			this->btn_Open->Text = L"Open Serial ";
 			this->btn_Open->UseVisualStyleBackColor = true;
@@ -1586,9 +1694,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_Close
 			// 
-			this->btn_Close->Location = System::Drawing::Point(733, 163);
+			this->btn_Close->Location = System::Drawing::Point(1100, 251);
+			this->btn_Close->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_Close->Name = L"btn_Close";
-			this->btn_Close->Size = System::Drawing::Size(75, 23);
+			this->btn_Close->Size = System::Drawing::Size(112, 35);
 			this->btn_Close->TabIndex = 39;
 			this->btn_Close->Text = L"Close Serial ";
 			this->btn_Close->UseVisualStyleBackColor = true;
@@ -1596,9 +1705,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_Clean
 			// 
-			this->btn_Clean->Location = System::Drawing::Point(255, 12);
+			this->btn_Clean->Location = System::Drawing::Point(382, 18);
+			this->btn_Clean->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_Clean->Name = L"btn_Clean";
-			this->btn_Clean->Size = System::Drawing::Size(75, 23);
+			this->btn_Clean->Size = System::Drawing::Size(112, 35);
 			this->btn_Clean->TabIndex = 40;
 			this->btn_Clean->Text = L"Clean";
 			this->btn_Clean->UseVisualStyleBackColor = true;
@@ -1606,9 +1716,10 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// btn_ScanCube
 			// 
-			this->btn_ScanCube->Location = System::Drawing::Point(978, 451);
+			this->btn_ScanCube->Location = System::Drawing::Point(1467, 694);
+			this->btn_ScanCube->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->btn_ScanCube->Name = L"btn_ScanCube";
-			this->btn_ScanCube->Size = System::Drawing::Size(75, 23);
+			this->btn_ScanCube->Size = System::Drawing::Size(112, 35);
 			this->btn_ScanCube->TabIndex = 41;
 			this->btn_ScanCube->Text = L"Scan Cube";
 			this->btn_ScanCube->UseVisualStyleBackColor = true;
@@ -1616,10 +1727,9 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			// 
 			// Form1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1308, 505);
-
+			this->ClientSize = System::Drawing::Size(1962, 777);
 			this->Controls->Add(this->btn_ScanCube);
 			this->Controls->Add(this->btn_Clean);
 			this->Controls->Add(this->btn_Close);
@@ -1707,6 +1817,7 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			this->Controls->Add(this->L1);
 			this->Controls->Add(this->U2);
 			this->Controls->Add(this->U1);
+			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->Name = L"Form1";
 			this->Text = L"Qbot";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numdd_ComPort))->EndInit();
@@ -2091,7 +2202,45 @@ private: System::Void btn_ScanCube_Click(System::Object^  sender, System::EventA
 	std::string tx_com_port = context.marshal_as<std::string>(btn_text);
 	
 	int flag = scanCube(tx_com_port, SP); 
+
+
+	//system("Bildverarbeitung.exe Up.jpeg Right.jpeg Front.jpeg Down.jpeg Left.jpeg Back.jpeg");
+	WinExec("Bildverarbeitung.exe Up.jpeg Right.jpeg Front.jpeg Down.jpeg Left.jpeg Back.jpeg", SW_HIDE);
+
+	Sleep(5000);
+
+	std::string cubestring;
+
+	std::fstream input("cubestring.txt");
+
+	getline(input, cubestring);
+
+	System::String^ cubestring_converted = gcnew String(cubestring.c_str());
+
+	txt_SolutionString->Clear();
+	txt_SolutionString->AppendText(cubestring_converted);
+
+	auto str_len = cubestring.length();
+	if (str_len == 54)
+	{
+		colorPanelsFromString(cubestring);
+		if (Erno.scramble_from_cubestring(cubestring, Erno.ptr_UP_, Erno.ptr_LEFT_, Erno.ptr_FRONT_, Erno.ptr_RIGHT_, Erno.ptr_BACK_, Erno.ptr_DOWN_) == 1)
+		{
+		}
+		else
+		{
+			txt_SolutionString->Clear();
+			txt_SolutionString->AppendText("Could not scramble Cube!");
+		}
+	}
+	else
+	{
+		txt_SolutionString->Clear();
+		txt_SolutionString->AppendText("Invalid Cubestring!");
+	}
+	int i; 
 }
+
 
 };
 

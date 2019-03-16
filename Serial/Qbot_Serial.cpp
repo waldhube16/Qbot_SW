@@ -272,7 +272,7 @@ int scanCube(std::string port, Serial* SP)
 	cap >> L;// = snap(cap);
 	imwrite("Left.jpeg", L);
 
-	flag += sendStringToArduino("Y2", 2, port, SP);
+	flag += sendStringToArduino("y2", 2, port, SP);
 
 	Sleep(1000);
 	for (i = 0; i < 4; i++)
@@ -328,6 +328,7 @@ int scanCube(std::string port, Serial* SP)
 	flag += sendStringToArduino("X1", 2, port, SP);
 	flag += sendStringToArduino("y0", 2, port, SP);
 	// the camera will be deinitialized automatically in VideoCapture destructor
+
 	return flag; 
 }
 
