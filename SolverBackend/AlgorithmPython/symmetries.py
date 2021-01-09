@@ -99,7 +99,7 @@ for s in range(N_SYM):
 ########################################################################################################################
 
 # ###### Generate the phase 1 table for the conjugation of the twist t by a symmetry s. twist_conj[t, s] = s*t*s^-1 ####
-fname = "conj_twist"
+fname = "SolverBackend/AlgorithmPython/CachedTables/conj_twist"
 if not path.isfile(fname):
     print('On the first run, several tables will be created. This takes from 1/2 hour (e.g. PC) to 6 hours '
           '(e.g. RaspberryPi3), depending on the hardware.')
@@ -125,7 +125,7 @@ fh.close()
 # ######################################################################################################################
 
 # #################### Generate the phase 2 table for the conjugation of the URtoDB coordinate by a symmetrie ##########
-fname = "conj_ud_edges"
+fname = "SolverBackend/AlgorithmPython/CachedTables/conj_ud_edges"
 if not path.isfile(fname):
     print("creating " + fname + " table...")
     ud_edges_conj = ar.array('H', [0] * (N_UD_EDGES * N_SYM_D4h))
@@ -153,9 +153,9 @@ fh.close()
 # ######################################################################################################################
 
 # ############## Generate the tables to handle the symmetry reduced flip-slice coordinate in  phase 1 ##################
-fname1 = "fs_classidx"
-fname2 = "fs_sym"
-fname3 = "fs_rep"
+fname1 = "SolverBackend/AlgorithmPython/CachedTables/fs_classidx"
+fname2 = "SolverBackend/AlgorithmPython/CachedTables/fs_sym"
+fname3 = "SolverBackend/AlgorithmPython/CachedTables/fs_rep"
 if not (path.isfile(fname1) and path.isfile(fname2) and path.isfile(fname3)):
     print("creating " + "flipslice sym-tables...")
     flipslice_classidx = ar.array('H', [INVALID] * (N_FLIP * N_SLICE))  # idx -> classidx
@@ -219,9 +219,9 @@ else:
 ########################################################################################################################
 
 # ############ Generate the tables to handle the symmetry reduced corner permutation coordinate in phase 2 #############
-fname1 = "co_classidx"
-fname2 = "co_sym"
-fname3 = "co_rep"
+fname1 = "SolverBackend/AlgorithmPython/CachedTables/co_classidx"
+fname2 = "SolverBackend/AlgorithmPython/CachedTables/co_sym"
+fname3 = "SolverBackend/AlgorithmPython/CachedTables/co_rep"
 if not (path.isfile(fname1) and path.isfile(fname2) and path.isfile(fname3)):
     print("creating " + "corner sym-tables...")
     corner_classidx = ar.array('H', [INVALID] * N_CORNERS)  # idx -> classidx

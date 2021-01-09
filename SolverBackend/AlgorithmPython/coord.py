@@ -145,7 +145,7 @@ class CoordCube:
 
 def create_phase2_edgemerge_table():
     """phase2_edgemerge retrieves the initial phase 2 ud_edges coordinate from the u_edges and d_edges coordinates."""
-    fname = "phase2_edgemerge"
+    fname = "SolverBackend/AlgorithmPython/CachedTables/phase2_edgemerge"
     global u_edges_plus_d_edges_to_ud_edges
     c_u = cb.CubieCube()
     c_d = cb.CubieCube()
