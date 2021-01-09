@@ -1,0 +1,40 @@
+Author: Herbert Kociemba/Tazeg
+Repo: https://github.com/hkociemba/RubiksCube-TwophaseSolver.git
+Cloned on Saturday, 09.01.2021
+
+
+
+file dependencies: 
+solver.py
+    face.py
+        defs
+        enums
+        cubie
+    cubie.py
+        defs
+        enums 
+        face 
+        misc
+    symmetries
+        cubie
+        defs
+        enums
+    coord 
+        cubie
+        enums
+        moves 
+        pruning
+        symmetries
+        defs
+        enums
+    enums 
+    moves 
+        cubie
+        enums
+        defs
+    pruning 
+        defs
+        enums
+        moves
+        symmetries
+        cubie
