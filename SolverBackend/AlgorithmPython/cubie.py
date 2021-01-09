@@ -1,9 +1,9 @@
 # ####### The cube on the cubie level is described by the permutation and orientations of corners and edges ############
 
-from defs import cornerFacelet, edgeFacelet, cornerColor, edgeColor, N_SYM
-from enums import Color, Corner as Co, Edge as Ed
-import face
-from misc import c_nk, rotate_left, rotate_right
+from .defs import cornerFacelet, edgeFacelet, cornerColor, edgeColor, N_SYM
+from .enums import Color, Corner as Co, Edge as Ed
+from . import face
+from .misc import c_nk, rotate_left, rotate_right
 from random import randrange
 
 
@@ -196,7 +196,7 @@ class CubieCube:
 
     def symmetries(self):
         """Generate a list of the symmetries and antisymmetries of the cubie cube."""
-        from symmetries import symCube, inv_idx  # not nice here but else we have circular imports
+        from .symmetries import symCube, inv_idx  # not nice here but else we have circular imports
         s = []
         d = CubieCube()
         for j in range(N_SYM):

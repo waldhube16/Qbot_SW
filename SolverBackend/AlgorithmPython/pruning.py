@@ -1,11 +1,11 @@
 # ##################### The pruning tables cut the search tree during the search. ######################################
 # ##################### The pruning values are stored modulo 3 which saves a lot of memory. ############################
 
-import defs
-import enums
-import moves as mv
-import symmetries as sy
-import cubie as cb
+from . import defs
+from . import enums
+from . import moves as mv
+from . import symmetries as sy
+from . import cubie as cb
 from os import path
 import time
 import array as ar

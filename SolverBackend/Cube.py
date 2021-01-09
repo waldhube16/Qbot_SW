@@ -39,7 +39,7 @@ class Cube():
         """
         initializes the Cube to the solved state with standard colors in rgb format
         """
-        self.cubestring = '123456789RRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB'
+        self.cubestring = 'UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB'
         self.Colors = {'U': Colors.white, 'R': Colors.red, 'F': Colors.green, 'D': Colors.yellow, 'L': Colors.orange, 'B': Colors.blue}
         pass
    
