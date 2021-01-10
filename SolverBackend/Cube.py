@@ -33,16 +33,35 @@ class Cube():
     The Cube object consists of the cubestring and the manipulation methods.
     """
     cubestring = str('')
-    colors = dict()
+    colors = dict() #fixed right now, maybe add the possibility to set custom colors
 
     def __init__(self):
         """
         initializes the Cube to the solved state with standard colors in rgb format
+        can also be used to reset the cube to the initial state
         """
         self.cubestring = 'UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB'
-        self.Colors = {'U': Colors.white, 'R': Colors.red, 'F': Colors.green, 'D': Colors.yellow, 'L': Colors.orange, 'B': Colors.blue}
+        self.colors = {'U': Colors.white, 'R': Colors.red, 'F': Colors.green, 'D': Colors.yellow, 'L': Colors.orange, 'B': Colors.blue}
         pass
-   
+    
+
+    def scramble(self, scramblestring):
+        """
+        scrambles the cubestring based on an input string 
+        This imputstring can be either a cubestring or a sequence of moves. 
+        """
+        #reset to start with a clean cube
+        self.__init__() 
+        if len(scramblestring) == 0:
+            #no input given --> generate random cube
+            bRandom = True
+        elif len(scramblestring) == 54 and checkString(scramblestring):
+            #A cubestring was used
+            bString = True
+        else:
+            #A sequence was chosen
+            bSequence = True
+        pass
 
     def U(self):
         """
@@ -91,6 +110,105 @@ class Cube():
 
         self.cubestring = newcubestring 
         print(newcubestring)
+        pass
+
+    def R(self):
+        """
+        Turn right layer clockwise by flupping to the top rotating there and flipping back
+        """
+        self.rotate_zprime()
+        self.U()
+        self.rotate_z()
+        pass
+
+    def r(self):
+        """
+        Turn right layer counter-clockwise by flupping to the top rotating there and flipping back
+        """
+        self.rotate_zprime()
+        self.u()
+        self.rotate_z()
+        pass
+
+    def F(self):
+        """
+        Turn front layer clockwise by flupping to the top rotating there and flipping back
+        """
+        self.rotate_x()
+        self.U()
+        self.rotate_xprime()
+        pass
+
+    def f(self):
+        """
+        Turn front layer counter-clockwise by flupping to the top rotating there and flipping back
+        """
+        self.rotate_x()
+        self.u()
+        self.rotate_xprime()
+        pass
+    def F(self):
+        """
+        Turn front layer clockwise by flupping to the top rotating there and flipping back
+        """
+        self.rotate_x()
+        self.U()
+        self.rotate_xprime()
+        pass
+
+    def D(self):
+        """
+        Turn down layer clockwise by flupping to the top rotating there and flipping back
+        """
+        self.rotate_xprime()
+        self.rotate_xprime()
+        self.U()
+        self.rotate_x()
+        self.rotate_x()
+        pass
+    def d(self):
+        """
+        Turn down layer counter-clockwise by flupping to the top rotating there and flipping back
+        """
+        self.rotate_xprime()
+        self.rotate_xprime()
+        self.u()
+        self.rotate_x()
+        self.rotate_x()
+        pass 
+
+    def L(self):
+        """
+        Turn left layer clockwise by flupping to the top rotating there and flipping back
+        """
+        self.rotate_z()
+        self.U()
+        self.rotate_zprime()
+        pass
+    def l(self):
+        """
+        Turn left layer counter-clockwise by flupping to the top rotating there and flipping back
+        """
+        self.rotate_z()
+        self.u()
+        self.rotate_zprime()
+        pass
+
+    def B(self):
+        """
+        Turn back layer clockwise by flupping to the top rotating there and flipping back
+        """
+        self.rotate_xprime()
+        self.U()
+        self.rotate_x()
+        pass
+    def b(self):
+        """
+        Turn back layer counter-clockwise by flupping to the top rotating there and flipping back
+        """
+        self.rotate_xprime()
+        self.u()
+        self.rotate_x()
         pass
 
     def rotate_y(self):
@@ -276,4 +394,34 @@ class Cube():
             #needs to be copied using numpy because just copying the dict makes the array in newfaces read-only
             newfaces[face] = np.copy(oldfaces[face])
         return oldfaces,newfaces
+    
+    def print(self):
+        """
+        Prints the cubestring formatted to the console
+        """
+        spaces = "   "
+        st = self.cubestring
+        #print up face
+        print(spaces + st[0:3] + spaces + spaces)
+        print(spaces + st[3:6] + spaces + spaces)
+        print(spaces + st[6:9] + spaces + spaces)
+        #print L/F/R/B faces
+        print(st[36:39]+st[18:21]+st[9:12]+st[45:48])
+        print(st[39:42]+st[21:24]+st[12:15]+st[48:51])
+        print(st[42:45]+st[24:27]+st[15:18]+st[51:54])
+        #print down face
+        print(spaces + st[27:30] + spaces + spaces)
+        print(spaces + st[30:33] + spaces + spaces)
+        print(spaces + st[33:36] + spaces + spaces)
+        pass
     pass
+
+def checkString(strg):
+    """
+    checks if the input string contains 
+    returns True if it only contains the characters URFDLB
+    """
+    import re
+    search=re.compile(r'[^URFDLB]').search
+    result = bool(search(strg))
+    return not result

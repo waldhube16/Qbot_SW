@@ -239,5 +239,9 @@ def solve(cubestring, max_length=20, timeout=3):
     if len(solutions) > 0:
         for m in solutions[-1]:  # the last solution is the shortest
             s += m.name + ' '
-    return s + '(' + str(len(s)//3) + 'f)'
+    #return s + '(' + str(len(s)//3) + 'f)'
+    #replace 3 with prime indicator
+    s = s.replace("3", "'")
+    #return the sequence and the number of moves
+    return s.replace("1",""), len(s)//3
 ########################################################################################################################
