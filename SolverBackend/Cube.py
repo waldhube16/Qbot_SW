@@ -84,9 +84,8 @@ class Cube():
 
         self.cubestring = newcubestring
 
-        print(newcubestring)
+        #print(newcubestring)
         pass
-
     def u(self):
         """
         Turn the upper layer counterclockwise.
@@ -109,21 +108,20 @@ class Cube():
         newcubestring = self.getCubeString(newfaces)
 
         self.cubestring = newcubestring 
-        print(newcubestring)
+        #print(newcubestring)
         pass
 
     def R(self):
         """
-        Turn right layer clockwise by flupping to the top rotating there and flipping back
+        Turn right layer clockwise by flipping to the top rotating there and flipping back
         """
         self.rotate_zprime()
         self.U()
         self.rotate_z()
         pass
-
     def r(self):
         """
-        Turn right layer counter-clockwise by flupping to the top rotating there and flipping back
+        Turn right layer counter-clockwise by flipping to the top rotating there and flipping back
         """
         self.rotate_zprime()
         self.u()
@@ -132,33 +130,24 @@ class Cube():
 
     def F(self):
         """
-        Turn front layer clockwise by flupping to the top rotating there and flipping back
+        Turn front layer clockwise by flipping to the top rotating there and flipping back
         """
         self.rotate_x()
         self.U()
         self.rotate_xprime()
         pass
-
     def f(self):
         """
-        Turn front layer counter-clockwise by flupping to the top rotating there and flipping back
+        Turn front layer counter-clockwise by flipping to the top rotating there and flipping back
         """
         self.rotate_x()
         self.u()
-        self.rotate_xprime()
-        pass
-    def F(self):
-        """
-        Turn front layer clockwise by flupping to the top rotating there and flipping back
-        """
-        self.rotate_x()
-        self.U()
         self.rotate_xprime()
         pass
 
     def D(self):
         """
-        Turn down layer clockwise by flupping to the top rotating there and flipping back
+        Turn down layer clockwise by flipping to the top rotating there and flipping back
         """
         self.rotate_xprime()
         self.rotate_xprime()
@@ -168,7 +157,7 @@ class Cube():
         pass
     def d(self):
         """
-        Turn down layer counter-clockwise by flupping to the top rotating there and flipping back
+        Turn down layer counter-clockwise by flipping to the top rotating there and flipping back
         """
         self.rotate_xprime()
         self.rotate_xprime()
@@ -179,7 +168,7 @@ class Cube():
 
     def L(self):
         """
-        Turn left layer clockwise by flupping to the top rotating there and flipping back
+        Turn left layer clockwise by flipping to the top rotating there and flipping back
         """
         self.rotate_z()
         self.U()
@@ -187,7 +176,7 @@ class Cube():
         pass
     def l(self):
         """
-        Turn left layer counter-clockwise by flupping to the top rotating there and flipping back
+        Turn left layer counter-clockwise by flipping to the top rotating there and flipping back
         """
         self.rotate_z()
         self.u()
@@ -196,7 +185,7 @@ class Cube():
 
     def B(self):
         """
-        Turn back layer clockwise by flupping to the top rotating there and flipping back
+        Turn back layer clockwise by flipping to the top rotating there and flipping back
         """
         self.rotate_xprime()
         self.U()
@@ -204,7 +193,7 @@ class Cube():
         pass
     def b(self):
         """
-        Turn back layer counter-clockwise by flupping to the top rotating there and flipping back
+        Turn back layer counter-clockwise by flipping to the top rotating there and flipping back
         """
         self.rotate_xprime()
         self.u()
@@ -232,17 +221,16 @@ class Cube():
         newcubestring = self.getCubeString(newfaces)
 
         self.cubestring = newcubestring
-        print(newcubestring) 
+        #print(newcubestring) 
         pass
-
     def rotate_yprime(self):
         """
         Rearrange the cubefaces to emulate the rotation of the cube in counterclockwise y-direction. 
         """
         oldfaces, newfaces = self.getCubeFaces()
         #rotate Up/down face 
-        newfaces['U'] = np.rot90(oldfaces['U'],k=-1)
-        newfaces['D'] = np.rot90(oldfaces['D'],k=1)
+        newfaces['U'] = np.rot90(oldfaces['U'],k=1)
+        newfaces['D'] = np.rot90(oldfaces['D'],k=-1)
         #L->F
         newfaces['F']   = oldfaces['L'] 
         #F->R
@@ -255,7 +243,7 @@ class Cube():
         newcubestring = self.getCubeString(newfaces)
 
         self.cubestring = newcubestring
-        print(newcubestring)
+        #print(newcubestring)
         pass
 
     def rotate_x(self):
@@ -267,8 +255,8 @@ class Cube():
         #rotate Up/down face #k=-1 -> clockwise
         newfaces['R'] = np.rot90(oldfaces['R'],k=-1) 
         newfaces['L'] = np.rot90(oldfaces['L'],k=1) 
-        newfaces['U'] = np.rot90(oldfaces['U'],k=-2) 
-        newfaces['B'] = np.rot90(oldfaces['B'],k=-2) 
+        oldfaces['U'] = np.rot90(oldfaces['U'],k=-2) 
+        oldfaces['B'] = np.rot90(oldfaces['B'],k=-2) 
         #U->B
         newfaces['B']   = oldfaces['U'] 
         #F->U
@@ -281,9 +269,8 @@ class Cube():
         newcubestring = self.getCubeString(newfaces)
 
         self.cubestring = newcubestring
-        print(newcubestring)
+        #print(newcubestring)
         pass
-
     def rotate_xprime(self):
         """
         Rearrange the cubefaces to emulate the rotation of the cube in clockwise x-direction. 
@@ -292,8 +279,8 @@ class Cube():
         #rotate Up/down face #k=-1 -> clockwise
         newfaces['R'] = np.rot90(oldfaces['R'],k=1) 
         newfaces['L'] = np.rot90(oldfaces['L'],k=-1) 
-        newfaces['D'] = np.rot90(oldfaces['D'],k=2) 
-        newfaces['B'] = np.rot90(oldfaces['B'],k=2) 
+        oldfaces['D'] = np.rot90(oldfaces['D'],k=2) 
+        oldfaces['B'] = np.rot90(oldfaces['B'],k=2) 
         #D->B
         newfaces['B']   = oldfaces['D'] 
         #B->U
@@ -306,7 +293,7 @@ class Cube():
         newcubestring = self.getCubeString(newfaces)
 
         self.cubestring = newcubestring
-        print(newcubestring)
+        #print(newcubestring)
         pass
 
     def rotate_z(self):
@@ -316,12 +303,15 @@ class Cube():
         """
         oldfaces, newfaces = self.getCubeFaces()
         #rotate Up/down face #k=-1 -> clockwise
-        newfaces['U'] = np.rot90(oldfaces['U'],k=-1) 
-        newfaces['F'] = np.rot90(oldfaces['F'],k=-1) 
-        newfaces['R'] = np.rot90(oldfaces['R'],k=-1) 
-        newfaces['D'] = np.rot90(oldfaces['D'],k=-1) 
-        newfaces['L'] = np.rot90(oldfaces['L'],k=-1) 
-        newfaces['B'] = np.rot90(oldfaces['B'],k=1)
+        oldfaces['U'] = np.rot90(oldfaces['U'],k=-1) 
+        oldfaces['F'] = np.rot90(oldfaces['F'],k=-1) 
+        oldfaces['R'] = np.rot90(oldfaces['R'],k=-1) 
+        oldfaces['D'] = np.rot90(oldfaces['D'],k=-1) 
+        oldfaces['L'] = np.rot90(oldfaces['L'],k=-1) 
+        oldfaces['B'] = np.rot90(oldfaces['B'],k=1)
+        
+        newfaces['F']   = oldfaces['F'] 
+        newfaces['B']   = oldfaces['B'] 
         #U->R
         newfaces['R']   = oldfaces['U'] 
         #R->D
@@ -334,21 +324,23 @@ class Cube():
         newcubestring = self.getCubeString(newfaces)
 
         self.cubestring = newcubestring
-        print(newcubestring)
+        #print(newcubestring)
         pass
-
     def rotate_zprime(self):
         """
         Rearrange the cubefaces to emulate the rotation of the cube in clockwise x-direction. 
         """
         oldfaces, newfaces = self.getCubeFaces()
         #rotate Up/down face #k=-1 -> clockwise
-        newfaces['U'] = np.rot90(oldfaces['U'],k=1) 
-        newfaces['F'] = np.rot90(oldfaces['F'],k=1) 
-        newfaces['R'] = np.rot90(oldfaces['R'],k=1) 
-        newfaces['D'] = np.rot90(oldfaces['D'],k=1) 
-        newfaces['L'] = np.rot90(oldfaces['L'],k=1) 
-        newfaces['B'] = np.rot90(oldfaces['B'],k=-1)
+        oldfaces['U'] = np.rot90(oldfaces['U'],k=1) 
+        oldfaces['F'] = np.rot90(oldfaces['F'],k=1) 
+        oldfaces['R'] = np.rot90(oldfaces['R'],k=1) 
+        oldfaces['D'] = np.rot90(oldfaces['D'],k=1) 
+        oldfaces['L'] = np.rot90(oldfaces['L'],k=1) 
+        oldfaces['B'] = np.rot90(oldfaces['B'],k=-1)
+        
+        newfaces['F']   = oldfaces['F'] 
+        newfaces['B']   = oldfaces['B'] 
         #D->R
         newfaces['R']   = oldfaces['D'] 
         #L->D
@@ -361,7 +353,7 @@ class Cube():
         newcubestring = self.getCubeString(newfaces)
 
         self.cubestring = newcubestring
-        print(newcubestring)
+        #print(newcubestring)
         pass
 
     def getCubeString(self, newfaces):
@@ -369,7 +361,8 @@ class Cube():
         Takes the cubefaces and and return the cubestring. 
         """
         newcubestring = ''
-        for face in newfaces:
+        order = ["U", "R", "F", "D", "L", "B"] 
+        for face in order:
             #transform each array into 1x9
             newfaces[face] = np.reshape(newfaces[face], (1,9))
             #convert back to bytes and decode
