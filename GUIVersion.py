@@ -1,12 +1,12 @@
 # This Python file uses the following encoding: utf-8
 import sys
 import os
-
+os.system('pyuic5 GUI/QbotMain.ui -o GUI/QbotMain.py')
 from GUI.QbotMain import Ui_QbotGUI
 from PyQt5.QtWidgets import QMainWindow, QApplication
 
 from SolverBackend.Cube import Cube as erno
-#os.system('pyuic5 GUI/QbotMain.ui -o GUI/QbotMain.py')
+
 
 cube = erno()
 
