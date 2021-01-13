@@ -208,11 +208,13 @@ def solve(cubestring, max_length=20, timeout=3):
     fc = face.FaceCube()
     s = fc.from_string(cubestring)
     if s != cubie.CUBE_OK:
-        return s  # Error in facelet cube
+        nmoves = 0
+        return s,nmoves  # Error in facelet cube
     cc = fc.to_cubie_cube()
     s = cc.verify()
     if s != cubie.CUBE_OK:
-        return s  # Error in cubie cube
+        nmoves = 0
+        return s,nmoves # Error in cubie cube
 
     my_threads = []
     s_time = time.monotonic()

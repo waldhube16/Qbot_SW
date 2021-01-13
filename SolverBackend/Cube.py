@@ -82,7 +82,7 @@ class Cube():
             #replace 2s in string with preceding letter
             while scramblestring.find("2") != -1:
                 index = scramblestring.find("2")
-                scramblestring[index] = " " + scramblestring[index-1]
+                scramblestring = scramblestring.replace(scramblestring[index], " " + scramblestring[index-1],1)
 
             moveset = scramblestring.split(" ")
             for move in moveset:
