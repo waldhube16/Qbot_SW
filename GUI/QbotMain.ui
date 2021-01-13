@@ -25955,7 +25955,7 @@ x-Direction</string>
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -25994,7 +25994,7 @@ x-Direction</string>
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents_3">
+          <widget class="QWidget" name="scrollAreaManual">
            <property name="geometry">
             <rect>
              <x>0</x>
@@ -26516,7 +26516,7 @@ Enable/Disable</string>
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-623</y>
+             <y>0</y>
              <width>107</width>
              <height>1000</height>
             </rect>

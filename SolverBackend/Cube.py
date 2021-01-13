@@ -50,8 +50,6 @@ class Cube():
         scrambles the cubestring based on an input string 
         This imputstring can be either a cubestring or a sequence of moves. 
         """
-        #reset to start with a clean cube
-        self.__init__() 
         if len(scramblestring) == 0:
             #no input given --> generate random cube
             bRandom = True
@@ -61,6 +59,34 @@ class Cube():
         else:
             #A sequence was chosen
             bSequence = True
+            switcher = {
+                "U": self.U,
+                "U'": self.u,
+                "R": self.R,
+                "R'": self.r,
+                "F": self.F,
+                "F'": self.f,
+                "D": self.D,
+                "D'": self.d,
+                "L": self.L,
+                "L'": self.l,
+                "B": self.B,
+                "B'": self.b,
+                "x": self.rotate_x,
+                "x'": self.rotate_xprime,
+                "y": self.rotate_y,
+                "y'": self.rotate_yprime,
+                "z": self.rotate_z,
+                "z'": self.rotate_zprime
+            }
+            #replace 2s in string with preceding letter
+            while scramblestring.find("2") != -1:
+                index = scramblestring.find("2")
+                scramblestring[index] = " " + scramblestring[index-1]
+
+            moveset = scramblestring.split(" ")
+            for move in moveset:
+                switcher[move]()
         pass
 
     def U(self):
