@@ -1,10 +1,12 @@
 # This Python file uses the following encoding: utf-8
 import sys
 import os
+
+from PyQt5.QtCore import QElapsedTimer, QTimer
 os.system('pyuic5 GUI/QbotMain.ui -o GUI/QbotMain.py')
 from GUI.QbotMain import Ui_QbotGUI
 from PyQt5.QtWidgets import QMainWindow, QApplication, QFrame, QPushButton, QToolButton
-
+from PyQt5 import QtSerialPort
 from SolverBackend.Cube import Cube as erno
 import SolverBackend.AlgorithmPython.solver as solver
 
@@ -14,8 +16,15 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
     def __init__(self):
         super(QbotGUI, self).__init__()
         self.setupUi(self)
+        #instantiate other components 
         self.cube = erno()
         self.solver = solver
+        # self.serial = QtSerialPort.QSerialPort()
+        # self.timer1ms = QTimer()
+        # self.timer1ms.timeout.connect(self.solutionProgBarHandler)
+        # self.timer1ms.setInterval(1)
+        # self.timer1ms.start(1) 
+        #link GUI elements to methods to execute
         self.Menu1.triggered.connect(self.cube.print)
         manualChildren = self.scrollAreaManual.children() #get all children in scroll area containing move buttons 
         for btn in manualChildren:
@@ -28,7 +37,9 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
             if type(btn) == QToolButton:
                 btn.clicked.connect(self.applyPattern)
         self.btn_GenSolution.clicked.connect(self.generateSolution)
-        
+        self.actionGenerate_Random.triggered.connect(self.randomizeCube)
+        self.btn_Apply.clicked.connect(self.applyStringToCube)
+
     def performMoveOnCube(self):
         """
         This function is linked to the move and rotate buttons and changes the cubestring accordingly
@@ -38,12 +49,34 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         self.stringToCubemap()
         pass
 
+    def applyStringToCube(self):
+        """
+        This function applies the currently diplayed string on the 2D cube
+        """
+        movestring = self.lineEdit_InOut.text() #get string from line edit
+        self.cube.scramble(movestring)  #manipulate cubestring according to input
+        self.stringToCubemap()
+        pass
+
+
     def resetCube(self):
         """
         Rest cubestring and 2d Map
         """
         self.cube.__init__()
         self.stringToCubemap()
+        pass
+
+    def randomizeCube(self):
+        """
+        Generate random scramble, apply to cube and display string
+        """
+        self.cube.__init__()
+        rand = self.cube.genRandom()
+        self.cube.scramble(rand)
+        self.stringToCubemap()
+        self.lineEdit_InOut.setText(rand)
+        self.label_CurrentString.setText("Random:")
         pass
 
     def stringToCubemap(self):
@@ -88,22 +121,42 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
             "Tetris": "L R F B U' D' L' R'",
             "4H": "L2 R2 U2 L2 R2 U2 y L2 R2 U2 L2 R2 U2 y'",
             "4I": "L2 R2 U2 L2 R2 U2 x L2 R2 U2 L2 R2 U2 x'"
+            
         }
         self.cube.scramble(patterns[identifier])  #manipulate cubestring according to input
         self.stringToCubemap()
         self.lineEdit_InOut.setText(patterns[identifier])
         self.label_CurrentString.setText("Pattern:")
         pass
+
     def generateSolution(self):
         """
         Generate a solution for the current cubestring and display in the GUI
-        """
-        timeout = self.spinBox_Timeout.value()
+        """  
+        timer = QElapsedTimer()
+        timer.start()
+        solver_timeout = self.spinBox_Timeout.value()
         nmoves = self.spinBox_NMoves.value()
-        solution, movecount = self.solver.solve(self.cube.cubestring, nmoves, timeout)
+        solution, movecount = self.solver.solve(self.cube.cubestring, max_length=nmoves, timeout=solver_timeout)
         self.lineEdit_InOut.setText(solution)
         self.label_CurrentString.setText("Solution:")
+        self.plainText_Log.appendPlainText("Solution calculation took: {} ms".format(timer.nsecsElapsed()/1000000))
+        
+        # self.timer1ms.stop()
         pass
+
+    def solutionProgBarHandler(self):
+        """
+        Updates the progress bar while a solution is calcuated
+        """
+        currvalue = self.progBar_Solution.value()
+        if currvalue == 1000:
+            self.progBar_Solution.setValue(0)
+        else:
+            self.progBar_Solution.setValue(currvalue+1)
+
+        pass
+
     def cubemapToString(self):
         """
         This function takes the 2D cube representation and creates the corresponding cubestring #TODO

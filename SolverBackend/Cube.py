@@ -86,9 +86,26 @@ class Cube():
 
             moveset = scramblestring.split(" ")
             for move in moveset:
-                switcher[move]()
+                func = switcher.get(move, lambda: None)
+                func()
         pass
 
+    def genRandom(self):
+        """
+        generates a random cube scramble, for now fixed lengh to 20 moves
+        """
+        import random
+        scramble_length = 20
+        moves = ["U", "U'", "U2", "R", "R'", "R2", "F", "F'", "F2", "D", "D'", "D2", "L", "L'", "L2", "B", "B'", "B2"]	
+        random_moves = []
+        for index in range(0, scramble_length):
+            currmove = moves[random.randint(0, len(moves) - 1)]
+            random_moves.append(currmove)
+            random.shuffle(random_moves)
+        random_string = " ".join(random_moves)
+
+        return random_string
+        
     def U(self):
         """
         Turn the upper layer clockwise.
