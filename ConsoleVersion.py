@@ -1,7 +1,7 @@
 import SolverBackend.AlgorithmPython.solver as solver
 import SolverBackend.Cube as erno
 import time
-
+import cv2 as cv
 cube = erno.Cube()
 
 def chooseCommand(argument):
@@ -42,8 +42,10 @@ if __name__ == "__main__":
     # print(result)
     # print(nmoves)
     # print(f'solver took: {end-start} seconds')   
-
-
+    img = cv.imread("ExampleImages/Back.jpeg")
+    cv.imshow("test",img)
+    cv.waitKey(0)
+    cv.destroyAllWindows()
     while True:
         cmd = input("Enter Command:\n")
         if cmd == "solve":

@@ -5,11 +5,11 @@ import os
 from PyQt5.QtCore import QElapsedTimer, QTimer
 os.system('pyuic5 GUI/QbotMain.ui -o GUI/QbotMain.py')
 from GUI.QbotMain import Ui_QbotGUI
-from PyQt5.QtWidgets import QMainWindow, QApplication, QFrame, QPushButton, QToolButton
+from PyQt5.QtWidgets import QMainWindow, QApplication, QFrame, QPushButton, QToolButton, QErrorMessage
 from PyQt5 import QtSerialPort
 from SolverBackend.Cube import Cube as erno
-import SolverBackend.AlgorithmPython.solver as solver
-
+# import SolverBackend.AlgorithmPython.solver as solver
+import kociemba
 
 class QbotGUI(QMainWindow, Ui_QbotGUI):
     
@@ -18,7 +18,7 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         self.setupUi(self)
         #instantiate other components 
         self.cube = erno()
-        self.solver = solver
+        # self.solver = solver
         # self.serial = QtSerialPort.QSerialPort()
         # self.timer1ms = QTimer()
         # self.timer1ms.timeout.connect(self.solutionProgBarHandler)
@@ -135,9 +135,16 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         """  
         timer = QElapsedTimer()
         timer.start()
-        solver_timeout = self.spinBox_Timeout.value()
-        nmoves = self.spinBox_NMoves.value()
-        solution, movecount = self.solver.solve(self.cube.cubestring, max_length=nmoves, timeout=solver_timeout)
+        solution = "No Solution"
+        try:
+            solution = kociemba.solve(self.cube.cubestring)
+        except Exception as err:
+            print(err)
+            error_dialog = QErrorMessage()
+            error_dialog.showMessage(err.args[0])
+            error_dialog.exec_()
+            solution = err.args[0]
+
         self.lineEdit_InOut.setText(solution)
         self.label_CurrentString.setText("Solution:")
         self.plainText_Log.appendPlainText("Solution calculation took: {} ms".format(timer.nsecsElapsed()/1000000))

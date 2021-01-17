@@ -503,7 +503,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
       <property name="movable">
        <bool>true</bool>
@@ -25955,7 +25955,7 @@ x-Direction</string>
       </property>
       <property name="minimumSize">
        <size>
-        <width>198</width>
+        <width>190</width>
         <height>0</height>
        </size>
       </property>
@@ -26006,9 +26006,9 @@ x-Direction</string>
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-121</y>
-             <width>131</width>
-             <height>518</height>
+             <y>0</y>
+             <width>121</width>
+             <height>422</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -26017,6 +26017,32 @@ x-Direction</string>
               <property name="spacing">
                <number>6</number>
               </property>
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QToolButton" name="btn_Clean">
+                <property name="toolTip">
+                 <string>Reset Cube</string>
+                </property>
+                <property name="text">
+                 <string>Clean</string>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>Resources/Clean.png</normaloff>Resources/Clean.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>60</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="shortcut">
+                 <string>C</string>
+                </property>
+                <property name="autoRaise">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
               <item>
                <layout class="QGridLayout" name="gridLayout_3">
                 <property name="leftMargin">
@@ -26028,31 +26054,6 @@ x-Direction</string>
                 <property name="verticalSpacing">
                  <number>2</number>
                 </property>
-                <item row="1" column="0" alignment="Qt::AlignHCenter">
-                 <widget class="QPushButton" name="btn_U">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>40</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="text">
-                   <string>U</string>
-                  </property>
-                  <property name="shortcut">
-                   <string>Shift+U</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="3" column="1" alignment="Qt::AlignHCenter">
                  <widget class="QPushButton" name="btn_f">
                   <property name="maximumSize">
@@ -26069,120 +26070,6 @@ x-Direction</string>
                   </property>
                   <property name="shortcut">
                    <string>F</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1" alignment="Qt::AlignHCenter">
-                 <widget class="QPushButton" name="btn_u">
-                  <property name="maximumSize">
-                   <size>
-                    <width>40</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="text">
-                   <string>U'</string>
-                  </property>
-                  <property name="shortcut">
-                   <string>U</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="7" column="1" alignment="Qt::AlignHCenter">
-                 <widget class="QPushButton" name="btn_b">
-                  <property name="maximumSize">
-                   <size>
-                    <width>40</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="text">
-                   <string>B'</string>
-                  </property>
-                  <property name="shortcut">
-                   <string>B</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="0" alignment="Qt::AlignHCenter">
-                 <widget class="QPushButton" name="btn_F">
-                  <property name="maximumSize">
-                   <size>
-                    <width>40</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="text">
-                   <string>F</string>
-                  </property>
-                  <property name="shortcut">
-                   <string>Shift+F</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="6" column="0" alignment="Qt::AlignHCenter">
-                 <widget class="QPushButton" name="btn_L">
-                  <property name="maximumSize">
-                   <size>
-                    <width>40</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="text">
-                   <string>L</string>
-                  </property>
-                  <property name="shortcut">
-                   <string>Shift+L</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="0" alignment="Qt::AlignHCenter">
-                 <widget class="QPushButton" name="btn_D">
-                  <property name="maximumSize">
-                   <size>
-                    <width>40</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="text">
-                   <string>D</string>
-                  </property>
-                  <property name="shortcut">
-                   <string>Shift+D</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="7" column="0" alignment="Qt::AlignHCenter">
-                 <widget class="QPushButton" name="btn_B">
-                  <property name="maximumSize">
-                   <size>
-                    <width>40</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="text">
-                   <string>B</string>
-                  </property>
-                  <property name="shortcut">
-                   <string>Shift+B</string>
                   </property>
                  </widget>
                 </item>
@@ -26205,8 +26092,8 @@ x-Direction</string>
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="1" alignment="Qt::AlignHCenter">
-                 <widget class="QPushButton" name="btn_d">
+                <item row="4" column="0" alignment="Qt::AlignHCenter">
+                 <widget class="QPushButton" name="btn_D">
                   <property name="maximumSize">
                    <size>
                     <width>40</width>
@@ -26217,10 +26104,67 @@ x-Direction</string>
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="text">
-                   <string>D'</string>
+                   <string>D</string>
                   </property>
                   <property name="shortcut">
-                   <string>D</string>
+                   <string>Shift+D</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1" alignment="Qt::AlignHCenter">
+                 <widget class="QPushButton" name="btn_r">
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>R'</string>
+                  </property>
+                  <property name="shortcut">
+                   <string>R</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="0" alignment="Qt::AlignHCenter">
+                 <widget class="QPushButton" name="btn_B">
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>B</string>
+                  </property>
+                  <property name="shortcut">
+                   <string>Shift+B</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0" alignment="Qt::AlignHCenter">
+                 <widget class="QPushButton" name="btn_F">
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>F</string>
+                  </property>
+                  <property name="shortcut">
+                   <string>Shift+F</string>
                   </property>
                  </widget>
                 </item>
@@ -26249,8 +26193,8 @@ x-Direction</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="1" alignment="Qt::AlignHCenter">
-                 <widget class="QPushButton" name="btn_r">
+                <item row="7" column="1" alignment="Qt::AlignHCenter">
+                 <widget class="QPushButton" name="btn_b">
                   <property name="maximumSize">
                    <size>
                     <width>40</width>
@@ -26261,10 +26205,29 @@ x-Direction</string>
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="text">
-                   <string>R'</string>
+                   <string>B'</string>
                   </property>
                   <property name="shortcut">
-                   <string>R</string>
+                   <string>B</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="0" alignment="Qt::AlignHCenter">
+                 <widget class="QPushButton" name="btn_L">
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>L</string>
+                  </property>
+                  <property name="shortcut">
+                   <string>Shift+L</string>
                   </property>
                  </widget>
                 </item>
@@ -26281,7 +26244,100 @@ x-Direction</string>
                   </property>
                  </widget>
                 </item>
+                <item row="1" column="0" alignment="Qt::AlignHCenter">
+                 <widget class="QPushButton" name="btn_U">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>U</string>
+                  </property>
+                  <property name="shortcut">
+                   <string>Shift+U</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1" alignment="Qt::AlignHCenter">
+                 <widget class="QPushButton" name="btn_u">
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>U'</string>
+                  </property>
+                  <property name="shortcut">
+                   <string>U</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1" alignment="Qt::AlignHCenter">
+                 <widget class="QPushButton" name="btn_d">
+                  <property name="maximumSize">
+                   <size>
+                    <width>40</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="text">
+                   <string>D'</string>
+                  </property>
+                  <property name="shortcut">
+                   <string>D</string>
+                  </property>
+                 </widget>
+                </item>
                </layout>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_GenSolution">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string>Generate Cube Solve String</string>
+                </property>
+                <property name="text">
+                 <string>Generate
+Solution</string>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>Resources/Logo_sharper.png</normaloff>Resources/Logo_sharper.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <property name="shortcut">
+                 <string>G</string>
+                </property>
+               </widget>
               </item>
               <item>
                <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -26317,125 +26373,6 @@ Enable/Disable</string>
                    <string>E</string>
                   </property>
                  </widget>
-                </item>
-                <item alignment="Qt::AlignHCenter">
-                 <widget class="QToolButton" name="btn_Clean">
-                  <property name="toolTip">
-                   <string>Reset Cube</string>
-                  </property>
-                  <property name="text">
-                   <string>Clean</string>
-                  </property>
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>Resources/Clean.png</normaloff>Resources/Clean.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>60</width>
-                    <height>60</height>
-                   </size>
-                  </property>
-                  <property name="shortcut">
-                   <string>C</string>
-                  </property>
-                  <property name="autoRaise">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <layout class="QFormLayout" name="formLayout_3">
-                  <item row="0" column="1">
-                   <widget class="QSpinBox" name="spinBox_Timeout">
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::PlusMinus</enum>
-                    </property>
-                    <property name="suffix">
-                     <string>s</string>
-                    </property>
-                    <property name="minimum">
-                     <number>1</number>
-                    </property>
-                    <property name="maximum">
-                     <number>60</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="0">
-                   <widget class="QLabel" name="label_NMoves">
-                    <property name="text">
-                     <string># Moves</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="1">
-                   <widget class="QSpinBox" name="spinBox_NMoves">
-                    <property name="buttonSymbols">
-                     <enum>QAbstractSpinBox::PlusMinus</enum>
-                    </property>
-                    <property name="suffix">
-                     <string/>
-                    </property>
-                    <property name="minimum">
-                     <number>1</number>
-                    </property>
-                    <property name="maximum">
-                     <number>50</number>
-                    </property>
-                    <property name="value">
-                     <number>20</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="0" colspan="2">
-                   <widget class="QPushButton" name="btn_GenSolution">
-                    <property name="toolTip">
-                     <string>Generate Cube Solve String</string>
-                    </property>
-                    <property name="text">
-                     <string>Generate
-Solution</string>
-                    </property>
-                    <property name="icon">
-                     <iconset>
-                      <normaloff>Resources/Logo_sharper.png</normaloff>Resources/Logo_sharper.png</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>22</width>
-                      <height>22</height>
-                     </size>
-                    </property>
-                    <property name="shortcut">
-                     <string>G</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="0" column="0">
-                   <widget class="QLabel" name="label_Timeout">
-                    <property name="text">
-                     <string>Timeout</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="3" column="0" colspan="2">
-                   <widget class="QProgressBar" name="progBar_Solution">
-                    <property name="maximum">
-                     <number>100</number>
-                    </property>
-                    <property name="value">
-                     <number>0</number>
-                    </property>
-                    <property name="textVisible">
-                     <bool>true</bool>
-                    </property>
-                    <property name="invertedAppearance">
-                     <bool>false</bool>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
                 </item>
                 <item>
                  <spacer name="verticalSpacer">
@@ -26503,7 +26440,7 @@ Solution</string>
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>125</width>
+             <width>117</width>
              <height>1390</height>
             </rect>
            </property>
@@ -27122,7 +27059,6 @@ Solution</string>
   <tabstop>btn_B</tabstop>
   <tabstop>btn_b</tabstop>
   <tabstop>btn_EnDisableServo</tabstop>
-  <tabstop>btn_Clean</tabstop>
   <tabstop>scrollArea</tabstop>
   <tabstop>pushButton_5</tabstop>
   <tabstop>btn_Savelog</tabstop>
