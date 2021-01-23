@@ -1,16 +1,17 @@
 # This Python file uses the following encoding: utf-8
 import sys
 import os
-
+# import cv2 as cv
 from PyQt5.QtCore import QElapsedTimer, QTimer
+from PyQt5.QtGui import QPixmap
 os.system('pyuic5 GUI/QbotMain.ui -o GUI/QbotMain.py')
 from GUI.QbotMain import Ui_QbotGUI
-from PyQt5.QtWidgets import QMainWindow, QApplication, QFrame, QPushButton, QToolButton, QErrorMessage
+from PyQt5.QtWidgets import QLabel, QMainWindow, QApplication, QFrame, QPushButton, QToolButton, QErrorMessage
 from PyQt5 import QtSerialPort
 from SolverBackend.Cube import Cube as erno
 # import SolverBackend.AlgorithmPython.solver as solver
 import kociemba
-
+from ImageProcessing import analyzeCubeImages
 class QbotGUI(QMainWindow, Ui_QbotGUI):
     
     def __init__(self):
@@ -39,7 +40,23 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         self.btn_GenSolution.clicked.connect(self.generateSolution)
         self.actionGenerate_Random.triggered.connect(self.randomizeCube)
         self.btn_Apply.clicked.connect(self.applyStringToCube)
+        self.btn_ScanCube.clicked.connect(self.startScan)
+    def startScan(self):
+        """
+        Scan the cube and generate the cubestring from the images  and display the images in the GUI (maybe)
+        """
+        #make the pictures 
+        #analyze the pictures
+        scannedstring = analyzeCubeImages(bDebug = 0)
+        self.cube.cubestring = scannedstring
+        self.stringToCubemap()
+        faces = ['Up', 'Right', 'Front', 'Down', 'Left', 'Back']
+        for face in faces: 
+            pxmap = QPixmap("ExampleImages/"+face+"_computed.jpeg")
+            label = self.findChild(QLabel, "lbl_"+face+"Picture")
+            label.setPixmap(pxmap)
 
+        pass
     def performMoveOnCube(self):
         """
         This function is linked to the move and rotate buttons and changes the cubestring accordingly

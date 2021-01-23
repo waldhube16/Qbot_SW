@@ -1,7 +1,7 @@
-import SolverBackend.AlgorithmPython.solver as solver
 import SolverBackend.Cube as erno
 import time
 import cv2 as cv
+import kociemba
 cube = erno.Cube()
 
 def chooseCommand(argument):
@@ -50,7 +50,7 @@ if __name__ == "__main__":
         cmd = input("Enter Command:\n")
         if cmd == "solve":
             start = time.time()
-            result, nmoves = solver.solve(cube.cubestring, max_length = 20, timeout = 10)
+            result, nmoves = kociemba.solve(cube.cubestring)
             end = time.time()
             print(result)
             print(nmoves)

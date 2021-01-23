@@ -15,7 +15,7 @@ mkl-fft==1.2.0
 mkl-random==1.1.1
 mkl-service==2.3.0
 numpy==1.19.5
-opencv-python==4.5.1.48
+opencv-python-headless==4.5.1.48
 parso==0.7.1
 pluggy==0.13.1
 pycodestyle==2.6.0
