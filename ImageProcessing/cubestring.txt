@@ -1,3 +1,0 @@
-LRLRUBLFLBRDLRLUURUDULFUFDFRBRUDFULDDDFULDRRDFFBBBBBFB
-
-Bildverarbeitung.exe "Up.jpeg" "Right.jpeg" "Front.jpeg" "Down.jpeg" "Left.jpeg" "Back.jpeg"
