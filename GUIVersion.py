@@ -32,6 +32,21 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
             if type(btn) == QPushButton: #only continue with buttons 
                 if len(btn.text()) <= 2: #text on buttons indicates the move
                     btn.clicked.connect(self.performMoveOnCube)
+
+        frameChildren = self.tab_2D.children() #get all children in tab 2D
+        for frame in frameChildren:
+            btns = frame.children()
+            for child in btns:
+                if type(child) == QToolButton: #only continue with toolbuttons 
+                    if child.objectName()[-1] == "5": 
+                        pass
+                    else:
+                        child.clicked.connect(self.recolorFrame)
+
+        middleButtons = [self.btn_U5, self.btn_R5, self.btn_F5, self.btn_D5, self.btn_L5, self.btn_B5]
+        for btn in middleButtons:
+            btn.clicked.connect(self.startRecolor)
+        
         self.btn_Clean.clicked.connect(self.resetCube)
         patternChildren = self.scrollAreaPatterns.children() #get all children in scroll area containing pattern buttons 
         for btn in patternChildren:
@@ -41,6 +56,9 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         self.actionGenerate_Random.triggered.connect(self.randomizeCube)
         self.btn_Apply.clicked.connect(self.applyStringToCube)
         self.btn_ScanCube.clicked.connect(self.startScan)
+        self.btn_U2.clicked.connect(self.recolorFrame)
+        self.colorGlobals = {"enableRecolor": False, "currColor": "U"}
+
     def startScan(self):
         """
         Scan the cube and generate the cubestring from the images  and display the images in the GUI (maybe)
@@ -181,38 +199,56 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
 
         pass
 
-    def cubemapToString(self):
+    def recolorFrame(self):
         """
-        This function takes the 2D cube representation and creates the corresponding cubestring #TODO
+        This function is called when a toolbutton in a frame is clicked in recoloring mode.
         """
-        faces = ["U","R","F","D","L","B"]
-        for faceindex in range(0,6):
-            face = faces[faceindex]
-            for index in range(0,9):
-                #extract the symbol from the string
-                stringSymbol = self.cube.cubestring[faceindex*9+index]
-                # get the specified color in (R,G,B) tuple
-                color = self.cube.colors[stringSymbol]
-                # color to string 
-                color = str(color)
-                #set up stylesheet string "background-color: rgb(85, 85, 100);"
-                styleSheet = "background-color: rgb"+color+";"
-                #get the correct child
-                frame = self.findChildren(QFrame, face+str(index+1))
-                #set the stylesheet of this child
-                frame[0].setStyleSheet(styleSheet)
-        allFrames = self.gridLayout.children()
+        if self.colorGlobals["enableRecolor"] == True:
+            sender = self.sender().objectName()
+            faceletID = sender.replace('btn_', '')
+            face = faceletID[0]
+            index = faceletID[1]
 
-        switcher = {
-            "U": (0*9)-1,
-            "R": (1*9)-1,
-            "F": (2*9)-1,
-            "D": (3*9)-1,
-            "L": (4*9)-1,
-            "B": (5*9)-1         
-        } 
+            switcher = {
+                "U": (0*9)-1,
+                "R": (1*9)-1,
+                "F": (2*9)-1,
+                "D": (3*9)-1,
+                "L": (4*9)-1,
+                "B": (5*9)-1         
+            } 
+
+            stringindex = switcher[face]+int(index)
+            strbefore = self.cube.cubestring[:stringindex]
+            strafter = self.cube.cubestring[stringindex+1:]
+            self.cube.cubestring = strbefore + self.colorGlobals["currColor"] + strafter
+            self.stringToCubemap()
         pass
 
+    def startRecolor(self):
+        """
+        This function is called when a middle button is clicked to start recoloring the frames manually. 
+        """
+        middleButtons = [self.btn_U5, self.btn_R5, self.btn_F5, self.btn_D5, self.btn_L5, self.btn_B5]
+        if self.colorGlobals["enableRecolor"] == False: #start recoloring mode - first button press
+            self.colorGlobals["enableRecolor"] = True
+            sendername = self.sender().objectName()
+            faceletID = sendername.replace('btn_', '')
+            face = faceletID[0]
+            self.colorGlobals["currColor"] = face
+        else:
+            if self.sender().isChecked() == False: #same button as before pressed - second button press 
+                self.colorGlobals["enableRecolor"] = False
+            else: #different button than before was pressed -> lift previous button and keep recoloring - second button press different button
+                for btn in middleButtons: #reset all middle buttons to unchecked state  
+                    btn.setChecked(False)
+                sendername = self.sender().objectName()
+                self.sender().setChecked(True)
+                faceletID = sendername.replace('btn_', '')
+                face = faceletID[0]
+                self.colorGlobals["currColor"] = face
+                
+        pass
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     widget = QbotGUI()
