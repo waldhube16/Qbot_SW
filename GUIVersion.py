@@ -1,6 +1,10 @@
 # This Python file uses the following encoding: utf-8
 import sys
 import os
+import serial
+import serial.tools.list_ports
+import time
+import cv2 as cv
 # import cv2 as cv
 from PyQt5.QtCore import QElapsedTimer, QTimer
 from PyQt5.QtGui import QPixmap
@@ -20,7 +24,7 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         #instantiate other components 
         self.cube = erno()
         # self.solver = solver
-        # self.serial = QtSerialPort.QSerialPort()
+        self.serial = serial.Serial()
         # self.timer1ms = QTimer()
         # self.timer1ms.timeout.connect(self.solutionProgBarHandler)
         # self.timer1ms.setInterval(1)
@@ -46,7 +50,15 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         middleButtons = [self.btn_U5, self.btn_R5, self.btn_F5, self.btn_D5, self.btn_L5, self.btn_B5]
         for btn in middleButtons:
             btn.clicked.connect(self.startRecolor)
-        
+
+        stepperButtons = [self.btn_a3, self.btn_A3,self.btn_a4, self.btn_A4,self.btn_a5, self.btn_A5, self.btn_a6, self.btn_A6]
+        for btn in stepperButtons:
+            btn.clicked.connect(self.sendToHW)
+        axisButtons = [self.btn_y0,self.btn_Y0,self.btn_x0,self.btn_X0]
+        for btn in axisButtons:
+            btn.clicked.connect(self.sendToHW)
+        self.btn_Send.clicked.connect(self.sendToHW)
+        self.btn_EnDisableServo.clicked.connect(self.sendToHW)
         self.btn_Clean.clicked.connect(self.resetCube)
         patternChildren = self.scrollAreaPatterns.children() #get all children in scroll area containing pattern buttons 
         for btn in patternChildren:
@@ -56,14 +68,103 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         self.actionGenerate_Random.triggered.connect(self.randomizeCube)
         self.btn_Apply.clicked.connect(self.applyStringToCube)
         self.btn_ScanCube.clicked.connect(self.startScan)
-        self.btn_U2.clicked.connect(self.recolorFrame)
+        
         self.colorGlobals = {"enableRecolor": False, "currColor": "U"}
+        ComPorts = [comport.device for comport in serial.tools.list_ports.comports()]
+        self.combo_COM.addItems(ComPorts)
+        self.btn_Connect.clicked.connect(self.openSerial)
+        
+    
+    def sendToHW(self):
+        """
+        Select which commands to send the hardware.
+        """
+        sender = self.sender()
+        if sender == self.btn_Send:
+            sendstring = self.lineEdit_InOut.text()
+        elif sender == self.btn_EnDisableServo:
+            if sender.text() == "Enable":
+                sendstring = "E1"
+                sender.setText("Disable")
+            else:
+                sendstring = "E2"
+                sender.setText("Enable")
+        else:
+            sendstring = sender.text()
+
+        self.sendCommands(sendstring)
+        pass
 
     def startScan(self):
         """
-        Scan the cube and generate the cubestring from the images  and display the images in the GUI (maybe)
+        Scan the cube and generate the cubestring from the images and display the images in the GUI 
         """
-        #make the pictures 
+
+
+        cam = cv.VideoCapture(-1); # open the default cam
+        if (~cam.isOpened()):  # check if we succeeded
+            return -1
+ 
+        flag = self.sendCommands("X0")
+        flag += self.sendCommands("Y1")
+
+        
+        time.sleep(1)
+        for i in range(5):
+            return_value, image = cam.read()
+        
+        cv.imwrite("ExampleImages/Left.jpeg", image)
+
+        flag += self.sendCommands("y1")
+        flag += self.sendCommands("y1")
+
+        time.sleep(1)
+        for i in range(5):
+            return_value, image = cam.read()
+        cv.imwrite("ExampleImages/Right.jpeg", image)
+
+        flag += self.sendCommands("x0")
+        flag += self.sendCommands("Y0")
+        flag += self.sendCommands("Y1")
+        flag += self.sendCommands("y0")
+        flag += self.sendCommands("X0")
+        flag += self.sendCommands("y1")
+
+        time.sleep(1)
+        for i in range(5):
+            return_value, image = cam.read()
+        cv.imwrite("ExampleImages/Down.jpeg", image)
+
+        flag += self.sendCommands("Y1")
+        flag += self.sendCommands("Y1")
+
+        time.sleep(1)
+        for i in range(5):
+            return_value, image = cam.read()
+        cv.imwrite("ExampleImages/Up.jpeg", image)
+
+        flag += self.sendCommands("x0")
+        flag += self.sendCommands("Y0")
+        flag += self.sendCommands("Y1")
+        flag += self.sendCommands("X1")
+
+        time.sleep(1)
+        for i in range(5):
+            return_value, image = cam.read()
+        cv.imwrite("ExampleImages/Front.jpeg", image)
+
+        flag += self.sendCommands("x2")
+
+        time.sleep(1)
+        for i in range(5):
+            return_value, image = cam.read()
+        cv.imwrite("ExampleImages/Back.jpeg", image)
+
+        flag += self.sendCommands("X1")
+        flag += self.sendCommands("y0")
+        # the cam will be deinitialized automatically in VideoCapture destructor
+
+	
         #analyze the pictures
         scannedstring = analyzeCubeImages(bDebug = 0)
         self.cube.cubestring = scannedstring
@@ -73,8 +174,8 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
             pxmap = QPixmap("ExampleImages/"+face+"_computed.jpeg")
             label = self.findChild(QLabel, "lbl_"+face+"Picture")
             label.setPixmap(pxmap)
-
         pass
+
     def performMoveOnCube(self):
         """
         This function is linked to the move and rotate buttons and changes the cubestring accordingly
@@ -106,11 +207,12 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         """
         Generate random scramble, apply to cube and display string
         """
-        self.cube.__init__()
-        rand = self.cube.genRandom()
-        self.cube.scramble(rand)
-        self.stringToCubemap()
-        self.lineEdit_InOut.setText(rand)
+        self.cube.__init__() #reinitialize the cube object, effectively resetting the cube
+        rand = self.cube.genRandom() #generate a string of 20 random moves 
+        self.cube.scramble(rand) #perform the moves on the cube 
+        self.stringToCubemap() #update GUI with new cubestring
+        #display the generated random string in the GUI
+        self.lineEdit_InOut.setText(rand) 
         self.label_CurrentString.setText("Random:")
         pass
 
@@ -128,13 +230,99 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
                 color = self.cube.colors[stringSymbol]
                 # color to string 
                 color = str(color)
-                #set up stylesheet string "background-color: rgb(85, 85, 100);"
+                #set up stylesheet string eg: "background-color: rgb(85, 85, 100);"
                 styleSheet = "background-color: rgb"+color+";"
                 #get the correct child
                 frame = self.findChildren(QFrame, face+str(index+1))
                 #set the stylesheet of this child
                 frame[0].setStyleSheet(styleSheet)
         pass
+
+    def openSerial(self):
+        """
+        Tries to open the serial port with the specified parameters. 
+        """
+        baud = int(self.combo_Baud.currentText())
+        COM = self.combo_COM.currentText()
+        try:
+            self.serial.baudrate = baud
+            self.serial.port = COM
+            self.serial.timeout = 0.1
+            self.serial.open()
+            time.sleep(3)
+            self.sendCommands("U")
+        except Exception as err:
+            print(err)
+            error_dialog = QErrorMessage()
+            error_dialog.showMessage(err.args[0])
+            error_dialog.exec_()
+            
+
+        pass
+    def sendCommands(self, scramblestring):
+        """
+        Send a string of instructions to the hardware. 
+        """
+        validCMDs = {"U": "U1", #standard moves
+            "U'": "u1", 
+            "U2": "U2", 
+            "R": "R1", 
+            "R'": "r1", 
+            "R2": "R2", 
+            "F": "F1", 
+            "F'": "f1", 
+            "F2": "F2", 
+            "D": "D1", 
+            "D'": "d1", 
+            "D2": "D2", 
+            "L": "L1", 
+            "L'": "l1", 
+            "L2": "L2", 
+            "B": "B1", 
+            "B'": "b1", 
+            "B2": "B2",
+            "Y0": "Y0", #axis open/close
+            "y0": "y0", 
+            "X0": "X0", 
+            "x0": "x0", 
+            "E1": "E1", #motor en/disable
+            "E2": "E2",
+            "A1": "A1", #single steps
+            "a1": "a1", 
+            "A2": "A2", 
+            "a2": "a2", 
+            "A3": "A3", 
+            "a3": "a3",
+            "A4": "A4", 
+            "a4": "a4", 
+            "A5": "A5", 
+            "a5": "a5",
+            "A6": "A6", 
+            "a6": "a6",
+            }
+        txCMDs = []
+        txList = scramblestring.split(" ")
+        for CMD in txList:
+            CMD = validCMDs.get(CMD, lambda: None)
+            txCMDs.append(CMD)
+
+        try:
+            for num in txCMDs:
+                self.serial.write(bytes(num, 'utf-8'))
+                while self.serial.in_waiting == 0:
+                    time.sleep(0.05)
+                data = self.serial.readline()
+                print("Received: " + str(data)) 
+                if (data != b'K'):
+                    raise ValueError('ACK was not received correctly')  
+                
+        except Exception as err:
+            print(err)
+            error_dialog = QErrorMessage()
+            error_dialog.showMessage(err.args[0])
+            error_dialog.exec_()
+            return -1
+        return 0 
 
     def applyPattern(self):
         """
@@ -203,12 +391,12 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         """
         This function is called when a toolbutton in a frame is clicked in recoloring mode.
         """
-        if self.colorGlobals["enableRecolor"] == True:
-            sender = self.sender().objectName()
-            faceletID = sender.replace('btn_', '')
+        if self.colorGlobals["enableRecolor"] == True: # global indicator whether recoloring mode is on
+            sender = self.sender().objectName() #get name of pressed button, eg "btn_U1"
+            faceletID = sender.replace('btn_', '') #remove 'btn_' prefix
             face = faceletID[0]
             index = faceletID[1]
-
+            #determine offset and index in cubestring based on face
             switcher = {
                 "U": (0*9)-1,
                 "R": (1*9)-1,
@@ -217,12 +405,14 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
                 "L": (4*9)-1,
                 "B": (5*9)-1         
             } 
-
             stringindex = switcher[face]+int(index)
+            # extract cubestring before index to be changed
             strbefore = self.cube.cubestring[:stringindex]
+            # extract  cubestring after index to be changed 
             strafter = self.cube.cubestring[stringindex+1:]
+            # piece together the new cubestring
             self.cube.cubestring = strbefore + self.colorGlobals["currColor"] + strafter
-            self.stringToCubemap()
+            self.stringToCubemap() #update GUI
         pass
 
     def startRecolor(self):
@@ -230,16 +420,23 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         This function is called when a middle button is clicked to start recoloring the frames manually. 
         """
         middleButtons = [self.btn_U5, self.btn_R5, self.btn_F5, self.btn_D5, self.btn_L5, self.btn_B5]
-        if self.colorGlobals["enableRecolor"] == False: #start recoloring mode - first button press
+        if self.colorGlobals["enableRecolor"] == False: #start recoloring mode - first button pressed
+            #enable recoloring mode
             self.colorGlobals["enableRecolor"] = True
+            #get the sendername and extract the corresponding character that indicated the color
             sendername = self.sender().objectName()
             faceletID = sendername.replace('btn_', '')
             face = faceletID[0]
+            #set global recoloring parameter
             self.colorGlobals["currColor"] = face
         else:
-            if self.sender().isChecked() == False: #same button as before pressed - second button press 
+            if self.sender().isChecked() == False: #same button as before pressed - second button pressed 
                 self.colorGlobals["enableRecolor"] = False
-            else: #different button than before was pressed -> lift previous button and keep recoloring - second button press different button
+            else: 
+                """
+                different button than before was pressed -> lift previous button and keep recoloring 
+                second button pressed is different button than first
+                """
                 for btn in middleButtons: #reset all middle buttons to unchecked state  
                     btn.setChecked(False)
                 sendername = self.sender().objectName()
