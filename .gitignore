@@ -260,3 +260,12 @@ paket-files/
 __pycache__/
 *.pyc
 .vscode/launch.json
+BlurredImage.png
+CannyImage.png
+DilatedImage.png
+FinalImage.png
+GrayImage.png
+RotatedCroppedImage.png
+scrambles.txt
+imageBenchmark.txt
+solutionBenchmark.txt

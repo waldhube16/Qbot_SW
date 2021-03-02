@@ -2,7 +2,7 @@ import cv2 as cv
 import numpy as np
 import sys
 import math
-
+from PyQt5.QtCore import QElapsedTimer
 
 def get_identifier(current_color, centers):
     #adapted from: https://answers.opencv.org/question/186712/find-an-image-by-nearest-color/
@@ -175,6 +175,17 @@ def analyzeCubeImages(bDebug):
 
 
 if __name__ == "__main__": 
-    cubestring = analyzeCubeImages(bDebug = 0)
-    print(cubestring)
+    f = open("imageBenchmark.txt", "w")
+    overall = 0
+    for i in range(0,1000):
+        timer = QElapsedTimer()
+        timer.start()
+        cubestring = analyzeCubeImages(bDebug = 0)
+        end = timer.nsecsElapsed()
+        f.write("{}\n".format(end))
+        print(end)
+        overall += end
+    f.close()
+        # print("; "+cubestring)
+    # print(overall//20)
 

@@ -10,7 +10,7 @@ from PyQt5.QtCore import QElapsedTimer, QTimer
 from PyQt5.QtGui import QPixmap
 os.system('pyuic5 GUI/QbotMain.ui -o GUI/QbotMain.py')
 from GUI.QbotMain import Ui_QbotGUI
-from PyQt5.QtWidgets import QLabel, QMainWindow, QApplication, QFrame, QPushButton, QToolButton, QErrorMessage
+from PyQt5.QtWidgets import QLabel, QMainWindow, QApplication, QFrame, QProgressBar, QPushButton, QToolButton, QErrorMessage
 from PyQt5 import QtSerialPort
 from SolverBackend.Cube import Cube as erno
 # import SolverBackend.AlgorithmPython.solver as solver
@@ -21,6 +21,12 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
     def __init__(self):
         super(QbotGUI, self).__init__()
         self.setupUi(self)
+        #add status bar components
+        progBar_Status = QProgressBar()
+        progBar_Status.setTextVisible(0)
+        self.progBar_Status = progBar_Status
+        self.statusbar.showMessage("Status") 
+        self.statusbar.addPermanentWidget(self.progBar_Status)
         #instantiate other components 
         self.cube = erno()
         # self.solver = solver
@@ -79,20 +85,27 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         """
         Select which commands to send the hardware.
         """
-        sender = self.sender()
-        if sender == self.btn_Send:
-            sendstring = self.lineEdit_InOut.text()
-        elif sender == self.btn_EnDisableServo:
-            if sender.text() == "Enable":
-                sendstring = "E1"
-                sender.setText("Disable")
+        if self.serial.isOpen():
+            sender = self.sender()
+            if sender == self.btn_Send:
+                sendstring = self.lineEdit_InOut.text()
+            elif sender == self.btn_EnDisableServo:
+                if sender.text() == "Enable":
+                    sendstring = "E1"
+                    sender.setText("Disable")
+                else:
+                    sendstring = "E2"
+                    sender.setText("Enable")
             else:
-                sendstring = "E2"
-                sender.setText("Enable")
-        else:
-            sendstring = sender.text()
+                sendstring = sender.text()
 
-        self.sendCommands(sendstring)
+            self.sendCommands(sendstring)
+        else: 
+            err = "Please open Serial Port first!"
+            print(err)
+            error_dialog = QErrorMessage()
+            error_dialog.showMessage(err.args[0])
+            error_dialog.exec_()
         pass
 
     def startScan(self):
@@ -249,8 +262,8 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
             self.serial.port = COM
             self.serial.timeout = 0.1
             self.serial.open()
-            time.sleep(3)
-            self.sendCommands("U")
+            # time.sleep(2) # may be necessary if the user is too fast to send commands after opening the port due to the Arduino resetting after establishing connection
+            # self.sendCommands("U")
         except Exception as err:
             print(err)
             error_dialog = QErrorMessage()
@@ -263,6 +276,8 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         """
         Send a string of instructions to the hardware. 
         """
+        self.statusbar.showMessage("Sending Commands...")
+        self.progBar_Status.setValue(0)
         validCMDs = {"U": "U1", #standard moves
             "U'": "u1", 
             "U2": "U2", 
@@ -303,25 +318,35 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         txCMDs = []
         txList = scramblestring.split(" ")
         for CMD in txList:
-            CMD = validCMDs.get(CMD, lambda: None)
+            CMD = validCMDs.get(CMD, lambda: "")
             txCMDs.append(CMD)
-
+        nCMDs = len(txCMDs)
+        iCMDs = 0
         try:
             for num in txCMDs:
+
                 self.serial.write(bytes(num, 'utf-8'))
                 while self.serial.in_waiting == 0:
                     time.sleep(0.05)
                 data = self.serial.readline()
                 print("Received: " + str(data)) 
                 if (data != b'K'):
-                    raise ValueError('ACK was not received correctly')  
-                
+                    raise ValueError('ACK was not received correctly, check transmitted string')  
+
+                #update the GUI representation
+                self.cube.scramble(txList[iCMDs])  #manipulate cubestring according to input
+                self.stringToCubemap()
+                #update satus bar
+                iCMDs += 1
+                self.progBar_Status.setValue((iCMDs/nCMDs)*100)
         except Exception as err:
             print(err)
             error_dialog = QErrorMessage()
             error_dialog.showMessage(err.args[0])
             error_dialog.exec_()
+            self.statusbar.showMessage("TX Error")
             return -1
+        self.statusbar.showMessage("TX Done")
         return 0 
 
     def applyPattern(self):
