@@ -1,4 +1,5 @@
-![alt text](https://github.com/waldhube16/Qbot_SW/blob/80959a9ff68713f4741769fa998b792187806ca6/GUI/Resources/Logo_sharper.png "Qbot Logo") 
+<img src="./GUI/Resources/Logo_sharper.png" width="200" height="200" />
+
 # QBOT - Rubik's Cube Solver Software
 ## Overview
 This software can be used standalone or with an actual hardware solver. The firmware for the original implementation can be found [here](https://github.com/Axodarap/QBot_firmware).
