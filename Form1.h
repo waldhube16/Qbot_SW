@@ -28,6 +28,8 @@ namespace CppCLR_WinformsProjekt {
 	{
 	public:
 		Serial* SP;
+
+	public:
 		char colorIndex = 'X';
 
 		//'X' ... recoloring not enabled
@@ -324,7 +326,7 @@ namespace CppCLR_WinformsProjekt {
 	private: System::Windows::Forms::Button^  btn_Bi;
 	private: System::Windows::Forms::Button^  btn_Reset;
 	private: System::Windows::Forms::Button^  btn_GenSolution;
-
+	private: System::Windows::Forms::Button^  btn_ScanCube;
 	private: System::Windows::Forms::TextBox^  txt_SolutionString;
 	private: System::Windows::Forms::Button^  btn_scrambleString;
 	private: System::Windows::Forms::Button^  btn_SendToArduino;
@@ -506,6 +508,8 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			this->btn_Open = (gcnew System::Windows::Forms::Button());
 			this->btn_Close = (gcnew System::Windows::Forms::Button());
 			this->btn_Clean = (gcnew System::Windows::Forms::Button());
+			this->btn_ScanCube = (gcnew System::Windows::Forms::Button());
+
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numdd_ComPort))->BeginInit();
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->num_Timeout))->BeginInit();
@@ -1600,11 +1604,23 @@ private: System::Windows::Forms::NumericUpDown^  num_MaxMoves;
 			this->btn_Clean->UseVisualStyleBackColor = true;
 			this->btn_Clean->Click += gcnew System::EventHandler(this, &Form1::btn_Clean_Click);
 			// 
+			// btn_ScanCube
+			// 
+			this->btn_ScanCube->Location = System::Drawing::Point(978, 451);
+			this->btn_ScanCube->Name = L"btn_ScanCube";
+			this->btn_ScanCube->Size = System::Drawing::Size(75, 23);
+			this->btn_ScanCube->TabIndex = 41;
+			this->btn_ScanCube->Text = L"Scan Cube";
+			this->btn_ScanCube->UseVisualStyleBackColor = true;
+			this->btn_ScanCube->Click += gcnew System::EventHandler(this, &Form1::btn_ScanCube_Click);
+			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1308, 505);
+
+			this->Controls->Add(this->btn_ScanCube);
 			this->Controls->Add(this->btn_Clean);
 			this->Controls->Add(this->btn_Close);
 			this->Controls->Add(this->btn_Open);
@@ -2067,6 +2083,16 @@ private: System::Void btn_Close_Click(System::Object^  sender, System::EventArgs
 private: System::Void btn_Clean_Click(System::Object^  sender, System::EventArgs^  e) {
 	removePanelColors();
 }
+private: System::Void btn_ScanCube_Click(System::Object^  sender, System::EventArgs^  e) {
+	System::String^ btn_text;
+	msclr::interop::marshal_context context;
+
+	btn_text = numdd_ComPort->Text;
+	std::string tx_com_port = context.marshal_as<std::string>(btn_text);
+	
+	int flag = scanCube(tx_com_port, SP); 
+}
+
 };
 
 	

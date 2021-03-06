@@ -6,6 +6,9 @@
 #include "Qbot_Serial.h"
 #include <chrono>
 
+
+using namespace cv;
+
 // application reads from the specified serial port and reports the collected data
 int sendStringToArduino(std::string tx_string, char mode, std::string port, Serial* SP)
 {
@@ -239,3 +242,100 @@ int sendStringToArduino(std::string tx_string, char mode, std::string port, Seri
 	auto dur = duration.count();
 	return 0;
 }
+
+
+int scanCube(std::string port, Serial* SP)
+{
+	Mat U;
+	Mat	R;
+	Mat	F;
+	Mat	D;
+	Mat	L;
+	Mat	B;
+	Mat test;
+
+	VideoCapture cap(0); // open the default camera
+	if (!cap.isOpened())  // check if we succeeded
+		return -1;
+
+	int flag;
+	int i; 
+	flag = sendStringToArduino("X0", 2, port, SP);
+	flag += sendStringToArduino("Y1", 2, port, SP);
+
+	//test = snap(cap);
+	Sleep(1000);
+	for (i = 0; i < 4; i++)
+	{
+		cap >> L;
+	}
+	cap >> L;// = snap(cap);
+	imwrite("Left.jpeg", L);
+
+	flag += sendStringToArduino("Y2", 2, port, SP);
+
+	Sleep(1000);
+	for (i = 0; i < 4; i++)
+	{
+		cap >> R;
+	}
+	imwrite("Right.jpeg", R);
+
+	flag += sendStringToArduino("x0", 2, port, SP);
+	flag += sendStringToArduino("Y0", 2, port, SP);
+	flag += sendStringToArduino("Y1", 2, port, SP);
+	flag += sendStringToArduino("y0", 2, port, SP);
+	flag += sendStringToArduino("X0", 2, port, SP);
+	flag += sendStringToArduino("y1", 2, port, SP);
+
+	Sleep(1000);
+	for (i = 0; i < 4; i++)
+	{
+		cap >> D;
+	}
+	imwrite("Down.jpeg", D);
+
+	flag += sendStringToArduino("Y2", 2, port, SP);
+
+	Sleep(1000);
+	for (i = 0; i < 4; i++)
+	{
+		cap >> U;
+	}
+	imwrite("Up.jpeg", U);
+
+	flag += sendStringToArduino("x0", 2, port, SP);
+	flag += sendStringToArduino("Y0", 2, port, SP);
+	flag += sendStringToArduino("Y1", 2, port, SP);
+	flag += sendStringToArduino("X1", 2, port, SP);
+
+	Sleep(1000);
+	for (i = 0; i < 4; i++)
+	{
+		cap >> F;
+	}
+	imwrite("Front.jpeg", F);
+
+	flag += sendStringToArduino("x2", 2, port, SP);
+
+	Sleep(1000);
+	for (i = 0; i < 4; i++)
+	{
+		cap >> B;
+	}
+	imwrite("Back.jpeg", B);
+
+	flag += sendStringToArduino("X1", 2, port, SP);
+	flag += sendStringToArduino("y0", 2, port, SP);
+	// the camera will be deinitialized automatically in VideoCapture destructor
+	return flag; 
+}
+
+Mat snap(VideoCapture cap)
+{
+		Mat frame;
+		cap >> frame; // get a new frame from camera
+		return frame; 
+}
+	
+

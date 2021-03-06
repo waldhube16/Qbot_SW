@@ -12,5 +12,9 @@
 #include <iostream>
 #include <fstream>
 #include "SerialClass.h"
+#include "opencv2/opencv.hpp"
 
-int sendStringToArduino(std::string, char, std::string, Serial*);
+int sendStringToArduino(std::string tx_string, char mode, std::string port, Serial* SP);
+
+int scanCube(std::string port, Serial* SP);
+cv::Mat snap(cv::VideoCapture cap); 
