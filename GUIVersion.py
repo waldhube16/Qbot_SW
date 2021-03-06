@@ -31,10 +31,6 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         self.cube = erno()
         # self.solver = solver
         self.serial = serial.Serial()
-        # self.timer1ms = QTimer()
-        # self.timer1ms.timeout.connect(self.solutionProgBarHandler)
-        # self.timer1ms.setInterval(1)
-        # self.timer1ms.start(1) 
         #link GUI elements to methods to execute
         self.Menu1.triggered.connect(self.cube.print)
         manualChildren = self.scrollAreaManual.children() #get all children in scroll area containing move buttons 
@@ -71,7 +67,7 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
             if type(btn) == QToolButton:
                 btn.clicked.connect(self.applyPattern)
         self.btn_GenSolution.clicked.connect(self.generateSolution)
-        self.actionGenerate_Random.triggered.connect(self.randomizeCube)
+        self.btn_randomCube.clicked.connect(self.randomizeCube)
         self.btn_Apply.clicked.connect(self.applyStringToCube)
         self.btn_ScanCube.clicked.connect(self.startScan)
         
@@ -79,6 +75,7 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         ComPorts = [comport.device for comport in serial.tools.list_ports.comports()]
         self.combo_COM.addItems(ComPorts)
         self.btn_Connect.clicked.connect(self.openSerial)
+        self.btn_Savelog.clicked.connect(self.saveLog)
         
     
     def sendToHW(self):
@@ -104,7 +101,7 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
             err = "Please open Serial Port first!"
             print(err)
             error_dialog = QErrorMessage()
-            error_dialog.showMessage(err.args[0])
+            error_dialog.showMessage(err)
             error_dialog.exec_()
         pass
 
@@ -112,21 +109,36 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         """
         Scan the cube and generate the cubestring from the images and display the images in the GUI 
         """
-
+        self.statusbar.showMessage("Scan Start")
+        msg = "Started scanning the cube!"
+        self.addLogEntry(msg)
+        self.progBar_Status.setValue(0)
 
         cam = cv.VideoCapture(-1); # open the default cam
         if (~cam.isOpened()):  # check if we succeeded
             return -1
- 
+
+        self.statusbar.showMessage("Turning to face Left.")
+        msg = "Turning to let 'Left' face up. "
+        self.addLogEntry(msg)
+
         flag = self.sendCommands("X0")
         flag += self.sendCommands("Y1")
 
-        
         time.sleep(1)
         for i in range(5):
             return_value, image = cam.read()
         
         cv.imwrite("ExampleImages/Left.jpeg", image)
+
+        self.statusbar.showMessage("Scanned Left Side")
+        msg = "Left side was scanned."
+        self.addLogEntry(msg)
+        self.progBar_Status.setValue(100/6*1)
+
+        self.statusbar.showMessage("Turning to face Right.")
+        msg = "Turning to let 'Right' face up. "
+        self.addLogEntry(msg)
 
         flag += self.sendCommands("y1")
         flag += self.sendCommands("y1")
@@ -135,6 +147,14 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         for i in range(5):
             return_value, image = cam.read()
         cv.imwrite("ExampleImages/Right.jpeg", image)
+        self.statusbar.showMessage("Scanned Right Side")
+        msg = "Right side was scanned."
+        self.addLogEntry(msg)
+        self.progBar_Status.setValue(100/6*2)
+
+        self.statusbar.showMessage("Turning to face Down.")
+        msg = "Turning to let 'Down' face up. "
+        self.addLogEntry(msg)
 
         flag += self.sendCommands("x0")
         flag += self.sendCommands("Y0")
@@ -148,6 +168,15 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
             return_value, image = cam.read()
         cv.imwrite("ExampleImages/Down.jpeg", image)
 
+        self.statusbar.showMessage("Scanned Down Side")
+        msg = "Down side was scanned."
+        self.addLogEntry(msg)
+        self.progBar_Status.setValue(100/6*3)
+
+        self.statusbar.showMessage("Turning to face Up.")
+        msg = "Turning to let 'Up' face up. "
+        self.addLogEntry(msg)
+
         flag += self.sendCommands("Y1")
         flag += self.sendCommands("Y1")
 
@@ -155,6 +184,15 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         for i in range(5):
             return_value, image = cam.read()
         cv.imwrite("ExampleImages/Up.jpeg", image)
+
+        self.statusbar.showMessage("Scanned Up Side")
+        msg = "Up side was scanned."
+        self.addLogEntry(msg)
+        self.progBar_Status.setValue(100/6*4)
+
+        self.statusbar.showMessage("Turning to face Front.")
+        msg = "Turning to let 'Front' face up. "
+        self.addLogEntry(msg)
 
         flag += self.sendCommands("x0")
         flag += self.sendCommands("Y0")
@@ -166,12 +204,25 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
             return_value, image = cam.read()
         cv.imwrite("ExampleImages/Front.jpeg", image)
 
+        self.statusbar.showMessage("Scanned Front Side")
+        msg = "Front side was scanned."
+        self.addLogEntry(msg)
+        self.progBar_Status.setValue(100/6*5)
+
+        self.statusbar.showMessage("Turning to face Back.")
+        msg = "Turning to let 'Back' face up. "
+        self.addLogEntry(msg)
+
         flag += self.sendCommands("x2")
 
         time.sleep(1)
         for i in range(5):
             return_value, image = cam.read()
         cv.imwrite("ExampleImages/Back.jpeg", image)
+        self.statusbar.showMessage("Scanned Back Side")
+        msg = "Back side was scanned."
+        self.addLogEntry(msg)
+        self.progBar_Status.setValue(100)
 
         flag += self.sendCommands("X1")
         flag += self.sendCommands("y0")
@@ -180,6 +231,10 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
 	
         #analyze the pictures
         scannedstring = analyzeCubeImages(bDebug = 0)
+        self.statusbar.showMessage("Scan finished!")
+        msg = "Scan was finished, cubestring: {}".format(scannedstring)
+        self.addLogEntry(msg)
+
         self.cube.cubestring = scannedstring
         self.stringToCubemap()
         faces = ['Up', 'Right', 'Front', 'Down', 'Left', 'Back']
@@ -192,10 +247,13 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
     def performMoveOnCube(self):
         """
         This function is linked to the move and rotate buttons and changes the cubestring accordingly
-        """
+        """        
         movestring = self.sender().text() #get string from sender button
         self.cube.scramble(movestring)  #manipulate cubestring according to input
         self.stringToCubemap()
+        self.statusbar.showMessage("Perform move: {}".format(movestring))
+        msg = "Perform move: {} on GUI. New cubestring: {}".format(movestring, self.cube.cubestring)
+        self.addLogEntry(msg)
         pass
 
     def applyStringToCube(self):
@@ -205,6 +263,9 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         movestring = self.lineEdit_InOut.text() #get string from line edit
         self.cube.scramble(movestring)  #manipulate cubestring according to input
         self.stringToCubemap()
+        self.statusbar.showMessage("Apply String")
+        msg = "String '{}' applied!".format(movestring)
+        self.addLogEntry(msg)
         pass
 
 
@@ -212,6 +273,10 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         """
         Rest cubestring and 2d Map
         """
+        self.label_CurrentString.setText("Current String:")
+        self.statusbar.showMessage("Cube reset")
+        msg = "Cube was reset."
+        self.addLogEntry(msg)
         self.cube.__init__()
         self.stringToCubemap()
         pass
@@ -227,6 +292,9 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         #display the generated random string in the GUI
         self.lineEdit_InOut.setText(rand) 
         self.label_CurrentString.setText("Random:")
+        self.statusbar.showMessage("Random Scramble applied")
+        msg = "Random scramble '{}' applied!".format(rand)
+        self.addLogEntry(msg)
         pass
 
     def stringToCubemap(self):
@@ -257,14 +325,23 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         """
         baud = int(self.combo_Baud.currentText())
         COM = self.combo_COM.currentText()
+        msg = "Connecting to {} with {} baud and 0.1 timeout.".format(COM, baud)
+        self.addLogEntry(msg)
         try:
             self.serial.baudrate = baud
             self.serial.port = COM
             self.serial.timeout = 0.1
             self.serial.open()
             # time.sleep(2) # may be necessary if the user is too fast to send commands after opening the port due to the Arduino resetting after establishing connection
-            # self.sendCommands("U")
+            test = self.sendCommands("E1")
+            if test == 0:
+                self.statusbar.showMessage("Serial connected!")
+                msg = "Send command: {}".format(num)
+                self.addLogEntry(msg)
         except Exception as err:
+            self.statusbar.showMessage("Serial connection failed!")
+            msg = "Could not establish serial connection!"
+            self.addLogEntry(msg)
             print(err)
             error_dialog = QErrorMessage()
             error_dialog.showMessage(err.args[0])
@@ -276,6 +353,8 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         """
         Send a string of instructions to the hardware. 
         """
+        msg = "Send string '{}' via serial.".format(scramblestring)
+        self.addLogEntry(msg)
         self.statusbar.showMessage("Sending Commands...")
         self.progBar_Status.setValue(0)
         validCMDs = {"U": "U1", #standard moves
@@ -324,11 +403,14 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
         iCMDs = 0
         try:
             for num in txCMDs:
-
+                msg = "Send command: {}".format(num)
+                self.addLogEntry(msg)
                 self.serial.write(bytes(num, 'utf-8'))
                 while self.serial.in_waiting == 0:
                     time.sleep(0.05)
                 data = self.serial.readline()
+                msg = "Received response: {}".format(str(data))
+                self.addLogEntry(msg)
                 print("Received: " + str(data)) 
                 if (data != b'K'):
                     raise ValueError('ACK was not received correctly, check transmitted string')  
@@ -367,20 +449,25 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
             "6Centers": "U D' R L' F B' U D'",
             "CEC": "U' R2 L2 F2 B2 U' R L F B' U F2 D2 R2 L2 F2 U2 F2 U' F2",
             "Tetris": "L R F B U' D' L' R'",
-            "4H": "L2 R2 U2 L2 R2 U2 y L2 R2 U2 L2 R2 U2 y'",
-            "4I": "L2 R2 U2 L2 R2 U2 x L2 R2 U2 L2 R2 U2 x'"
-            
+            "4H": "L2 R2 U2 L2 R2 U2 y L2 R2 U2 L2 R2 U2 y'"            
         }
         self.cube.scramble(patterns[identifier])  #manipulate cubestring according to input
         self.stringToCubemap()
         self.lineEdit_InOut.setText(patterns[identifier])
         self.label_CurrentString.setText("Pattern:")
+        self.statusbar.showMessage("Applied Pattern")
+        msg = "Applied Pattern: [{}] {}".format(identifier, patterns[identifier])
+        self.addLogEntry(msg)
         pass
 
     def generateSolution(self):
         """
         Generate a solution for the current cubestring and display in the GUI
         """  
+        self.statusbar.showMessage("Generating Solution")
+        msg = "Generating solution for cubestring: "+self.cube.cubestring
+        self.addLogEntry(msg)
+
         timer = QElapsedTimer()
         timer.start()
         solution = "No Solution"
@@ -392,13 +479,42 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
             error_dialog.showMessage(err.args[0])
             error_dialog.exec_()
             solution = err.args[0]
+            self.statusbar.showMessage("Solution generation failed!")
+            msg = "Solution could not be calculated: " + solution
+            self.addLogEntry(msg)
 
         self.lineEdit_InOut.setText(solution)
         self.label_CurrentString.setText("Solution:")
-        self.plainText_Log.appendPlainText("Solution calculation took: {} ms".format(timer.nsecsElapsed()/1000000))
+        self.statusbar.showMessage("Generated Solution")
+        msg = "Solution calculation took: {} ms".format(timer.nsecsElapsed()/1000000)
+        self.addLogEntry(msg)
         
         # self.timer1ms.stop()
         pass
+
+    def addLogEntry(self, msg):
+        """
+        Adds a line to the log.
+        """
+        now = time.gmtime()
+        nowstr = "[{}:{}:{}] ".format(now.tm_hour, now.tm_min, now.tm_sec)
+        logtext = nowstr + msg
+        self.plainText_Log.appendPlainText(logtext)
+
+    def saveLog(self):
+        """
+        Save the current log text to a file. 
+        """
+        name = "Log_"+time.asctime().replace(' ', '_')+".txt"
+        f = open(name, "w")
+        text = self.plainText_Log.toPlainText()
+        f.write(text)
+        f.close()
+        self.statusbar.showMessage("Saved log")
+        msg = "Saved Log to File : {}".format(name)
+        self.addLogEntry(msg)
+
+
 
     def solutionProgBarHandler(self):
         """
@@ -430,7 +546,10 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
                 "L": (4*9)-1,
                 "B": (5*9)-1         
             } 
+            
             stringindex = switcher[face]+int(index)
+            #get the previous color
+            prevcolor = self.cube.cubestring[stringindex]
             # extract cubestring before index to be changed
             strbefore = self.cube.cubestring[:stringindex]
             # extract  cubestring after index to be changed 
@@ -438,6 +557,10 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
             # piece together the new cubestring
             self.cube.cubestring = strbefore + self.colorGlobals["currColor"] + strafter
             self.stringToCubemap() #update GUI
+            msg = "Changed facelet '{}' from '{}' to '{}'".format(faceletID, prevcolor, self.colorGlobals["currColor"])
+            self.addLogEntry(msg)
+            msg = "New cubestring: {}".format(self.cube.cubestring)
+            self.addLogEntry(msg)
         pass
 
     def startRecolor(self):
@@ -454,9 +577,13 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
             face = faceletID[0]
             #set global recoloring parameter
             self.colorGlobals["currColor"] = face
+            msg = "Entered recoloring mode with color: " + face
+            self.addLogEntry(msg)
         else:
             if self.sender().isChecked() == False: #same button as before pressed - second button pressed 
                 self.colorGlobals["enableRecolor"] = False
+                msg = "Terminated recoloring mode."
+                self.addLogEntry(msg)
             else: 
                 """
                 different button than before was pressed -> lift previous button and keep recoloring 
@@ -469,6 +596,8 @@ class QbotGUI(QMainWindow, Ui_QbotGUI):
                 faceletID = sendername.replace('btn_', '')
                 face = faceletID[0]
                 self.colorGlobals["currColor"] = face
+                msg = "Changed current color to: " + face
+                self.addLogEntry(msg)
                 
         pass
 if __name__ == "__main__":

@@ -503,7 +503,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="movable">
        <bool>true</bool>
@@ -982,6 +982,9 @@
                </colorrole>
               </disabled>
              </palette>
+            </property>
+            <property name="cursor">
+             <cursorShape>CrossCursor</cursorShape>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(85, 85, 100);</string>
@@ -1517,6 +1520,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -2020,6 +2026,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -2525,6 +2534,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -3025,6 +3037,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -3530,6 +3545,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -4030,6 +4048,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -4535,6 +4556,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -5038,6 +5062,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -5543,6 +5570,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -6046,6 +6076,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -6551,6 +6584,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -7054,6 +7090,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -7559,6 +7598,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -8062,6 +8104,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -8567,6 +8612,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -9071,6 +9119,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -9572,6 +9623,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -10072,6 +10126,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -10577,6 +10634,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -11080,6 +11140,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -11585,6 +11648,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -12088,6 +12154,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -12593,6 +12662,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -13096,6 +13168,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -13601,6 +13676,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -14104,6 +14182,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -14612,6 +14693,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -15116,6 +15200,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -15616,6 +15703,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -16121,6 +16211,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -16625,6 +16718,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -17125,6 +17221,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -17629,6 +17728,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -18137,6 +18239,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -18640,6 +18745,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -19145,6 +19253,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -19648,6 +19759,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -20153,6 +20267,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -20650,6 +20767,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -21155,6 +21275,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -21659,6 +21782,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -22159,6 +22285,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -22664,6 +22793,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -23167,6 +23299,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -23672,6 +23807,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -24175,6 +24313,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -24680,6 +24821,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -25183,6 +25327,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -25691,6 +25838,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -26195,6 +26345,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -26692,6 +26845,9 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true"/>
@@ -27197,6 +27353,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -27701,6 +27860,9 @@
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="cursor">
+                <cursorShape>CrossCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -27742,6 +27904,9 @@
        <layout class="QGridLayout" name="gridLayout_13">
         <item row="2" column="0">
          <widget class="QPushButton" name="btn_Connect">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
            <string>Connect</string>
           </property>
@@ -28288,23 +28453,6 @@ x-Direction</string>
          </layout>
         </item>
         <item>
-         <layout class="QFormLayout" name="formLayout_2">
-          <item row="0" column="0">
-           <widget class="QPushButton" name="btn_SendSingle">
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="text">
-             <string>Send Command</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="lineEdit"/>
-          </item>
-         </layout>
-        </item>
-        <item>
          <spacer name="verticalSpacer_2">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -28339,6 +28487,9 @@ x-Direction</string>
         </item>
         <item>
          <widget class="QPushButton" name="btn_Savelog">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
            <string>Save Log to File</string>
           </property>
@@ -28598,6 +28749,9 @@ x-Direction</string>
         </item>
         <item>
          <widget class="QPushButton" name="btn_ScanCube">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="text">
            <string>Scan Cube</string>
           </property>
@@ -28611,6 +28765,9 @@ x-Direction</string>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QPushButton" name="btn_Apply">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="text">
          <string>Apply</string>
         </property>
@@ -28618,6 +28775,9 @@ x-Direction</string>
       </item>
       <item>
        <widget class="QPushButton" name="btn_Send">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="text">
          <string>Send to HW</string>
         </property>
@@ -28690,8 +28850,8 @@ x-Direction</string>
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>132</width>
-             <height>435</height>
+             <width>121</width>
+             <height>471</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -28700,8 +28860,40 @@ x-Direction</string>
               <property name="spacing">
                <number>6</number>
               </property>
-              <item alignment="Qt::AlignHCenter">
+              <item>
+               <widget class="QPushButton" name="btn_randomCube">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="toolTip">
+                 <string>Generate Cube Solve String</string>
+                </property>
+                <property name="text">
+                 <string>Randomize
+Cube</string>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>22</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <property name="shortcut">
+                 <string>G</string>
+                </property>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                <widget class="QToolButton" name="btn_Clean">
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
                 <property name="toolTip">
                  <string>Reset Cube</string>
                 </property>
@@ -29000,6 +29192,9 @@ x-Direction</string>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
                 <property name="toolTip">
                  <string>Generate Cube Solve String</string>
                 </property>
@@ -29122,9 +29317,9 @@ Enable/Disable</string>
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>0</y>
+             <y>-829</y>
              <width>117</width>
-             <height>1390</height>
+             <height>1284</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -29506,38 +29701,6 @@ Enable/Disable</string>
               </property>
              </widget>
             </item>
-            <item alignment="Qt::AlignHCenter">
-             <widget class="QToolButton" name="btn_4I">
-              <property name="toolTip">
-               <string>4I</string>
-              </property>
-              <property name="text">
-               <string>4I</string>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>Resources/4I.png</normaloff>Resources/4I.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>90</width>
-                <height>90</height>
-               </size>
-              </property>
-              <property name="popupMode">
-               <enum>QToolButton::DelayedPopup</enum>
-              </property>
-              <property name="toolButtonStyle">
-               <enum>Qt::ToolButtonIconOnly</enum>
-              </property>
-              <property name="autoRaise">
-               <bool>true</bool>
-              </property>
-              <property name="arrowType">
-               <enum>Qt::NoArrow</enum>
-              </property>
-             </widget>
-            </item>
            </layout>
           </widget>
          </widget>
@@ -29547,64 +29710,6 @@ Enable/Disable</string>
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>775</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuTest">
-    <property name="title">
-     <string>File</string>
-    </property>
-    <addaction name="Menu1"/>
-   </widget>
-   <widget class="QMenu" name="menuScramble">
-    <property name="title">
-     <string>Scramble</string>
-    </property>
-    <addaction name="actionFrom_Cubestring"/>
-    <addaction name="actionFrom_Moveset"/>
-    <addaction name="actionGenerate_Random"/>
-   </widget>
-   <widget class="QMenu" name="menuSerial">
-    <property name="title">
-     <string>About</string>
-    </property>
-    <addaction name="actionCOM"/>
-   </widget>
-   <widget class="QMenu" name="menuShortcuts">
-    <property name="title">
-     <string>Shortcuts</string>
-    </property>
-    <widget class="QMenu" name="menuActivate_Tab">
-     <property name="title">
-      <string>Activate Tab</string>
-     </property>
-     <addaction name="actionTab_1"/>
-     <addaction name="actionTab_2"/>
-     <addaction name="actionTab_3"/>
-     <addaction name="actionTab_4"/>
-     <addaction name="actionTab_5"/>
-    </widget>
-    <widget class="QMenu" name="menuInputs">
-     <property name="title">
-      <string>Inputs</string>
-     </property>
-     <addaction name="actionManual"/>
-     <addaction name="actionPatterns"/>
-    </widget>
-    <addaction name="menuActivate_Tab"/>
-    <addaction name="menuInputs"/>
-   </widget>
-   <addaction name="menuTest"/>
-   <addaction name="menuScramble"/>
-   <addaction name="menuSerial"/>
-   <addaction name="menuShortcuts"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="Menu1">
@@ -29707,7 +29812,6 @@ Enable/Disable</string>
   <tabstop>btn_GreenMamba</tabstop>
   <tabstop>btn_Tetris</tabstop>
   <tabstop>btn_4H</tabstop>
-  <tabstop>btn_4I</tabstop>
   <tabstop>btn_U</tabstop>
   <tabstop>btn_u</tabstop>
   <tabstop>btn_R</tabstop>
@@ -29731,9 +29835,7 @@ Enable/Disable</string>
   <tabstop>btn_A5</tabstop>
   <tabstop>btn_a5</tabstop>
   <tabstop>btn_a4</tabstop>
-  <tabstop>btn_SendSingle</tabstop>
   <tabstop>plainText_Log</tabstop>
-  <tabstop>lineEdit</tabstop>
   <tabstop>btn_a6</tabstop>
   <tabstop>btn_A4</tabstop>
   <tabstop>scrollArea_2</tabstop>
