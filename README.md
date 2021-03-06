@@ -1,11 +1,12 @@
+![alt text](https://github.com/waldhube16/Qbot_SW/blob/80959a9ff68713f4741769fa998b792187806ca6/GUI/Resources/Logo_sharper.png "Qbot Logo") 
 # QBOT - Rubik's Cube Solver Software
 ## Overview
-This software can be used standalone or with an actual hardware solver. The firmware for the original implementation can be found [here][https://github.com/Axodarap/QBot_firmware].
+This software can be used standalone or with an actual hardware solver. The firmware for the original implementation can be found [here](https://github.com/Axodarap/QBot_firmware).
 ## Functionality 
 - Apply simple moves on a 'simulated' cube.
 - Apply patterns to the cube.  
 - Randomize cube. 
-- Generate solutions for arbitrary cubes. This uses the Python package `kociemba` which can be found [here][https://github.com/muodov/kociemba].
+- Generate solutions for arbitrary cubes. This uses the Python package `kociemba` which can be found [here](https://github.com/muodov/kociemba).
 - Communicate via Serial connection with solver hardware. 
 - Scan a real cube and analyze the current state.
 ## Requirements 
