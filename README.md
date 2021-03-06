@@ -1,4 +1,4 @@
-<img src="./GUI/Resources/Logo_sharper.png" width="200" height="200" />
+<img src="./GUI/Resources/Logo_sharper.png" height="200" />
 
 # QBOT - Rubik's Cube Solver Software
 ## Overview
