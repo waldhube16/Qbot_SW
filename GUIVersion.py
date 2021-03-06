@@ -15,7 +15,7 @@ from PyQt5 import QtSerialPort
 from SolverBackend.Cube import Cube as erno
 # import SolverBackend.AlgorithmPython.solver as solver
 import kociemba
-from ImageProcessing import analyzeCubeImages
+from SolverBackend.ImageProcessing import analyzeCubeImages
 class QbotGUI(QMainWindow, Ui_QbotGUI):
     
     def __init__(self):

@@ -1,3 +1,4 @@
+#move up one directory layer to execute or fix module import otherwise
 import kociemba,time
 from SolverBackend.Cube import Cube as erno
 from PyQt5.QtCore import QElapsedTimer

@@ -173,7 +173,7 @@ def analyzeCubeImages(bDebug):
     return  cubestring
 
 
-
+#when executed directly as means to benchmark
 if __name__ == "__main__": 
     f = open("imageBenchmark.txt", "w")
     overall = 0
