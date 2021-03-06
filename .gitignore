@@ -6,7 +6,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-
+*.code-workspace
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -259,3 +259,14 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+.vscode/launch.json
+BlurredImage.png
+CannyImage.png
+DilatedImage.png
+FinalImage.png
+GrayImage.png
+RotatedCroppedImage.png
+scrambles.txt
+imageBenchmark.txt
+solutionBenchmark.txt
+solutionBMZybo.txt
